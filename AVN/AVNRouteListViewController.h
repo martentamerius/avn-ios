@@ -1,5 +1,5 @@
 //
-//  AVNMasterViewController.h
+//  AVNRouteListViewController.h
 //  AVN
 //
 //  Created by Marten Tamerius on 09-04-14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AVNMasterViewController : UITableViewController
+@interface AVNRouteListViewController : UITableViewController
 
 @end
