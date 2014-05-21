@@ -33,16 +33,32 @@ static NSArray *_actions, *_pageTypes;
 + (NSString *)urlForAVNWaypoint:(AVNWaypoint *)avnWaypoint
 {
     // Assemble the HTTP request string from specified waypoint id and its parent route id
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/%@?id=%@_%@", kAVNHostname, kAVNRelWaypointURL,
-                           avnWaypoint.parentRoute.identifier, avnWaypoint.identifier ];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/%@?id=%@", kAVNHostname, kAVNRelWaypointURL,
+                           avnWaypoint.identifier ];
     return urlString;
 }
+
 
 + (NSString *)urlForAVNPage:(AVNPageTypes)pageType
 {
     // Assemble the HTTP request string for the kAVNRelPageURL of type "pageType".
     NSString *urlString = [NSString stringWithFormat:@"http://%@/%@?id=%@", kAVNHostname, kAVNRelPageURL,
                            [AVNHTTPRequestFactory pageTypeStringForAction:pageType] ];
+    return urlString;
+}
+
+
++ (NSString *)urlForAVNNewsItemList
+{
+    // Assemble the HTTP request string
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/%@", kAVNHostname, kAVNRelNewsURL];
+    return urlString;
+}
+
++ (NSString *)urlForAVNNewsItemWithIdentifier:(NSString *)identifier
+{
+    // Assemble the HTTP request string
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/%@?id=%@", kAVNHostname, kAVNRelPageURL, identifier];
     return urlString;
 }
 

@@ -10,9 +10,12 @@
 #import "AVNRootViewController.h"
 #import "AVNRouteDetailViewController.h"
 #import "AVNRoute.h"
+#import "AVNWaypoint.h"
 #import "AVNHTTPRequestFactory.h"
 #import <AFNetworking.h>
 #import <Mantle.h>
+#import <TSMessage.h>
+#import <ODRefreshControl.h>
 
 
 // Storyboard constants
@@ -22,22 +25,27 @@
 
 @interface AVNRouteListViewController ()
 @property (nonatomic, strong) NSMutableArray *routeList;
+@property (nonatomic, strong) ODRefreshControl *routeListRefreshControl;
 @end
 
 @implementation AVNRouteListViewController
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    // Populate route list
-    [self requestRouteList];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Add custom refresh control
+    ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
+    [refreshControl addTarget:self action:@selector(requestRouteList:) forControlEvents:UIControlEventValueChanged];
+    self.routeListRefreshControl = refreshControl;
+    [self.tableView setContentOffset:CGPointMake(0.0, (-1*refreshControl.frame.size.height)) animated:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Populate route list
+    if ((!self.routeList) || ([self.routeList count]==0))
+        [self requestRouteList:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,16 +57,21 @@
 
 #pragma mark - Populate route list
 
-- (void)requestRouteList
-{
+- (void)requestRouteList:(NSNotification *)notification
+{   
     // Request header should have a field with content-type: "appliction/json"
     NSString *contentType = [NSString stringWithFormat:@"application/json; charset=%@", (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding))];
     
     // Init request manager (with JSON serializeR) and URL request object
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer new];
+    [manager.requestSerializer setTimeoutInterval:8];
     manager.responseSerializer = [AFJSONResponseSerializer new];
     [manager.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
+
+    // Give some visual feedback when the refreshing has been started programmatically
+    if (!notification)
+        [self.routeListRefreshControl beginRefreshing];
     
     // Init actual HTTP request operation
     __weak AVNRouteListViewController *weakSelf = self;
@@ -74,6 +87,13 @@
             if (!route) {
                 NSLog(@"Error converting AVN JSON route info: %@, %@", [error localizedDescription], [error userInfo]);
             } else {
+                
+                // Also set the parentRoute for all waypoints in the current route
+                [route.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    AVNWaypoint *waypoint = (AVNWaypoint *)obj;
+                    waypoint.parentRoute = route;
+                }];
+                
                 [routeListFromServer addObject:route];
             }
         }
@@ -85,13 +105,24 @@
             // Refresh UI on main thread
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf.tableView reloadData];
+                [weakSelf.routeListRefreshControl endRefreshing];
             });
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error downloading AVN route info: %@, %@", [error localizedDescription], [error userInfo]);
+        
+        // Refresh UI on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.tableView reloadData];
+            [weakSelf.routeListRefreshControl endRefreshing];
+            
+            // Show error message to user
+            [TSMessage showNotificationInViewController:weakSelf title:@"Laden van pagina mislukt." subtitle:[error localizedDescription] type:TSMessageNotificationTypeError duration:5 canBeDismissedByUser:YES];
+        });
     }];
 }
+
 
 #pragma mark - Table View
 
@@ -123,6 +154,8 @@
 {
     if ([[segue identifier] isEqualToString:kSegueRouteListToShowDetail]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
         [[segue destinationViewController] setSelectedRoute:self.routeList[indexPath.row]];
     }
 }

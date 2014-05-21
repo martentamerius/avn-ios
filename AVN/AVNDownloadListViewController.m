@@ -88,6 +88,8 @@
 {
     if ([[segue identifier] isEqualToString:kSegueDownloadListToShowDetail]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
         [[segue destinationViewController] setSelectedRoute:self.downloadList[indexPath.row]];
     }
 }

@@ -11,8 +11,8 @@
 #import "AVNHTTPRequestFactory.h"
 #import "AVNWaypoint.h"
 #import <CoreLocation/CoreLocation.h>
-#import "SVProgressHUD.h"
-#import "TSMessage.h"
+#import <MBProgressHUD.h>
+#import <TSMessage.h>
 
 
 // Segue identifiers
@@ -27,6 +27,7 @@
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (nonatomic) BOOL currentLocationDetermined;
 @property (strong, nonatomic) AVNWaypoint *tappedWaypoint;
+@property (strong, nonatomic) AVNWaypoint *nearestWaypoint;
 @end
 
 @implementation AVNRouteDetailViewController
@@ -69,6 +70,38 @@
 
 #pragma mark - UIWebView delegate
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    if ([[MBProgressHUD allHUDsForView:self.view] count]==0)
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    // Sometimes error code -999 pops up. This is a "NSURLErrorCancelled".
+    // Triggered for example by double-clicking a link. Just ignore this error.
+    if (error.code != -999) {
+        
+        // Dismiss HUD
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        // Log error
+        NSLog(@"Error downloading AVN route detail page: %@, %@", [error localizedDescription], [error userInfo]);
+        
+        // Show error message to user
+        [TSMessage showNotificationInViewController:self title:@"Laden van pagina mislukt."
+                                           subtitle:[error localizedDescription]
+                                               type:TSMessageNotificationTypeError
+                                           duration:5
+                               canBeDismissedByUser:YES];
+    }
+}
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     // The webview wants to load a URL.
@@ -80,21 +113,23 @@
         {
             // The user tapped on a link.
             NSString *path = request.URL.path;
-            if (path && ([path length]>[self.selectedRoute.identifier length]+2)) {
-                
-                NSString *routeIdFromPath = [path substringWithRange:NSMakeRange(1, [self.selectedRoute.identifier length])];
-                if ([routeIdFromPath isEqualToString:self.selectedRoute.identifier]) {
-                    NSArray *pathComponents = [path componentsSeparatedByString:@"_"];
-                    if ([pathComponents count] > 1) {
-                        // User tapped a link to a specific waypoint! Extract the waypoint details.
-                        self.tappedWaypoint = [[AVNWaypoint alloc] init];
-                        self.tappedWaypoint.identifier = [pathComponents lastObject];
-                        self.tappedWaypoint.parentRoute = self.selectedRoute;
-                        
-                        // Don't start the current request; we will manually push a segue to
-                        // the waypoint view controller, which will be populated with the tapped waypoint
-                        [self performSegueWithIdentifier:kSegueSpecificWaypointTapped sender:self];
+            if (path && ([path length]>1)) {
+                NSString *waypointIdFromPath = [path substringWithRange:NSMakeRange(1, [path length]-1)];
+                __block AVNWaypoint *tappedWaypoint;
+                [self.selectedRoute.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    AVNWaypoint *currentWaypoint = (AVNWaypoint *)obj;
+                    if ([currentWaypoint.identifier isEqualToString:waypointIdFromPath]) {
+                        tappedWaypoint = currentWaypoint;
+                        *stop = YES;
                     }
+                }];
+                
+                if (tappedWaypoint) {
+                    self.tappedWaypoint = tappedWaypoint;
+                    
+                    // Don't start the current request; we will manually push a segue to
+                    // the waypoint view controller, which will be populated with the tapped waypoint
+                    [self performSegueWithIdentifier:kSegueSpecificWaypointTapped sender:self];
                 }
                 
             }
@@ -148,7 +183,7 @@
     [self.locationManager startUpdatingLocation];
     
     // Give user some visual feedback
-    [SVProgressHUD showWithStatus:@"Locatie bepalen..." maskType:SVProgressHUDMaskTypeBlack];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.currentLocationDetermined = NO;
 }
 
@@ -159,11 +194,14 @@
     self.currentLocationDetermined = NO;
 
     // Dismiss notification
-    [SVProgressHUD showErrorWithStatus:@""];
-    [TSMessage showNotificationInViewController:self title:@"Let op: de huidige locatie kan niet worden bepaald." subtitle:@"Het startpunt zal nu worden getoond" type:TSMessageNotificationTypeWarning duration:3.0 canBeDismissedByUser:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [TSMessage showNotificationInViewController:self title:@"Let op: de huidige locatie kan niet worden bepaald." subtitle:@"Het startpunt van de route zal worden geladen." type:TSMessageNotificationTypeWarning duration:3.0 canBeDismissedByUser:YES];
     
-    // Start the segue to the starting waypoint viewcontroller programmatically
-    [self performSegueWithIdentifier:kSegueStartRoute sender:self];
+    // Start the segue to the starting waypoint viewcontroller programmatically after 2 seconds
+    __weak AVNRouteDetailViewController *weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [weakSelf performSegueWithIdentifier:kSegueStartRoute sender:weakSelf];
+    });
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -177,7 +215,7 @@
     if ((currentLocation.horizontalAccuracy>=0) && (currentLocation.horizontalAccuracy<100)) {
         
         // Dismiss notification
-        [SVProgressHUD showSuccessWithStatus:@"Locatie gevonden"];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
 
         // Stop the location manager updates
         [self.locationManager stopUpdatingLocation];
@@ -204,19 +242,53 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:kSegueStartRoute]) {
+        // Try to get indicated start waypoint
+        __block AVNWaypoint *startWaypoint = nil;
+        if (self.selectedRoute && self.selectedRoute.waypoints &&
+            ([self.selectedRoute.waypoints count]>0) && (self.selectedRoute.startWaypoint)) {
+            
+            NSString *startID = self.selectedRoute.startWaypoint;
+            [self.selectedRoute.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                AVNWaypoint *wp = (AVNWaypoint *)obj;
+                if ([wp.identifier isEqualToString:startID]) {
+                    startWaypoint = wp;
+                    *stop = YES;
+                }
+            }];
+            
+            // If the start waypoint has not been found, just select the first one available
+            startWaypoint = startWaypoint?:self.selectedRoute.waypoints[0];
+        }
         
-        [[segue destinationViewController] setSelectedRoute:self.selectedRoute];
+        if (startWaypoint)
+            [[segue destinationViewController] setSelectedWaypoint:startWaypoint];
         
     } else if ([[segue identifier] isEqualToString:kSegueFindNearestWaypoint]) {
         
-        if (self.currentLocation) {
-            [[segue destinationViewController] setCurrentLocation:self.currentLocation];
+        // Try to get the nearest waypoint
+        __block AVNWaypoint *nearestWaypoint = nil;
+        
+        // TODO: calculate nearest waypoint
+        if (self.selectedRoute && self.selectedRoute.waypoints &&
+            ([self.selectedRoute.waypoints count]>0) && self.currentLocation) {
+            
+            [self.selectedRoute.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                AVNWaypoint *wp = (AVNWaypoint *)obj;
+                nearestWaypoint = wp;
+            }];
+            
+            // If the nearest waypoint has not been found, just select the first one available
+            nearestWaypoint = nearestWaypoint?:self.selectedRoute.waypoints[0];
         }
-        [[segue destinationViewController] setSelectedRoute:self.selectedRoute];
+        
+        if (nearestWaypoint)
+            [[segue destinationViewController] setSelectedWaypoint:nearestWaypoint];
+
         
     } else if ([[segue identifier] isEqualToString:kSegueSpecificWaypointTapped]) {
         
         if (self.tappedWaypoint) {
+            // The link to a specific waypoint has been tapped
             [[segue destinationViewController] setSelectedWaypoint:self.tappedWaypoint];
             self.tappedWaypoint = nil;
         }

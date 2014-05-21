@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ea7-88-rxv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ea7-88-rxv">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -15,8 +15,6 @@
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.94901960780000005" green="0.73333333329999995" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" red="0.94901960780000005" green="0.73333333329999995" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="LVz-bN-R4f" kind="relationship" relationship="viewControllers" id="2ec-Pz-srj"/>
@@ -34,35 +32,39 @@
             <objects>
                 <tableViewController storyboardIdentifier="AVNNewsTableViewController" title="Nieuws" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QVv-Cj-bw1" customClass="AVNNewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Aoh-OE-FZH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AVNNewsCell" textLabel="hWq-kY-9qI" detailTextLabel="bJw-1o-L8J" style="IBUITableViewCellStyleSubtitle" id="dJt-Hf-vdB">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellNewsItem" textLabel="hWq-kY-9qI" detailTextLabel="bJw-1o-L8J" imageView="PiU-uc-Sxd" style="IBUITableViewCellStyleSubtitle" id="dJt-Hf-vdB">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dJt-Hf-vdB" id="OUP-Oi-w6W">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hWq-kY-9qI">
-                                            <rect key="frame" x="15" y="3" width="34" height="22"/>
+                                            <rect key="frame" x="73" y="3" width="34" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bJw-1o-L8J">
-                                            <rect key="frame" x="15" y="25" width="43" height="15"/>
+                                            <rect key="frame" x="73" y="25" width="43" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="newsitem_placeholder" id="PiU-uc-Sxd">
+                                            <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Iie-E0-bpq" kind="push" identifier="SelectNewsItemSegue" id="N7q-3W-RC8"/>
+                                    <segue destination="Iie-E0-bpq" kind="push" identifier="NewsItemListToShowDetailSegue" id="N7q-3W-RC8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,6 +73,7 @@
                             <outlet property="delegate" destination="QVv-Cj-bw1" id="sKF-dE-QCW"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="AVN Nieuws" id="C3X-nh-x9a"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRj-Pc-krp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,11 +89,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ube-0a-gZs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Skv-IV-Kfq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="AboutAVNWebView" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9V-ne-sqo">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -107,6 +110,7 @@
                             <constraint firstItem="k9V-ne-sqo" firstAttribute="leading" secondItem="Skv-IV-Kfq" secondAttribute="leading" id="Wac-vA-1Or"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Over AVN" id="Ffl-Kj-uXt"/>
                     <connections>
                         <outlet property="webView" destination="k9V-ne-sqo" id="KB6-h5-h6e"/>
@@ -121,12 +125,12 @@
             <objects>
                 <tableViewController storyboardIdentifier="AVNRouteListTableViewController" title="AVN Wandelroutes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pGg-6v-bdr" customClass="AVNRouteListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="AVNRouteMasterTV" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRouteDescription" textLabel="2pz-XF-uhl" style="IBUITableViewCellStyleDefault" id="m0d-ak-lc9">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -153,6 +157,7 @@
                             <outlet property="delegate" destination="pGg-6v-bdr" id="Y6K-Cp-Qkv"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="AVN Wandelroutes" id="tQt-TN-PWz"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
@@ -239,6 +244,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4jn-5f-4vv" id="flN-cv-1U3"/>
+                                </connections>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSS-8R-C5Z">
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
@@ -271,6 +279,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Locatie" id="E6u-4Y-O0n"/>
                     <connections>
+                        <outlet property="nextBarButtonItem" destination="Cdx-bM-YTe" id="K9J-BJ-bWB"/>
+                        <outlet property="previousBarButtonItem" destination="XXW-yq-xHL" id="d0R-OX-QNY"/>
                         <outlet property="toolbar" destination="nSS-8R-C5Z" id="GsU-vA-g8d"/>
                         <outlet property="webView" destination="6qV-F6-l1w" id="afN-KV-Fvc"/>
                     </connections>
@@ -279,10 +289,10 @@
             </objects>
             <point key="canvasLocation" x="1614" y="-350"/>
         </scene>
-        <!--View Controller - Nieuws-->
+        <!--News Item Detail View Controller - Nieuws-->
         <scene sceneID="Oow-sF-mL1">
             <objects>
-                <viewController title="Nieuws" id="Iie-E0-bpq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AVNNewsItemDetailView" title="Nieuws" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iie-E0-bpq" customClass="AVNNewsItemDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uSi-E8-Q4r"/>
                         <viewControllerLayoutGuide type="bottom" id="yWm-Gk-Xdy"/>
@@ -296,6 +306,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Iie-E0-bpq" id="kK2-WV-5R4"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -306,8 +319,10 @@
                             <constraint firstAttribute="trailing" secondItem="nQp-95-qYW" secondAttribute="trailing" id="yIg-Xq-Wtm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Over AVN" id="4de-aH-sR5"/>
                     <navigationItem key="navigationItem" id="1Ji-tT-PiD"/>
+                    <connections>
+                        <outlet property="webView" destination="nQp-95-qYW" id="0ae-Zk-Iuf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc1-CM-HSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -318,12 +333,12 @@
             <objects>
                 <tableViewController storyboardIdentifier="AVNDownloadMasterVC" title="Downloads" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VXm-Xh-Dql" userLabel="Download List View Controller - RouteList" customClass="AVNDownloadListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="AVNRouteMasterTV" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CsW-xU-u0s">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRouteDescription" textLabel="bv1-Jt-5pB" style="IBUITableViewCellStyleDefault" id="O8f-J6-gMV">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O8f-J6-gMV" id="53f-Ov-aqe">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -347,6 +362,7 @@
                             <outlet property="delegate" destination="VXm-Xh-Dql" id="N59-yd-aYz"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Downloads" id="a56-JJ-6ff"/>
                     <connections>
                         <segue destination="Ah7-4n-0Wa" kind="push" identifier="DownloadListToShowDetailSegue" id="iv3-Ee-T1d"/>
@@ -434,19 +450,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="newsitem_placeholder" width="44" height="44"/>
         <image name="tab_about" width="30" height="30"/>
         <image name="tab_downloads" width="30" height="30"/>
         <image name="tab_news" width="30" height="30"/>
         <image name="tab_routes" width="30" height="30"/>
     </resources>
-    <color key="tintColor" red="0.7709263392857143" green="0.57060421710119591" blue="0.064304198388045644" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jUr-3t-vfg"/>
+        <segue reference="iv3-Ee-T1d"/>
         <segue reference="T0H-qI-JhR"/>
     </inferredMetricsTieBreakers>
 </document>

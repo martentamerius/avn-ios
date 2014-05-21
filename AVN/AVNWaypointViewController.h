@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
-#import "AVNRoute.h"
 #import "AVNWaypoint.h"
 
 @interface AVNWaypointViewController : UIViewController
-@property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) AVNWaypoint *selectedWaypoint;
-@property (nonatomic, strong) AVNRoute *selectedRoute;
 @end

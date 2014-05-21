@@ -15,16 +15,18 @@
 {
     return @{ @"identifier": @"identifier",
               @"title": @"title",
+              //@"length": @"length",
               @"kmzDownloadURL": @"kmzDownloadURL",
-              @"startWaypoint": @"startWaypoint" };
+              @"startWaypoint": @"startWaypoint",
+              @"waypoints": @"waypoints" };
 }
 
-+ (NSValueTransformer *)URLJSONTransformer
++ (NSValueTransformer *)kmzDownloadURLJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
-+ (NSValueTransformer *)waypointsTransformer
++ (NSValueTransformer *)waypointsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[AVNWaypoint class]];
 }

@@ -31,6 +31,9 @@
 		9B99211F1909543F009AC8EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B99211E1909543F009AC8EF /* Images.xcassets */; };
 		9B9921251909571E009AC8EF /* AVNAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9921241909571E009AC8EF /* AVNAboutViewController.m */; };
 		9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */; };
+		9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA610192D207700BC372D /* AVNNewsItem.m */; };
+		9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */; };
+		9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */; };
 		CF8C3ABAB8564484BCBE6D30 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039A285F0A44334B3A12BEF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +88,11 @@
 		9B9921241909571E009AC8EF /* AVNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNAboutViewController.m; sourceTree = "<group>"; };
 		9B992126190957CD009AC8EF /* AVNNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewController.h; sourceTree = "<group>"; };
 		9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewController.m; sourceTree = "<group>"; };
+		9BBBA60F192D207700BC372D /* AVNNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItem.h; sourceTree = "<group>"; };
+		9BBBA610192D207700BC372D /* AVNNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItem.m; sourceTree = "<group>"; };
+		9BBBA612192D280C00BC372D /* AVNNewsItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItemDetailViewController.h; sourceTree = "<group>"; };
+		9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItemDetailViewController.m; sourceTree = "<group>"; };
+		9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D7CB16C174844B0ABBF19E5E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +105,7 @@
 				9B2A212218F5D3A20000B53B /* CoreGraphics.framework in Frameworks */,
 				9B2A212418F5D3A20000B53B /* UIKit.framework in Frameworks */,
 				9B2A212018F5D3A20000B53B /* Foundation.framework in Frameworks */,
+				9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */,
 				CF8C3ABAB8564484BCBE6D30 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +148,7 @@
 		9B2A211E18F5D3A20000B53B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */,
 				9B2A215D18F5EE470000B53B /* CoreLocation.framework */,
 				9B2A211F18F5D3A20000B53B /* Foundation.framework */,
 				9B2A212118F5D3A20000B53B /* CoreGraphics.framework */,
@@ -200,6 +210,8 @@
 				9B3B519E18F6A0540066D315 /* AVNRoute.m */,
 				9B7297C918F9E3AB00D1A95E /* AVNWaypoint.h */,
 				9B7297CA18F9E3AB00D1A95E /* AVNWaypoint.m */,
+				9BBBA60F192D207700BC372D /* AVNNewsItem.h */,
+				9BBBA610192D207700BC372D /* AVNNewsItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -227,6 +239,8 @@
 				9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */,
 				9B992126190957CD009AC8EF /* AVNNewsTableViewController.h */,
 				9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */,
+				9BBBA612192D280C00BC372D /* AVNNewsItemDetailViewController.h */,
+				9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */,
 				9B9921231909571E009AC8EF /* AVNAboutViewController.h */,
 				9B9921241909571E009AC8EF /* AVNAboutViewController.m */,
 			);
@@ -306,6 +320,9 @@
 						DevelopmentTeam = 5D9U5UZG39;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iOS = {
 								enabled = 1;
 							};
 						};
@@ -424,11 +441,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */,
+				9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */,
 				9B7297CF18F9E57C00D1A95E /* AVNHTTPRequestFactory.m in Sources */,
 				9B9921251909571E009AC8EF /* AVNAboutViewController.m in Sources */,
 				9B3B519F18F6A0540066D315 /* AVNRoute.m in Sources */,
 				9B7297C818F9DED900D1A95E /* AVNWaypointViewController.m in Sources */,
 				9B2A213618F5D3A20000B53B /* AVNRouteListViewController.m in Sources */,
+				9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */,
 				9B7B5B7119070DCF000882E7 /* AVNRootViewController.m in Sources */,
 				9B7B5B6E190707B7000882E7 /* AVNDownloadListViewController.m in Sources */,
 				9B2A213018F5D3A20000B53B /* AVNAppDelegate.m in Sources */,
@@ -551,7 +570,7 @@
 				INFOPLIST_FILE = "AVN/AVN-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A586F0C0-5F39-4A5C-A722-80C488265F9E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -569,7 +588,7 @@
 				INFOPLIST_FILE = "AVN/AVN-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A586F0C0-5F39-4A5C-A722-80C488265F9E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

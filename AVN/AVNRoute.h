@@ -12,6 +12,7 @@
 @interface AVNRoute : MTLModel <MTLJSONSerializing>
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic) double length;
 @property (nonatomic, strong) NSURL *kmzDownloadURL;
 @property (nonatomic, strong) NSString *startWaypoint;
 

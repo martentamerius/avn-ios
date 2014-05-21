@@ -14,6 +14,7 @@
 #define kAVNRelRouteInfoURL     @"app.routeinfo.aspx"
 #define kAVNRelWaypointURL      @"app.waypoint.aspx"
 #define kAVNRelPageURL          @"app.pagina.aspx"
+#define kAVNRelNewsURL          @"app.nieuwsinfo.aspx"
 
 // Define possible actions for kAVNRelWaypointURL
 typedef NS_ENUM(NSInteger, AVNActions) {
@@ -40,4 +41,7 @@ typedef NS_ENUM(NSInteger, AVNPageTypes) {
 + (NSString *)urlForAVNWaypoint:(AVNWaypoint *)avnWaypoint;
 
 + (NSString *)urlForAVNPage:(AVNPageTypes)pageType;
+
++ (NSString *)urlForAVNNewsItemList;
++ (NSString *)urlForAVNNewsItemWithIdentifier:(NSString *)identifier;
 @end

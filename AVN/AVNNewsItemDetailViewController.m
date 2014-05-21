@@ -1,54 +1,60 @@
 //
-//  AVNAboutViewController.m
+//  AVNNewsItemDetailViewController.m
 //  AVN
 //
-//  Created by Marten Tamerius on 24-04-14.
+//  Created by Marten Tamerius on 21-05-14.
 //  Copyright (c) 2014 AVN. All rights reserved.
 //
 
-#import "AVNAboutViewController.h"
+#import "AVNNewsItemDetailViewController.h"
 #import "AVNHTTPRequestFactory.h"
 #import <MBProgressHUD.h>
 #import <TSMessage.h>
 
-@interface AVNAboutViewController () <UIWebViewDelegate>
+@interface AVNNewsItemDetailViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic) BOOL didLoadPage;
 @end
 
-@implementation AVNAboutViewController
+@implementation AVNNewsItemDetailViewController
+
+#pragma mark - Managing the selected news item
+
+- (void)setSelectedNewsItem:(AVNNewsItem *)newSelectedNewsItem
+{
+    if (_selectedNewsItem != newSelectedNewsItem) {
+        _selectedNewsItem = newSelectedNewsItem;
+        
+        // Update the view.
+        [self configureView];
+    }
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    if (self.selectedNewsItem) {
+        // Set page title
+        self.title = self.selectedNewsItem.title;
+        
+        // Refresh webview content
+        NSString *newsItemString = [AVNHTTPRequestFactory urlForAVNNewsItemWithIdentifier:self.selectedNewsItem.identifier];
+        NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:newsItemString]];
+        [self.webView loadRequest:urlRequest];
+    }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.didLoadPage = NO;
-    [self refreshContent];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    if (!self.didLoadPage)
-        [self refreshContent];
-    
-    [super viewWillAppear:animated];
+	// Do any additional setup after loading the view, typically from a nib.
+    [self configureView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - Refresh content
-
-- (void)refreshContent
-{
-    // Refresh webview content
-    NSURL *urlAboutAVN = [NSURL URLWithString:[AVNHTTPRequestFactory urlForAVNPage:AVNPage_About]];
-    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:urlAboutAVN];
-    [self.webView loadRequest:urlRequest];
 }
 
 
@@ -77,7 +83,7 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         // Log error
-        NSLog(@"Error downloading AVN About page: %@, %@", [error localizedDescription], [error userInfo]);
+        NSLog(@"Error downloading AVN news item detail page: %@, %@", [error localizedDescription], [error userInfo]);
         
         // Show error message to user
         [TSMessage showNotificationInViewController:self title:@"Laden van pagina mislukt."
