@@ -56,13 +56,13 @@
 
 #pragma mark - Badge count for News Items tab bar item
 
-- (void)updateNewsItemBadge:(NSUInteger)unreadItemCount
+- (void)updateNewsItemBadge:(NSInteger)unreadItemCount
 {
     UITabBarItem *newsTabBarItem;
     
     if ([self.tabBar.items count]>=kNewsItemTabBarIndex) {
         newsTabBarItem = self.tabBar.items[kNewsItemTabBarIndex];
-        newsTabBarItem.badgeValue = (unreadItemCount==0)?nil:[NSString stringWithFormat:@"%u", unreadItemCount];
+        newsTabBarItem.badgeValue = (unreadItemCount<=0)?nil:[NSString stringWithFormat:@"%d", unreadItemCount];
         
         // Save the new specified value into the UserDefaults
         [[NSUserDefaults standardUserDefaults] setInteger:unreadItemCount forKey:kAVNSetting_UnreadNewsItemsCount];
