@@ -7,12 +7,25 @@
 //
 
 #import "AVNAppDelegate.h"
+#import <SDURLCache.h>
+#import <AFNetworkActivityIndicatorManager.h>
 
 @implementation AVNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // Register defaults for Settings bundle
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ kAVNSetting_ResetCache:@(NO),
+                                                               kAVNSetting_ReadNewsItems:@[],
+                                                               kAVNSetting_UnreadNewsItemsCount:@(0) }];
+    
+    // Initialize disk cache for offline viewing of webpages
+    SDURLCache *urlCache = [[SDURLCache alloc] initWithMemoryCapacity:(16*1024*1024)
+                                                         diskCapacity:(64*1024*1024)
+                                                             diskPath:[SDURLCache defaultCachePath]];
+    urlCache.ignoreMemoryOnlyStoragePolicy = YES;
+    [NSURLCache setSharedURLCache:urlCache];
+
     return YES;
 }
 							
@@ -24,13 +37,24 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    // Turn off automatic network activity indicator
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:NO];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    // Check if the disk cache should be cleared before starting the app
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kAVNSetting_ResetCache]) {
+        NSLog(@"Disk cache will be cleared.");
+        
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        
+        // Toggle clear disk cache switch in Settings bundle
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAVNSetting_ResetCache];
+    }
+    
+    // Reinitialize automatic network activity indicator
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

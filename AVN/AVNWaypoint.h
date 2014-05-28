@@ -14,7 +14,7 @@
 @interface AVNWaypoint : MTLModel <MTLJSONSerializing>
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, readonly) CLLocationCoordinate2D gpsCoordinate;
+@property (nonatomic, strong) CLLocation *gpsCoordinate;
 
 @property (nonatomic, strong) AVNRoute *parentRoute;
 

@@ -49,7 +49,9 @@
     // Update the user interface for the detail item.
     if (self.selectedRoute) {
         NSURL *urlGetMain = [NSURL URLWithString:[AVNHTTPRequestFactory urlForAVNRoute:self.selectedRoute forAction:AVNAction_GetMain]];
-        NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:urlGetMain];
+        NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:urlGetMain];
+        urlRequest.cachePolicy = NSURLRequestReloadRevalidatingCacheData;
+
         [self.webView loadRequest:urlRequest];
     }
 }
@@ -65,6 +67,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Download Route button
+
+- (IBAction)downloadRoute:(id)sender
+{
+    // TODO: All pages should be downloaded here
+    NSLog(@"Download route button clicked for AVNRoute with id %@.", self.selectedRoute.identifier);
+    
+    NSString *html = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    NSLog(@"HTML content: %@", html);
 }
 
 
@@ -224,9 +238,10 @@
         self.currentLocation = currentLocation;
 
         if (!self.currentLocationDetermined) {
+            self.currentLocationDetermined = YES;
+
             // Start the segue to the waypoint viewcontroller programmatically
             [self performSegueWithIdentifier:kSegueFindNearestWaypoint sender:self];
-            self.currentLocationDetermined = YES;
         }
     }
 }
@@ -267,14 +282,20 @@
         
         // Try to get the nearest waypoint
         __block AVNWaypoint *nearestWaypoint = nil;
+        __block CLLocationDistance distanceToNearest = 1000000000000;
         
-        // TODO: calculate nearest waypoint
+        // Calculate distance to all waypoints and remember nearest
         if (self.selectedRoute && self.selectedRoute.waypoints &&
             ([self.selectedRoute.waypoints count]>0) && self.currentLocation) {
             
             [self.selectedRoute.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 AVNWaypoint *wp = (AVNWaypoint *)obj;
-                nearestWaypoint = wp;
+                CLLocationDistance wpDistance = [wp.gpsCoordinate distanceFromLocation:self.currentLocation];
+                if (wpDistance<distanceToNearest) {
+                    // Current waypoint is nearer than the last one
+                    nearestWaypoint = wp;
+                    distanceToNearest = wpDistance;
+                }
             }];
             
             // If the nearest waypoint has not been found, just select the first one available

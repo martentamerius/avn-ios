@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AVNRootViewController : UITabBarController
-
+- (void)updateNewsItemBadge:(NSUInteger)unreadItemCount;
 @end

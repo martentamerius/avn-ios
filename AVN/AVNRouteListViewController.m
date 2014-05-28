@@ -62,10 +62,15 @@
     // Request header should have a field with content-type: "appliction/json"
     NSString *contentType = [NSString stringWithFormat:@"application/json; charset=%@", (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding))];
     
-    // Init request manager (with JSON serializeR) and URL request object
+    // Init request manager (with JSON serializer) and URL request object
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer new];
-    [manager.requestSerializer setTimeoutInterval:8];
+    manager.requestSerializer.timeoutInterval = 8;
+    if ([manager.reachabilityManager networkReachabilityStatus]==AFNetworkReachabilityStatusNotReachable) {
+        manager.requestSerializer.cachePolicy = NSURLRequestReturnCacheDataDontLoad;
+    } else {
+        manager.requestSerializer.cachePolicy = NSURLRequestUseProtocolCachePolicy;
+    }
     manager.responseSerializer = [AFJSONResponseSerializer new];
     [manager.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
 
@@ -75,7 +80,8 @@
     
     // Init actual HTTP request operation
     __weak AVNRouteListViewController *weakSelf = self;
-    [manager GET:[AVNHTTPRequestFactory urlForAVNRouteInfo] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[AVNHTTPRequestFactory urlForAVNRouteInfo] parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // Process the received response with Mantle
         NSError *error = nil;

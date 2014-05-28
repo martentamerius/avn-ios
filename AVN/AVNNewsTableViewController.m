@@ -10,6 +10,8 @@
 #import "AVNHTTPRequestFactory.h"
 #import "AVNNewsItem.h"
 #import "AVNNewsItemDetailViewController.h"
+#import "AVNAppDelegate.h"
+#import "AVNRootViewController.h"
 #import <AFNetworking.h>
 #import <Mantle.h>
 #import <TSMessage.h>
@@ -79,12 +81,21 @@
         NSError *error = nil;
         NSArray *jsonResponseArray = ([responseObject isKindOfClass:[NSArray class]])?(NSArray *)responseObject:[NSArray arrayWithObject:responseObject];
         
+        NSArray *readNewsItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kAVNSetting_ReadNewsItems];
+        if (!readNewsItems)
+            readNewsItems = @[];
+        
         NSMutableArray *newsItemsListFromServer = [NSMutableArray arrayWithCapacity:[jsonResponseArray count]];
         for (id jsonObject in jsonResponseArray) {
             AVNNewsItem *newsItem = [MTLJSONAdapter modelOfClass:[AVNNewsItem class] fromJSONDictionary:jsonObject error:&error];
             if (!newsItem) {
                 NSLog(@"Error converting AVN JSON news item info: %@, %@", [error localizedDescription], [error userInfo]);
             } else {
+                
+                // Check in UserDefaults if the user has already seen this news item
+                newsItem.hasReadItem = [readNewsItems containsObject:newsItem.identifier];
+                
+                // Add the news item to the list
                 [newsItemsListFromServer addObject:newsItem];
             }
         }
@@ -97,6 +108,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf.tableView reloadData];
                 [weakSelf.newsItemsListRefreshControl endRefreshing];
+                
+                [weakSelf updateUnreadNewsItemsBadgeCount];
             });
         }
         
@@ -108,10 +121,24 @@
             [weakSelf.tableView reloadData];
             [weakSelf.newsItemsListRefreshControl endRefreshing];
             
+            [weakSelf updateUnreadNewsItemsBadgeCount];
+            
             // Show error message to user
             [TSMessage showNotificationInViewController:weakSelf title:@"Laden van pagina mislukt." subtitle:[error localizedDescription] type:TSMessageNotificationTypeError duration:5 canBeDismissedByUser:YES];
         });
     }];
+}
+
+- (void)updateUnreadNewsItemsBadgeCount
+{
+    NSArray *readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kAVNSetting_ReadNewsItems];
+    
+    if (readItems && self.newsItemsList) {
+        NSInteger unreadItemCount = MAX(0, [self.newsItemsList count] - [readItems count]);
+        
+        AVNRootViewController *rootViewController = (AVNRootViewController *)self.tabBarController;
+        [rootViewController updateNewsItemBadge:unreadItemCount];
+    }
 }
 
 
@@ -132,8 +159,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellNewsItem forIndexPath:indexPath];
     
     AVNNewsItem *newsItem = self.newsItemsList[indexPath.row];
+    UIColor *textColor = (newsItem.hasReadItem)?[UIColor colorWithWhite:0.36 alpha:1.0]:[UIColor darkTextColor];
     cell.textLabel.text = newsItem.title;
+    cell.textLabel.textColor = textColor;
     cell.detailTextLabel.text = newsItem.shortDescription;
+    cell.detailTextLabel.textColor = textColor;
     cell.imageView.image = [UIImage imageNamed:@"newsitem_placeholder"];
     
     if (newsItem.imageURL) {
@@ -180,11 +210,30 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:kSegueNewsItemListToShowDetail]) {
+    if ([[segue identifier] isEqualToString:kSegueNewsItemListToShowDetail] && self.newsItemsList) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        [[segue destinationViewController] setSelectedNewsItem:self.newsItemsList[indexPath.row]];
+        if ([self.newsItemsList count]>indexPath.row) {
+            AVNNewsItem *selectedNewsItem = self.newsItemsList[indexPath.row];
+            selectedNewsItem.hasReadItem = YES;
+            
+            NSArray *readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kAVNSetting_ReadNewsItems];
+            if (readItems && (![readItems containsObject:selectedNewsItem.identifier])) {
+                NSMutableArray *newReadItems = [NSMutableArray arrayWithArray:readItems];
+                [newReadItems addObject:selectedNewsItem.identifier];
+
+                // Save the new array into the UserDefaults for next time
+                [[NSUserDefaults standardUserDefaults] setObject:newReadItems forKey:kAVNSetting_ReadNewsItems];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                // Update badge count + UITableView
+                [self.tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self updateUnreadNewsItemsBadgeCount];
+            }
+            
+            [[segue destinationViewController] setSelectedNewsItem:selectedNewsItem];
+        }
     }
 }
 

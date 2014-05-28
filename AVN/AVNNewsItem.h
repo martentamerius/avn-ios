@@ -16,4 +16,5 @@
 @property (nonatomic, strong) NSString *shortDescription;
 @property (nonatomic, strong) NSURL *imageURL;
 @property (nonatomic, strong) NSURL *fullPageURL;
+@property (nonatomic) BOOL hasReadItem;
 @end

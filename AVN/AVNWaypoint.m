@@ -21,26 +21,20 @@
 {
     return @{ @"identifier": @"identifier",
               @"title": @"title",
-              @"coordinate": @"gpsCoordinate" };
+              @"gpsCoordinate": @"gpsCoordinate" };
 }
 
-+ (NSValueTransformer *)coordinateJSONTransformer
++ (NSValueTransformer *)gpsCoordinateJSONTransformer
 {
-    return [MTLValueTransformer transformerWithBlock:^NSValue *(NSArray *arr) {
-        NSValue *coordValue;
+    return [MTLValueTransformer transformerWithBlock:^CLLocation *(NSArray *arr) {
+        CLLocation *gpsCoord;
         if (arr && ([arr count]==2)) {
-            CLLocationCoordinate2D gpsCoord = CLLocationCoordinate2DMake([arr[0] doubleValue], [arr[1] doubleValue]);
-            coordValue = [NSValue valueWithMKCoordinate:gpsCoord];
+            gpsCoord = [[CLLocation alloc] initWithLatitude:[arr[0] doubleValue] longitude:[arr[1] doubleValue]];
         }
-        return coordValue;
+        return gpsCoord;
     }];
 }
 
-
-- (CLLocationCoordinate2D)gpsCoordinate
-{
-    return [self.coordinate MKCoordinateValue];
-}
 
 - (AVNWaypoint *)previousWaypoint
 {

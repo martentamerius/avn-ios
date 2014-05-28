@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Reset download cache</string>
+			<key>Key</key>
+			<string>reset_cache</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Over de AVN app</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>__VERSION__</string>
+			<key>Key</key>
+			<string>app_version</string>
+			<key>Title</key>
+			<string>Versie</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>Acknowledgements</string>
+			<key>Title</key>
+			<string>Licenties</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Identifier</key>
+			<string>acknowledgements</string>
+		</dict>
+	</array>
+</dict>
+</plist>

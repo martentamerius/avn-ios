@@ -7,31 +7,36 @@
 //
 
 #import "AVNRootViewController.h"
+#import "AVNAppDelegate.h"
 
+#define kNewsItemTabBarIndex        1
 #define kDefaultAnimationDuration   0.5
 
 @implementation AVNRootViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // Set selected tabbar item tint color... this does not seem to work properly from storyboard editor
+    // Application-wide tint color (the yellow background from the AVN logo.)
     UIColor *defaultAVNAppTintColor = [UIColor colorWithRed:(231.0f/255) green:(180.0f/255) blue:(43.0f/255) alpha:1.0f];
     
-    //[UIColor colorWithRed:(195.0f/255) green:(162.0f/255) blue:(27.0f/255) alpha:1.0f];
-    
+    // Set UITabBar selected image tint color independent of iOS version;
+    // this does not seem to work propertly from storyboard editor.
+    [[UITabBar appearance] setSelectedImageTintColor:defaultAVNAppTintColor];
+
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
         // Load resources for iOS 6.1 or earlier
         
-        //[[UINavigationBar appearance] setTitleTextAttributes:@{ UITextAttributeTextColor: defaultAVNAppTintColor }];
     } else {
         // Load resources for iOS 7 or later
         
-        // Set default tint color
-        [[UIView appearance] setTintColor:defaultAVNAppTintColor];
+        // Set default tint color for some control types
+        [[UIToolbar appearance] setTintColor:defaultAVNAppTintColor];
+        [[UINavigationBar appearance] setTintColor:defaultAVNAppTintColor];
     }
     
-    // Set UITabBar selected image tint color for all iOS versions
-    [[UITabBar appearance] setSelectedImageTintColor:defaultAVNAppTintColor];
+    // Update the unread news items badge count (look for it in the UserDefaults)
+    NSInteger unreadNewsItemCount = [[NSUserDefaults standardUserDefaults] integerForKey:kAVNSetting_UnreadNewsItemsCount];
+    [self updateNewsItemBadge:MAX(0, unreadNewsItemCount)];
 
     [super viewWillAppear:animated];
 }
@@ -46,6 +51,26 @@
 {
     // Don't forget to unregister for all notifications!
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+#pragma mark - Badge count for News Items tab bar item
+
+- (void)updateNewsItemBadge:(NSUInteger)unreadItemCount
+{
+    UITabBarItem *newsTabBarItem;
+    
+    if ([self.tabBar.items count]>=kNewsItemTabBarIndex) {
+        newsTabBarItem = self.tabBar.items[kNewsItemTabBarIndex];
+        newsTabBarItem.badgeValue = (unreadItemCount==0)?nil:[NSString stringWithFormat:@"%u", unreadItemCount];
+        
+        // Save the new specified value into the UserDefaults
+        [[NSUserDefaults standardUserDefaults] setInteger:unreadItemCount forKey:kAVNSetting_UnreadNewsItemsCount];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    } else {
+        NSLog(@"Error: could not find the news tab bar index to update the badge count!");
+    }
 }
 
 @end
