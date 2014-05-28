@@ -62,7 +62,7 @@
     
     if ([self.tabBar.items count]>=kNewsItemTabBarIndex) {
         newsTabBarItem = self.tabBar.items[kNewsItemTabBarIndex];
-        newsTabBarItem.badgeValue = (unreadItemCount<=0)?nil:[NSString stringWithFormat:@"%d", unreadItemCount];
+        newsTabBarItem.badgeValue = (unreadItemCount<=0)?nil:[NSString stringWithFormat:@"%ld", (long)unreadItemCount];
         
         // Save the new specified value into the UserDefaults
         [[NSUserDefaults standardUserDefaults] setInteger:unreadItemCount forKey:kAVNSetting_UnreadNewsItemsCount];
