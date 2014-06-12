@@ -18,15 +18,11 @@
 #import <ODRefreshControl.h>
 
 
-// Storyboard constants
-#define kSegueNewsItemListToShowDetail  @"NewsItemListToShowDetailSegue"
-#define kCellNewsItem                   @"CellNewsItem"
-
-
 @interface AVNNewsTableViewController ()
 @property (nonatomic, strong) NSMutableArray *newsItemsList;
 @property (nonatomic, strong) ODRefreshControl *newsItemsListRefreshControl;
 @end
+
 
 @implementation AVNNewsTableViewController
 
@@ -89,7 +85,7 @@
         for (id jsonObject in jsonResponseArray) {
             AVNNewsItem *newsItem = [MTLJSONAdapter modelOfClass:[AVNNewsItem class] fromJSONDictionary:jsonObject error:&error];
             if (!newsItem) {
-                NSLog(@"Error converting AVN JSON news item info: %@, %@", [error localizedDescription], [error userInfo]);
+                DLog(@"Error converting AVN JSON news item info: %@, %@", [error localizedDescription], [error userInfo]);
             } else {
                 
                 // Check in UserDefaults if the user has already seen this news item
@@ -114,7 +110,7 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error downloading AVN news items list info: %@, %@", [error localizedDescription], [error userInfo]);
+        DLog(@"Error downloading AVN news items list info: %@, %@", [error localizedDescription], [error userInfo]);
         
         // Refresh UI on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -193,7 +189,7 @@
                 }
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error downloading AVN news item image: %@, %@", [error localizedDescription], [error userInfo]);
+                DLog(@"Error downloading AVN news item image: %@, %@", [error localizedDescription], [error userInfo]);
             }];
             [[NSOperationQueue mainQueue] addOperation:op];
         });

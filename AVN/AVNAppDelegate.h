@@ -11,6 +11,7 @@
 #define kAVNSetting_ResetCache              @"reset_cache"
 #define kAVNSetting_ReadNewsItems           @"read_news_items"
 #define kAVNSetting_UnreadNewsItemsCount    @"unread_news_items_count"
+#define kAVNSetting_MapViewType             @"mapview_type"
 
 @interface AVNAppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;

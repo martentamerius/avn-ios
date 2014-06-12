@@ -38,34 +38,64 @@
 
 - (AVNWaypoint *)previousWaypoint
 {
-    AVNWaypoint *previous = nil;
+    AVNWaypoint *previousWP = nil;
     
     // Check if there are other waypoints available in parent AVNRoute
     if (self.parentRoute && self.parentRoute.waypoints && ([self.parentRoute.waypoints indexOfObject:self] != NSNotFound)) {
         
         NSInteger currentIndex = [self.parentRoute.waypoints indexOfObject:self];
         if (currentIndex>0)
-            previous = self.parentRoute.waypoints[currentIndex-1];
+            previousWP = self.parentRoute.waypoints[currentIndex-1];
         
     }
     
-    return previous;
+    return previousWP;
 }
 
 - (AVNWaypoint *)nextWaypoint
 {
-    AVNWaypoint *next = nil;
+    AVNWaypoint *nextWP = nil;
     
     // Check if there are other waypoints available in parent AVNRoute
     if (self.parentRoute && self.parentRoute.waypoints && ([self.parentRoute.waypoints indexOfObject:self] != NSNotFound)) {
         
         NSInteger currentIndex = [self.parentRoute.waypoints indexOfObject:self];
         if (currentIndex<([self.parentRoute.waypoints count]-1))
-            next = self.parentRoute.waypoints[currentIndex+1];
+            nextWP = self.parentRoute.waypoints[currentIndex+1];
         
     }
     
-    return next;
+    return nextWP;
 }
 
+- (AVNWaypoint *)firstWaypoint
+{
+    __block AVNWaypoint *firstWP = nil;
+    
+    // Check if there are other waypoints available in parent AVNRoute
+    if (self.parentRoute && self.parentRoute.waypoints &&
+        ([self.parentRoute.waypoints count]>0) && ([self.parentRoute.waypoints indexOfObject:self] != NSNotFound)) {
+        
+        if ((!self.parentRoute.startWaypoint) || ([self.parentRoute.startWaypoint length]==0)) {
+            
+            // Parent route does not define the "start waypoint". Just return the first one available.
+            firstWP = self.parentRoute.waypoints[0];
+            
+        } else {
+            
+            // Get the first waypoint according to the defined "start waypoint" in parent route
+            NSString *startID = self.parentRoute.startWaypoint;
+            [self.parentRoute.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                AVNWaypoint *wp = (AVNWaypoint *)obj;
+                if ([wp.identifier isEqualToString:startID]) {
+                    firstWP = wp;
+                    *stop = YES;
+                }
+            }];
+        }
+ 
+    }
+    
+    return firstWP;
+}
 @end

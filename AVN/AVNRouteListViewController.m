@@ -18,11 +18,6 @@
 #import <ODRefreshControl.h>
 
 
-// Storyboard constants
-#define kSegueRouteListToShowDetail @"RouteListToShowDetailSegue"
-#define kCellRouteDescription       @"CellRouteDescription"
-
-
 @interface AVNRouteListViewController ()
 @property (nonatomic, strong) NSMutableArray *routeList;
 @property (nonatomic, strong) ODRefreshControl *routeListRefreshControl;
@@ -91,7 +86,7 @@
         for (id jsonObject in jsonResponseArray) {
             AVNRoute *route = [MTLJSONAdapter modelOfClass:[AVNRoute class] fromJSONDictionary:jsonObject error:&error];
             if (!route) {
-                NSLog(@"Error converting AVN JSON route info: %@, %@", [error localizedDescription], [error userInfo]);
+                DLog(@"Error converting AVN JSON route info: %@, %@", [error localizedDescription], [error userInfo]);
             } else {
                 
                 // Also set the parentRoute for all waypoints in the current route
@@ -116,7 +111,7 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error downloading AVN route info: %@, %@", [error localizedDescription], [error userInfo]);
+        DLog(@"Error downloading AVN route info: %@, %@", [error localizedDescription], [error userInfo]);
         
         // Refresh UI on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -158,7 +153,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:kSegueRouteListToShowDetail]) {
+    if ([[segue identifier] isEqualToString:kSegueRouteListToRouteDetail]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 

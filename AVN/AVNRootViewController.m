@@ -69,7 +69,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     } else {
-        NSLog(@"Error: could not find the news tab bar index to update the badge count!");
+        DLog(@"Error: could not find the news tab bar index to update the badge count!");
     }
 }
 

@@ -17,7 +17,8 @@
     // Register defaults for Settings bundle
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ kAVNSetting_ResetCache:@(NO),
                                                                kAVNSetting_ReadNewsItems:@[],
-                                                               kAVNSetting_UnreadNewsItemsCount:@(0) }];
+                                                               kAVNSetting_UnreadNewsItemsCount:@(0),
+                                                               kAVNSetting_MapViewType:@(0) }];
     
     // Initialize disk cache for offline viewing of webpages
     SDURLCache *urlCache = [[SDURLCache alloc] initWithMemoryCapacity:(16*1024*1024)
@@ -45,7 +46,7 @@
 {
     // Check if the disk cache should be cleared before starting the app
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kAVNSetting_ResetCache]) {
-        NSLog(@"Disk cache will be cleared.");
+        DLog(@"Disk cache will be cleared.");
         
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         

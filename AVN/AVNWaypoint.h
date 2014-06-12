@@ -21,4 +21,6 @@
 - (AVNWaypoint *)previousWaypoint;
 - (AVNWaypoint *)nextWaypoint;
 
+- (AVNWaypoint *)firstWaypoint;
+
 @end

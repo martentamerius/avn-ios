@@ -83,7 +83,7 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         // Log error
-        NSLog(@"Error downloading AVN news item detail page: %@, %@", [error localizedDescription], [error userInfo]);
+        DLog(@"Error downloading AVN news item detail page: %@, %@", [error localizedDescription], [error userInfo]);
         
         // Show error message to user
         [TSMessage showNotificationInViewController:self title:@"Laden van pagina mislukt."
