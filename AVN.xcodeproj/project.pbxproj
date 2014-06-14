@@ -33,6 +33,7 @@
 		9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */; };
 		9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA610192D207700BC372D /* AVNNewsItem.m */; };
 		9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */; };
+		9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */; };
 		9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */; };
 		9BF0F48E1948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4771948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m */; };
 		9BF0F48F1948F13200E6F7D5 /* KMLLineString+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4791948F13200E6F7D5 /* KMLLineString+MapKit.m */; };
@@ -106,6 +107,8 @@
 		9BBBA610192D207700BC372D /* AVNNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItem.m; sourceTree = "<group>"; };
 		9BBBA612192D280C00BC372D /* AVNNewsItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItemDetailViewController.h; sourceTree = "<group>"; };
 		9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItemDetailViewController.m; sourceTree = "<group>"; };
+		9BCBD971194C4E790038F6F3 /* AVNNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewCell.h; sourceTree = "<group>"; };
+		9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewCell.m; sourceTree = "<group>"; };
 		9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9BF0F4731948E2B000E6F7D5 /* Storyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Storyboard.h; sourceTree = "<group>"; };
 		9BF0F4751948F13200E6F7D5 /* KML+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KML+MapKit.h"; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 			children = (
 				9B2A213118F5D3A20000B53B /* Main.storyboard */,
 				9BF0F4731948E2B000E6F7D5 /* Storyboard.h */,
+				9BCBD971194C4E790038F6F3 /* AVNNewsTableViewCell.h */,
+				9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -502,7 +507,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp Pods/Pods-acknowledgements.plist AVN/Settings.bundle/Acknowledgements.plist\n\n# Put version number from AVN-Info.plist into the Root.plist of the settings bundle\nVERSION=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nsed -i -e s/__VERSION__/$VERSION/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n";
+			shellScript = "cp Pods/Pods-acknowledgements.plist AVN/Settings.bundle/Acknowledgements.plist\n\n# Put version+build number from AVN-Info.plist into the Root.plist of the settings bundle\nVERSION=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nBUILDNR=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleVersion\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\n\nsed -i -e s/__VERSION__/${VERSION}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\nsed -i -e s/__BUILDNR__/${BUILDNR}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n";
 		};
 		C1530199E5184CCEA1B633F5 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -541,6 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */,
 				9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */,
 				9B5389251947EABB00D4D9C7 /* AVNRouteMapViewController.m in Sources */,
 				9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */,

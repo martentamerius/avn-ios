@@ -22,7 +22,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>__VERSION__</string>
+			<string>__VERSION__ (b__BUILDNR__)</string>
 			<key>Key</key>
 			<string>app_version</string>
 			<key>Title</key>
@@ -31,10 +31,20 @@
 			<string>PSTitleValueSpecifier</string>
 		</dict>
 		<dict>
+			<key>DefaultValue</key>
+			<string>Marten Tamerius i.s.m. Cerium</string>
+			<key>Key</key>
+			<string>app_author</string>
+			<key>Title</key>
+			<string>Auteur</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+        <dict>
 			<key>File</key>
 			<string>Acknowledgements</string>
 			<key>Title</key>
-			<string>Licenties</string>
+			<string>Gebruikte open source</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Identifier</key>

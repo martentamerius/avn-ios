@@ -9,6 +9,7 @@
 #import "AVNNewsTableViewController.h"
 #import "AVNHTTPRequestFactory.h"
 #import "AVNNewsItem.h"
+#import "AVNNewsTableViewCell.h"
 #import "AVNNewsItemDetailViewController.h"
 #import "AVNAppDelegate.h"
 #import "AVNRootViewController.h"
@@ -152,20 +153,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellNewsItem forIndexPath:indexPath];
+    AVNNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellNewsItem forIndexPath:indexPath];
     
     AVNNewsItem *newsItem = self.newsItemsList[indexPath.row];
-    UIColor *textColor = (newsItem.hasReadItem)?[UIColor colorWithWhite:0.36 alpha:1.0]:[UIColor darkTextColor];
-    cell.textLabel.text = newsItem.title;
-    cell.textLabel.textColor = textColor;
-    cell.detailTextLabel.text = newsItem.shortDescription;
-    cell.detailTextLabel.textColor = textColor;
-    cell.imageView.image = [UIImage imageNamed:@"newsitem_placeholder"];
+    [cell setUnread:(!newsItem.hasReadItem)];
+    [cell setTitle:newsItem.title];
+    [cell setSubtitle:newsItem.shortDescription];
     
     if (newsItem.imageURL) {
         
         // Download the actual image on a separate (background) queue
-        __weak UITableViewCell *weakCell = cell;
+        __weak AVNNewsTableViewCell *weakCell = cell;
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
             
             // Background queue: start HTTP request for image
@@ -184,7 +182,7 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^(void) {
                         // Always run UI updates on the main queue
-                        weakCell.imageView.image = scaledImage;
+                        [weakCell setThumbnail:scaledImage];
                     });
                 }
                 
