@@ -157,24 +157,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRouteDescription" textLabel="2pz-XF-uhl" style="IBUITableViewCellStyleDefault" id="m0d-ak-lc9">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRouteDescription" id="m0d-ak-lc9" customClass="AVNRouteListTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Route titel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2pz-XF-uhl">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route titel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp6-vn-HKG">
+                                            <rect key="frame" x="20" y="12" width="77" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Len" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpC-6n-fFh">
+                                            <rect key="frame" x="263" y="14" width="24" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="dp6-vn-HKG" secondAttribute="centerY" id="2x8-Zm-6Uz"/>
+                                        <constraint firstAttribute="trailing" secondItem="LpC-6n-fFh" secondAttribute="trailing" id="3Uj-2r-YyJ"/>
+                                        <constraint firstItem="LpC-6n-fFh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dp6-vn-HKG" secondAttribute="trailing" constant="2" id="KRV-oW-BWm"/>
+                                        <constraint firstItem="dp6-vn-HKG" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" constant="20" id="Yjh-Xl-mLY"/>
+                                        <constraint firstItem="dp6-vn-HKG" firstAttribute="baseline" secondItem="LpC-6n-fFh" secondAttribute="baseline" id="fxG-oQ-ZkM"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="routeLength" destination="LpC-6n-fFh" id="DZ2-hF-yck"/>
+                                    <outlet property="routeTitle" destination="dp6-vn-HKG" id="7R8-9u-9aS"/>
                                     <segue destination="Ah7-4n-0Wa" kind="push" identifier="RouteListToRouteDetailSegue" id="jUr-3t-vfg"/>
                                 </connections>
                             </tableViewCell>
@@ -218,19 +233,19 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="dU3-6E-KdC"/>
-                                    <barButtonItem tag="1" image="tool_start" id="0qJ-TQ-gEx">
+                                    <barButtonItem tag="1" image="tool_start" style="plain" id="0qJ-TQ-gEx">
                                         <connections>
                                             <segue destination="4jn-5f-4vv" kind="push" identifier="RouteDetailToStartRouteAtFirstWaypointSegue" id="UpA-eN-B5O"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9sj-5X-c9x"/>
-                                    <barButtonItem image="tool_nearest" id="QsZ-7U-yt7">
+                                    <barButtonItem image="tool_nearest" style="plain" id="QsZ-7U-yt7">
                                         <connections>
                                             <segue destination="4jn-5f-4vv" kind="push" identifier="RouteDetailToFindNearestWaypointSegue" id="4d1-WU-aVa"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0Yi-4E-c3e"/>
-                                    <barButtonItem tag="2" image="tool_map" id="CUP-Pi-QKG">
+                                    <barButtonItem tag="2" image="tool_map" style="plain" id="CUP-Pi-QKG">
                                         <connections>
                                             <action selector="findNearestWaypointTapped:" destination="Ah7-4n-0Wa" id="oSN-mB-53p"/>
                                             <segue destination="gGx-Dw-2Lg" kind="push" identifier="RouteDetailToMapViewSegue" id="p78-g0-R3h"/>
@@ -275,8 +290,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQH-F9-fOO">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WQH-F9-fOO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="gGx-Dw-2Lg" id="544-qD-CtY"/>
@@ -287,7 +302,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="0Dr-gn-1UM"/>
-                                    <barButtonItem image="tool_start" id="PNG-GF-S2C">
+                                    <barButtonItem image="tool_start" style="plain" id="PNG-GF-S2C">
                                         <connections>
                                             <segue destination="4jn-5f-4vv" kind="push" identifier="RouteMapToStartRouteAtFirstWaypointSegue" id="WPU-HH-phw"/>
                                         </connections>
@@ -308,7 +323,7 @@
                                         </segmentedControl>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Zn3-jJ-qFK"/>
-                                    <barButtonItem image="tool_nearest" id="Wsg-0Y-dMk">
+                                    <barButtonItem image="tool_nearest" style="plain" id="Wsg-0Y-dMk">
                                         <connections>
                                             <segue destination="4jn-5f-4vv" kind="push" identifier="RouteMapToFindNearestWaypointSegue" id="tjR-np-0lN"/>
                                         </connections>
@@ -321,7 +336,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WQH-F9-fOO" secondAttribute="trailing" id="Aek-5X-8rR"/>
                             <constraint firstItem="H0u-j3-fHN" firstAttribute="leading" secondItem="siM-A7-qPU" secondAttribute="leading" id="Sqd-3D-JJb"/>
-                            <constraint firstItem="H0u-j3-fHN" firstAttribute="top" secondItem="WQH-F9-fOO" secondAttribute="bottom" constant="-44" id="fQG-9c-39a"/>
+                            <constraint firstItem="H0u-j3-fHN" firstAttribute="top" secondItem="WQH-F9-fOO" secondAttribute="bottom" id="fQG-9c-39a"/>
                             <constraint firstItem="WQH-F9-fOO" firstAttribute="top" secondItem="1L3-PL-1O5" secondAttribute="bottom" id="gay-wF-K9r"/>
                             <constraint firstItem="WQH-F9-fOO" firstAttribute="leading" secondItem="siM-A7-qPU" secondAttribute="leading" id="gkC-bo-pdu"/>
                             <constraint firstAttribute="trailing" secondItem="H0u-j3-fHN" secondAttribute="trailing" id="vth-Zp-nhc"/>
@@ -366,19 +381,19 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="W0b-6r-zmY"/>
-                                    <barButtonItem image="tool_previous" id="XXW-yq-xHL">
+                                    <barButtonItem image="tool_previous" style="plain" id="XXW-yq-xHL">
                                         <connections>
                                             <action selector="previousWaypointTapped:" destination="4jn-5f-4vv" id="Zn5-js-3sy"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gx8-h9-YdH"/>
-                                    <barButtonItem image="tool_nearest" id="280-f9-Jh2">
+                                    <barButtonItem image="tool_nearest" style="plain" id="280-f9-Jh2">
                                         <connections>
                                             <action selector="findNearestWaypointTapped:" destination="4jn-5f-4vv" id="9a0-Ef-gj8"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="82Y-sg-ELu"/>
-                                    <barButtonItem image="tool_next" id="Cdx-bM-YTe">
+                                    <barButtonItem image="tool_next" style="plain" id="Cdx-bM-YTe">
                                         <connections>
                                             <action selector="nextWaypointTapped:" destination="4jn-5f-4vv" id="bDE-l9-25M"/>
                                         </connections>
@@ -516,11 +531,11 @@
         <image name="tab_about" width="30" height="30"/>
         <image name="tab_news" width="30" height="30"/>
         <image name="tab_routes" width="30" height="30"/>
-        <image name="tool_map" width="30" height="30"/>
-        <image name="tool_nearest" width="30" height="30"/>
-        <image name="tool_next" width="30" height="30"/>
-        <image name="tool_previous" width="30" height="30"/>
-        <image name="tool_start" width="30" height="30"/>
+        <image name="tool_map" width="36" height="40"/>
+        <image name="tool_nearest" width="36" height="40"/>
+        <image name="tool_next" width="36" height="40"/>
+        <image name="tool_previous" width="36" height="40"/>
+        <image name="tool_start" width="36" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -528,6 +543,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pd3-I1-3cf"/>
+        <segue reference="tjR-np-0lN"/>
     </inferredMetricsTieBreakers>
 </document>

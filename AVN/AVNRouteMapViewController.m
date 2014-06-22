@@ -12,15 +12,9 @@
 #import "AVNAppDelegate.h"
 #import "AVNWaypoint.h"
 #import "AVNWaypointViewController.h"
-#import <zlib.h>
 #import "KML.h"
 #import "KML+MapKit.h"
 #import "MKMap+KML.h"
-#import "ZipFile.h"
-#import "ZipException.h"
-#import "FileInZipInfo.h"
-#import "ZipWriteStream.h"
-#import "ZipReadStream.h"
 #import <MBProgressHUD.h>
 #import <TSMessage.h>
 
@@ -29,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeControl;
 
-@property (nonatomic, strong) KMLRoot *kml;
 @property (nonatomic, strong) NSArray *geometries;
 
 @property (strong, nonatomic) AVNWaypoint *tappedWaypoint;
@@ -67,7 +60,7 @@
         
         // Update the view
         if (self.selectedRoute && self.selectedRoute.kmzDownloadURL)
-            [self loadKMLAtURL:self.selectedRoute.kmzDownloadURL];
+            [self loadKMLForSelectedRoute];
     }
 }
 
@@ -81,7 +74,7 @@
 
 #pragma mark - Map View URL
 
-- (void)loadKMLAtURL:(NSURL *)url
+- (void)loadKMLForSelectedRoute
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.navigationController.view.userInteractionEnabled = NO;
@@ -96,104 +89,37 @@
     [self.mapView removeAnnotations:annotations];
     [self.mapView removeOverlays:self.mapView.overlays];
     
-    // load new KML
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        // observe KML format error
-        [[NSNotificationCenter defaultCenter] addObserverForName:kKMLInvalidKMLFormatNotification
-                                                          object:nil
-                                                           queue:nil
-                                                      usingBlock:^(NSNotification *note) {
-                                                          NSString *description = [[note userInfo] valueForKey:kKMLDescriptionKey];
-                                                          DLog(@"%@", description);
-                                                      }
-         ];
-        
-        if ([[[url absoluteString] pathExtension] isEqualToString:@"kmz"]) {
-            NSString *fileName = [[url absoluteString] lastPathComponent];
-            NSString *filePath = nil;
+    // Set up completion block for work after asynchronous downloading of KML
+    __weak AVNRouteMapViewController *weakSelf = self;
+    void (^completionBlock)() = ^void() {
+        if (weakSelf.selectedRoute.kml) {
+            weakSelf.geometries = weakSelf.selectedRoute.kml.geometries;
             
-            // Download kmz to temporary location
-            filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
+            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+            weakSelf.navigationController.view.userInteractionEnabled = YES;
             
-            NSURLRequest *request = [NSURLRequest requestWithURL:url];
-            NSError *downloadError;
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&downloadError];
-            if (downloadError) {
-                DLog(@"error, %@", downloadError);
-            } else {
-                [data writeToFile:filePath atomically:YES];
-            }
-            
-            if (filePath) {
-                __block NSMutableData *data;
-                ZipFile *kmzFile;
-                @try {
-                    kmzFile = [[ZipFile alloc] initWithFileName:filePath mode:ZipFileModeUnzip];
-                    
-                    [kmzFile.listFileInZipInfos enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                         FileInZipInfo *info = (FileInZipInfo *)obj;
-                         
-                         NSString *ext = info.name.pathExtension.lowercaseString;
-                         
-                         if ([ext isEqualToString:@"kml"]) {
-                             [kmzFile locateFileInZip:info.name];
-                             
-                             ZipReadStream *reader = kmzFile.readCurrentFileInZip;
-                             data = [[NSMutableData alloc] initWithLength:info.length];
-                             [reader readDataWithBuffer:data];
-                             [reader finishedReading];
-                             
-                             *stop = YES;
-                         }
-                     }];
-                }
-                @catch (NSException *exception) {
-                    DLog(@"Caught exception: %@", [exception debugDescription]);
-                }
-                @finally {
-                    if (kmzFile) {
-                        [kmzFile close];
-                    }
-                }
-                
-                if (data) {
-                    self.kml = [KMLParser parseKMLWithData:data];
-                }
-            }
-            
+            [weakSelf reloadMapView];
         } else {
-            self.kml = [KMLParser parseKMLAtURL:url];
-        }
-        
-        // remove KML format error observer
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKMLInvalidKMLFormatNotification object:nil];
-        
-        if (self.kml) {
-            self.geometries = self.kml.geometries;
+            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+            weakSelf.navigationController.view.userInteractionEnabled = YES;
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                self.navigationController.view.userInteractionEnabled = YES;
-                
-                [self reloadMapView];
-            });
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                self.navigationController.view.userInteractionEnabled = YES;
-                
-                // Show error message to user
-                [TSMessage showNotificationInViewController:self title:@"Laden van route informatie is mislukt."
-                                                   subtitle:@""
-                                                       type:TSMessageNotificationTypeError
-                                                   duration:5
-                                       canBeDismissedByUser:YES];
-            });
+            // Show error message to user
+            [TSMessage showNotificationInViewController:weakSelf title:@"Laden van route-informatie is mislukt."
+                                               subtitle:@""
+                                                   type:TSMessageNotificationTypeError
+                                               duration:5
+                                   canBeDismissedByUser:YES];
         }
-    });
+    };
+    
+    if ((!self.selectedRoute.kml) && (self.selectedRoute.kmzDownloadURL)) {
+        // A KML/KMZ file exists, but has not yet been downloaded/parsed...
+        [self.selectedRoute loadRouteKMLWithCompletionBlock:completionBlock];
+    } else {
+        // The KML has already been downloaded; just reuse it
+        completionBlock();
+    }
 }
-
 
 #pragma mark - Map View interaction
 

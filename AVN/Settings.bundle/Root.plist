@@ -32,7 +32,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>Marten Tamerius i.s.m. Cerium</string>
+			<string>MS Tamerius i.s.m. Cerium</string>
 			<key>Key</key>
 			<string>app_author</string>
 			<key>Title</key>
@@ -40,7 +40,7 @@
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
-        <dict>
+		<dict>
 			<key>File</key>
 			<string>Acknowledgements</string>
 			<key>Title</key>

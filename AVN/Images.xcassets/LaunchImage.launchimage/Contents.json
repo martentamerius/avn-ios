@@ -5,7 +5,7 @@
       "idiom" : "iphone",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "launch-iphone-640x960-1.png",
+      "filename" : "launch-iphone-640x960.png",
       "scale" : "2x"
     },
     {
@@ -28,7 +28,7 @@
       "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
-      "filename" : "launch-iphone-640x960.png",
+      "filename" : "launch-iphone-640x960-1.png",
       "scale" : "2x"
     },
     {

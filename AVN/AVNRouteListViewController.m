@@ -8,6 +8,7 @@
 
 #import "AVNRouteListViewController.h"
 #import "AVNRootViewController.h"
+#import "AVNRouteListTableViewCell.h"
 #import "AVNRouteDetailViewController.h"
 #import "AVNRoute.h"
 #import "AVNWaypoint.h"
@@ -139,10 +140,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellRouteDescription forIndexPath:indexPath];
+    AVNRouteListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellRouteDescription forIndexPath:indexPath];
 
     AVNRoute *route = self.routeList[indexPath.row];
-    cell.textLabel.text = route.title;
+    cell.routeTitle.text = route.title;
+    double routeLength = [route calculateTotalRouteLengthWithCompletionBlock:^{
+        cell.routeLength.text = [NSString stringWithFormat:@"%0.1f km", [route calculateTotalRouteLengthWithCompletionBlock:nil]];
+    }];
+    
+    cell.routeLength.text = (routeLength==0.0)?@"":[NSString stringWithFormat:@"%0.1f km", routeLength];
     return cell;
 }
 
