@@ -213,4 +213,29 @@
     });
 }
 
+
+#pragma mark - Waypoints
+
+- (AVNWaypoint *)firstWaypoint
+{
+    __block AVNWaypoint *first;
+    
+    if(self.waypoints && ([self.waypoints count]>0)) {
+        if (self.startWaypoint) {
+            NSString *idOfWaypointToFind = self.startWaypoint;
+            [self.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                AVNWaypoint *currentWaypoint = (AVNWaypoint *)obj;
+                if ([currentWaypoint.identifier isEqualToString:idOfWaypointToFind]) {
+                    first = currentWaypoint;
+                    *stop = YES;
+                }
+            }];
+        } else  {
+            first = [self.waypoints firstObject];
+        }
+    }
+    
+    return first;
+}
+
 @end

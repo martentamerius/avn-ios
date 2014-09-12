@@ -158,7 +158,12 @@
     
     // Show the first waypoint programmatically after 2 seconds
     __weak AVNWaypointViewController *weakSelf = self;
-    AVNWaypoint *firstWaypoint = [self.selectedWaypoint firstWaypoint];
+    AVNWaypoint *firstWaypoint;
+    if (self.selectedWaypoint) {
+        firstWaypoint = [self.selectedWaypoint firstWaypoint];
+    } else if (self.selectedRouteToDetermineNearestWaypoint) {
+        firstWaypoint = [self.selectedRouteToDetermineNearestWaypoint firstWaypoint];
+    }
     if (firstWaypoint) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             weakSelf.selectedWaypoint = firstWaypoint;

@@ -34,6 +34,20 @@
         [[UINavigationBar appearance] setTintColor:defaultAVNAppTintColor];
     }
     
+    // Check if the disk cache should be cleared before starting the app
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kAVNSetting_ResetCache]) {
+        DLog(@"Disk cache will be cleared.");
+        
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        
+        // Also reset defaults in Settings bundle
+        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:kAVNSetting_ResetCache];
+        [[NSUserDefaults standardUserDefaults] setValue:@[] forKey:kAVNSetting_ReadNewsItems];
+        [[NSUserDefaults standardUserDefaults] setValue:@(0) forKeyPath:kAVNSetting_UnreadNewsItemsCount];
+        [[NSUserDefaults standardUserDefaults] setValue:@(0) forKeyPath:kAVNSetting_MapViewType];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+
     // Update the unread news items badge count (look for it in the UserDefaults)
     NSInteger unreadNewsItemCount = [[NSUserDefaults standardUserDefaults] integerForKey:kAVNSetting_UnreadNewsItemsCount];
     [self updateNewsItemBadge:MAX(0, unreadNewsItemCount)];

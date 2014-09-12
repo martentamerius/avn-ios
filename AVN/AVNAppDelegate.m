@@ -7,6 +7,7 @@
 //
 
 #import "AVNAppDelegate.h"
+#import "AVNRootViewController.h"
 #import <SDURLCache.h>
 #import <AFNetworkActivityIndicatorManager.h>
 
@@ -15,7 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Register defaults for Settings bundle
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ kAVNSetting_ResetCache:@(NO),
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ kAVNSetting_ResetCache:@NO,
                                                                kAVNSetting_ReadNewsItems:@[],
                                                                kAVNSetting_UnreadNewsItemsCount:@(0),
                                                                kAVNSetting_MapViewType:@(0) }];
@@ -42,25 +43,10 @@
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:NO];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Check if the disk cache should be cleared before starting the app
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kAVNSetting_ResetCache]) {
-        DLog(@"Disk cache will be cleared.");
-        
-        [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        
-        // Toggle clear disk cache switch in Settings bundle
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAVNSetting_ResetCache];
-    }
-    
-    // Reinitialize automatic network activity indicator
-    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-}
-
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // Reinitialize automatic network activity indicator
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

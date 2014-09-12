@@ -18,7 +18,7 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Over de AVN app</string>
+			<string>Over de app</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
@@ -31,20 +31,20 @@
 			<string>PSTitleValueSpecifier</string>
 		</dict>
 		<dict>
-			<key>DefaultValue</key>
-			<string>MS Tamerius i.s.m. Cerium</string>
-			<key>Key</key>
-			<string>app_author</string>
+			<key>File</key>
+			<string>Authors</string>
 			<key>Title</key>
-			<string>Auteur</string>
+			<string>Auteurs</string>
 			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
+			<string>PSChildPaneSpecifier</string>
+			<key>Identifier</key>
+			<string>authors</string>
 		</dict>
 		<dict>
 			<key>File</key>
 			<string>Acknowledgements</string>
 			<key>Title</key>
-			<string>Gebruikte open source</string>
+			<string>Open source libraries</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Identifier</key>

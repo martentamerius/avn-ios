@@ -11,6 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "KML.h"
 
+@class AVNWaypoint;
+
 @interface AVNRoute : MTLModel <MTLJSONSerializing>
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) NSString *title;
@@ -24,4 +26,5 @@
 - (CLLocationDistance)calculateTotalRouteLengthWithCompletionBlock:(void (^)(void))completionBlock;
 - (void)loadRouteKMLWithCompletionBlock:(void (^)(void))completionBlock;
 
+- (AVNWaypoint *)firstWaypoint;
 @end

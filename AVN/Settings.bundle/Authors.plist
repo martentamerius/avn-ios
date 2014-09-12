@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>FooterText</key>
+			<string>Deze app is gemaakt door Cerium BV (http://cerium.nl/) voor de AVN. (http://avn.nl/)</string>
+			<key>Title</key>
+			<string>Colofon</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Marten Tamerius
+Jos Verhoeff
+Aletta de Ruiter</string>
+			<key>Title</key>
+			<string>Team</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Authors</string>
+	<key>Title</key>
+	<string>Colofon</string>
+</dict>
+</plist>

@@ -41,12 +41,6 @@
     return self;
 }
 
-- (void)awakeFromNib
-{
-    // Set the map view type according user settings
-    [self loadMapType];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,6 +64,16 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
+#pragma mark - UIView
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // Set the map view type according user settings
+    [self loadMapType];
+}
 
 
 #pragma mark - Map View URL
@@ -133,23 +137,18 @@
 
 - (void)loadMapType
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *mapType = [defaults objectForKey:kAVNSetting_MapViewType];
-    if (!mapType) {
+    NSNumber *mapType = [[NSUserDefaults standardUserDefaults] objectForKey:kAVNSetting_MapViewType];
+    if (!mapType)
         mapType = @(0);
-    }
     
     self.mapView.mapType = [mapType integerValue];
     self.mapTypeControl.selectedSegmentIndex = [mapType integerValue];
 }
 
 - (void)saveMapType
-{
-    NSNumber *mapType = @(self.mapView.mapType);
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:mapType forKey:kAVNSetting_MapViewType];
-    [defaults synchronize];
+{    
+    [[NSUserDefaults standardUserDefaults] setObject:@(self.mapView.mapType) forKey:kAVNSetting_MapViewType];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)reloadMapView
@@ -174,22 +173,20 @@
     
     // set zoom in next run loop
     dispatch_async(dispatch_get_main_queue(), ^{
-        //
-        // Thanks for elegant code!
-        // https://gist.github.com/915374
-        //
         __block MKMapRect zoomRect = MKMapRectNull;
         [self.mapView.annotations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             id<MKAnnotation> annotation = (id<MKAnnotation>)obj;
-            MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-            MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-            if (MKMapRectIsNull(zoomRect)) {
-                zoomRect = pointRect;
-            } else {
-                zoomRect = MKMapRectUnion(zoomRect, pointRect);
+            if (annotation != self.mapView.userLocation) {
+                MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+                MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
+                if (MKMapRectIsNull(zoomRect)) {
+                    zoomRect = pointRect;
+                } else {
+                    zoomRect = MKMapRectUnion(zoomRect, pointRect);
+                }
             }
         }];
-        [self.mapView setVisibleMapRect:MKMapRectInset(zoomRect, -1500.0f, -1500.0f) animated:YES];
+        [self.mapView setVisibleMapRect:MKMapRectInset(zoomRect, -1800.0f, -1800.0f) animated:YES];
     });
 }
 
@@ -209,13 +206,65 @@
     return nil;
 }
 
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
+// for iOS7+; see 'viewForOverlay' for earlier versions
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-    if ([overlay isKindOfClass:[MKPolyline class]]) {
-        return [(MKPolyline *)overlay overlayViewForMapView:mapView];
+    if ([overlay isKindOfClass:[MKPolygon class]]) {
+        MKPolygonRenderer *renderer = [[MKPolygonRenderer alloc] initWithPolygon:overlay];
+        renderer.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
+        renderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        renderer.lineWidth = 3;
+        
+        return renderer;
     }
-    else if ([overlay isKindOfClass:[MKPolygon class]]) {
-        return [(MKPolygon *)overlay overlayViewForMapView:mapView];
+    
+    if ([overlay isKindOfClass:[MKCircle class]]) {
+        MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithCircle:overlay];
+        renderer.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
+        renderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        renderer.lineWidth = 3;
+        
+        return renderer;
+    }
+    
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        renderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        renderer.lineWidth = 3;
+        
+        return renderer;
+    }
+    
+    return nil;
+}
+
+// for iOS versions prior to 7; see 'rendererForOverlay' for iOS7 and later
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKPolygon class]]) {
+        MKPolygonView *overlayView = [[MKPolygonView alloc] initWithPolygon:overlay];
+        overlayView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
+        overlayView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        overlayView.lineWidth = 3;
+        
+        return overlayView;
+    }
+    
+    if ([overlay isKindOfClass:[MKCircle class]]) {
+        MKCircleView *overlayView = [[MKCircleView alloc] initWithCircle:overlay];
+        overlayView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
+        overlayView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        overlayView.lineWidth = 3;
+        
+        return overlayView;
+    }
+    
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineView *overlayView = [[MKPolylineView alloc] initWithPolyline:overlay];
+        overlayView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        overlayView.lineWidth = 3;
+        
+        return overlayView;
     }
     
     return nil;
