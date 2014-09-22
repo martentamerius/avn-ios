@@ -1,13 +1,13 @@
 
 //
-//  AVNRouteMapViewController.m
+//  AVNMapViewController.m
 //  AVN
 //
 //  Created by Marten Tamerius on 11-06-14.
 //  Copyright (c) 2014 AVN. All rights reserved.
 //
 
-#import "AVNRouteMapViewController.h"
+#import "AVNMapViewController.h"
 #import <MapKit/MapKit.h>
 #import "AVNAppDelegate.h"
 #import "AVNWaypoint.h"
@@ -19,7 +19,7 @@
 #import <TSMessage.h>
 
 
-@interface AVNRouteMapViewController () <MKMapViewDelegate>
+@interface AVNMapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeControl;
 
@@ -29,7 +29,7 @@
 @end
 
 
-@implementation AVNRouteMapViewController
+@implementation AVNMapViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,14 +47,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setSelectedRoute:(AVNRoute *)newSelectedRoute
+- (void)setSelectedRoute:(AVNRoute *)selectedRoute
 {
-    if (_selectedRoute != newSelectedRoute) {
-        _selectedRoute = newSelectedRoute;
+    if (_selectedRoute != selectedRoute) {
+        [self willChangeValueForKey:@"selectedRoute"];
+        _selectedRoute = selectedRoute;
+        [self didChangeValueForKey:@"selectedRoute"];
         
         // Update the view
-        if (self.selectedRoute && self.selectedRoute.kmzDownloadURL)
+        if (self.selectedRoute && self.selectedRoute.kmzDownloadURL) {
             [self loadKMLForSelectedRoute];
+        }
+    }
+}
+
+- (void)setSelectedWaypoint:(AVNWaypoint *)selectedWaypoint
+{
+    if (_selectedWaypoint != selectedWaypoint) {
+        [self willChangeValueForKey:@"selectedWaypoint"];
+        _selectedWaypoint = selectedWaypoint;
+        [self didChangeValueForKey:@"selectedWaypoint"];
+        
+        // Update the view
+        if (self.selectedWaypoint && self.selectedWaypoint.parentRoute && self.selectedWaypoint.parentRoute.kmzDownloadURL) {
+            [self loadKMLForRoute:self.selectedWaypoint.parentRoute];
+        }
     }
 }
 
@@ -80,6 +97,11 @@
 
 - (void)loadKMLForSelectedRoute
 {
+    [self loadKMLForRoute:self.selectedRoute];
+}
+
+- (void)loadKMLForRoute:(AVNRoute *)route
+{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.navigationController.view.userInteractionEnabled = NO;
     
@@ -94,15 +116,17 @@
     [self.mapView removeOverlays:self.mapView.overlays];
     
     // Set up completion block for work after asynchronous downloading of KML
-    __weak AVNRouteMapViewController *weakSelf = self;
+    __weak AVNRoute *weakRoute = route;
+    __weak typeof(self) weakSelf = self;
     void (^completionBlock)() = ^void() {
-        if (weakSelf.selectedRoute.kml) {
-            weakSelf.geometries = weakSelf.selectedRoute.kml.geometries;
+        if (weakRoute.kml) {
+            weakSelf.geometries = weakRoute.kml.geometries;
             
             [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
             weakSelf.navigationController.view.userInteractionEnabled = YES;
             
             [weakSelf reloadMapView];
+            
         } else {
             [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
             weakSelf.navigationController.view.userInteractionEnabled = YES;
@@ -116,7 +140,7 @@
         }
     };
     
-    if ((!self.selectedRoute.kml) && (self.selectedRoute.kmzDownloadURL)) {
+    if ((!route.kml) && (route.kmzDownloadURL)) {
         // A KML/KMZ file exists, but has not yet been downloaded/parsed...
         [self.selectedRoute loadRouteKMLWithCompletionBlock:completionBlock];
     } else {
@@ -171,22 +195,40 @@
     [self.mapView addAnnotations:annotations];
     [self.mapView addOverlays:overlays];
     
+    // Zoom out to complete route if a specific waypoint is not available
+    BOOL zoomToFullRoute = (self.selectedWaypoint==nil);
+    
     // set zoom in next run loop
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         __block MKMapRect zoomRect = MKMapRectNull;
-        [self.mapView.annotations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [weakSelf.mapView.annotations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             id<MKAnnotation> annotation = (id<MKAnnotation>)obj;
-            if (annotation != self.mapView.userLocation) {
+            BOOL shouldAddPoint = (zoomToFullRoute && (annotation != weakSelf.mapView.userLocation));
+            double zoomInset = -600.0f;
+            
+            if (weakSelf.selectedWaypoint) {
+                CLLocationCoordinate2D annCoord = annotation.coordinate;
+                CLLocation *annLocation = [[CLLocation alloc] initWithLatitude:annCoord.latitude longitude:annCoord.longitude];
+                CLLocationDistance distanceFromSelection = [weakSelf.selectedWaypoint.gpsCoordinate distanceFromLocation:annLocation];
+
+                shouldAddPoint |= (annotation == weakSelf.mapView.userLocation) | (distanceFromSelection<25.0);
+                if (shouldAddPoint)
+                    zoomInset = -2000.0f;
+            }
+            
+            if (shouldAddPoint) {
                 MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
                 MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
                 if (MKMapRectIsNull(zoomRect)) {
                     zoomRect = pointRect;
                 } else {
-                    zoomRect = MKMapRectUnion(zoomRect, pointRect);
+                    zoomRect = MKMapRectInset(MKMapRectUnion(zoomRect, pointRect), zoomInset, zoomInset);
                 }
             }
         }];
-        [self.mapView setVisibleMapRect:MKMapRectInset(zoomRect, -1800.0f, -1800.0f) animated:YES];
+        
+        [self.mapView setVisibleMapRect:zoomRect animated:YES];
     });
 }
 
@@ -338,8 +380,7 @@
             // The link to a specific waypoint has been tapped
             [[segue destinationViewController] setSelectedWaypoint:self.tappedWaypoint];
             self.tappedWaypoint = nil;
-        }
-        
+        }        
     }
 }
 

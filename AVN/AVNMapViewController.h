@@ -1,5 +1,5 @@
 //
-//  AVNRouteMapViewController.h
+//  AVNMapViewController.h
 //  AVN
 //
 //  Created by Marten Tamerius on 11-06-14.
@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AVNRoute.h"
 
-@interface AVNRouteMapViewController : UIViewController
+@interface AVNMapViewController : UIViewController
 @property (strong, nonatomic) AVNRoute *selectedRoute;
+@property (strong, nonatomic) AVNWaypoint *selectedWaypoint;
 @end

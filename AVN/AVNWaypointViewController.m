@@ -8,6 +8,7 @@
 
 #import "AVNWaypointViewController.h"
 #import "AVNRouteDetailViewController.h"
+#import "AVNMapViewController.h"
 #import "AVNHTTPRequestFactory.h"
 #import <MBProgressHUD.h>
 #import <TSMessage.h>
@@ -132,6 +133,10 @@
 {
     if (!self.locationManager) {
         self.locationManager = [[CLLocationManager alloc] init];
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            // Request permission for location updates on iOS 8+
+            [self.locationManager requestWhenInUseAuthorization];
+        }
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     }
@@ -287,6 +292,16 @@
     }
     
     return shouldStart;
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kSegueSpecificWaypointMapButtonTapped]) {
+        [[segue destinationViewController] setSelectedWaypoint:self.selectedWaypoint];
+    }
 }
 
 

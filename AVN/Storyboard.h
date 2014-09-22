@@ -21,6 +21,9 @@
 #define kSegueRouteDetailSpecificWaypointTapped         @"RouteDetailSpecificWaypointTappedSegue"
 #define kSegueRouteDetailToMapView                      @"RouteDetailToMapViewSegue"
 
+// Waypoint View
+#define kSegueSpecificWaypointMapButtonTapped           @"SpecificWaypointMapButtonTappedSegue"
+
 // Route Map View
 #define kSegueRouteMapToStartRouteAtFirstWaypoint       @"RouteMapToStartRouteAtFirstWaypointSegue"
 #define kSegueRouteMapToFindNearestWaypoint             @"RouteMapToFindNearestWaypointSegue"

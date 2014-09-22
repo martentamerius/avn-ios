@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5475E477E026493F9D57051D /* libPods-AVNTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 338A18DE3677493C920D6C03 /* libPods-AVNTests.a */; };
+		05EBD655B6FF489F92D16135 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039A285F0A44334B3A12BEF /* libPods.a */; };
 		9B14087519312A10007DA34A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B14087419312A10007DA34A /* Settings.bundle */; };
+		9B1D6F4219CDCE52000B65E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2A213118F5D3A20000B53B /* Main.storyboard */; };
 		9B2A212018F5D3A20000B53B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A211F18F5D3A20000B53B /* Foundation.framework */; };
 		9B2A212218F5D3A20000B53B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A212118F5D3A20000B53B /* CoreGraphics.framework */; };
 		9B2A212418F5D3A20000B53B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A212318F5D3A20000B53B /* UIKit.framework */; };
@@ -16,7 +17,6 @@
 		9B2A213018F5D3A20000B53B /* AVNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A212F18F5D3A20000B53B /* AVNAppDelegate.m */; };
 		9B2A213618F5D3A20000B53B /* AVNRouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A213518F5D3A20000B53B /* AVNRouteListViewController.m */; };
 		9B2A213918F5D3A20000B53B /* AVNRouteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A213818F5D3A20000B53B /* AVNRouteDetailViewController.m */; };
-		9B2A214218F5D3A20000B53B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A214118F5D3A20000B53B /* XCTest.framework */; };
 		9B2A214318F5D3A20000B53B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A211F18F5D3A20000B53B /* Foundation.framework */; };
 		9B2A214418F5D3A20000B53B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A212318F5D3A20000B53B /* UIKit.framework */; };
 		9B2A214E18F5D3A20000B53B /* AVNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A214D18F5D3A20000B53B /* AVNTests.m */; };
@@ -24,12 +24,12 @@
 		9B36F6E9195485B700D36CE6 /* AVNRouteListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36F6E8195485B700D36CE6 /* AVNRouteListTableViewCell.m */; };
 		9B39EAE4195470C600A2E497 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B39EAE3195470C600A2E497 /* Images.xcassets */; };
 		9B3B519F18F6A0540066D315 /* AVNRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B519E18F6A0540066D315 /* AVNRoute.m */; };
-		9B5389251947EABB00D4D9C7 /* AVNRouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5389241947EABB00D4D9C7 /* AVNRouteMapViewController.m */; };
+		9B5389251947EABB00D4D9C7 /* AVNMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */; };
+		9B69A97819D0961000313DE0 /* AVNWaypointMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B69A97719D0961000313DE0 /* AVNWaypointMapViewController.m */; };
 		9B7297C818F9DED900D1A95E /* AVNWaypointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */; };
 		9B7297CB18F9E3AB00D1A95E /* AVNWaypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297CA18F9E3AB00D1A95E /* AVNWaypoint.m */; };
 		9B7297CF18F9E57C00D1A95E /* AVNHTTPRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297CE18F9E57C00D1A95E /* AVNHTTPRequestFactory.m */; };
 		9B7B5B7119070DCF000882E7 /* AVNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7B5B7019070DCF000882E7 /* AVNRootViewController.m */; };
-		9B90060F1931364C009D8516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2A213118F5D3A20000B53B /* Main.storyboard */; };
 		9B9921251909571E009AC8EF /* AVNAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9921241909571E009AC8EF /* AVNAboutViewController.m */; };
 		9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */; };
 		9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA610192D207700BC372D /* AVNNewsItem.m */; };
@@ -49,7 +49,6 @@
 		9BF0F4981948F13200E6F7D5 /* MKShape+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F48D1948F13200E6F7D5 /* MKShape+KML.m */; };
 		9BF9EE1F1933B93500E5E9D6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF9EE1E1933B93500E5E9D6 /* SystemConfiguration.framework */; };
 		9BF9EE211933B94400E5E9D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF9EE201933B94400E5E9D6 /* MobileCoreServices.framework */; };
-		CF8C3ABAB8564484BCBE6D30 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039A285F0A44334B3A12BEF /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,9 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F19EB99BC6D4BD280747A30 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		3039A285F0A44334B3A12BEF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		338A18DE3677493C920D6C03 /* libPods-AVNTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVNTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D9507E90D914A678940629E /* Pods-AVNTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.xcconfig"; path = "Pods/Pods-AVNTests.xcconfig"; sourceTree = "<group>"; };
 		9B14087419312A10007DA34A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9B2A211C18F5D3A20000B53B /* AVN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2A211F18F5D3A20000B53B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,8 +91,10 @@
 		9B3B519718F69D9D0066D315 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B3B519D18F6A0540066D315 /* AVNRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRoute.h; sourceTree = "<group>"; };
 		9B3B519E18F6A0540066D315 /* AVNRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRoute.m; sourceTree = "<group>"; };
-		9B5389231947EABB00D4D9C7 /* AVNRouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRouteMapViewController.h; sourceTree = "<group>"; };
-		9B5389241947EABB00D4D9C7 /* AVNRouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRouteMapViewController.m; sourceTree = "<group>"; };
+		9B5389231947EABB00D4D9C7 /* AVNMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNMapViewController.h; sourceTree = "<group>"; };
+		9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNMapViewController.m; sourceTree = "<group>"; };
+		9B69A97619D0961000313DE0 /* AVNWaypointMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypointMapViewController.h; sourceTree = "<group>"; };
+		9B69A97719D0961000313DE0 /* AVNWaypointMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNWaypointMapViewController.m; sourceTree = "<group>"; };
 		9B7297C618F9DED900D1A95E /* AVNWaypointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypointViewController.h; sourceTree = "<group>"; };
 		9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNWaypointViewController.m; sourceTree = "<group>"; };
 		9B7297C918F9E3AB00D1A95E /* AVNWaypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypoint.h; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		9BF0F48D1948F13200E6F7D5 /* MKShape+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKShape+KML.m"; sourceTree = "<group>"; };
 		9BF9EE1E1933B93500E5E9D6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9BF9EE201933B94400E5E9D6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		D7CB16C174844B0ABBF19E5E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +155,7 @@
 				9B2A212418F5D3A20000B53B /* UIKit.framework in Frameworks */,
 				9B2A212018F5D3A20000B53B /* Foundation.framework in Frameworks */,
 				9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */,
-				CF8C3ABAB8564484BCBE6D30 /* libPods.a in Frameworks */,
+				05EBD655B6FF489F92D16135 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,10 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B2A214218F5D3A20000B53B /* XCTest.framework in Frameworks */,
 				9B2A214418F5D3A20000B53B /* UIKit.framework in Frameworks */,
 				9B2A214318F5D3A20000B53B /* Foundation.framework in Frameworks */,
-				5475E477E026493F9D57051D /* libPods-AVNTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +178,7 @@
 				9B2A214718F5D3A20000B53B /* AVNTests */,
 				9B2A211E18F5D3A20000B53B /* Frameworks */,
 				9B2A211D18F5D3A20000B53B /* Products */,
-				D7CB16C174844B0ABBF19E5E /* Pods.xcconfig */,
-				7D9507E90D914A678940629E /* Pods-AVNTests.xcconfig */,
+				1F19EB99BC6D4BD280747A30 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,10 +288,12 @@
 				9B2A213518F5D3A20000B53B /* AVNRouteListViewController.m */,
 				9B2A213718F5D3A20000B53B /* AVNRouteDetailViewController.h */,
 				9B2A213818F5D3A20000B53B /* AVNRouteDetailViewController.m */,
-				9B5389231947EABB00D4D9C7 /* AVNRouteMapViewController.h */,
-				9B5389241947EABB00D4D9C7 /* AVNRouteMapViewController.m */,
+				9B5389231947EABB00D4D9C7 /* AVNMapViewController.h */,
+				9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */,
 				9B7297C618F9DED900D1A95E /* AVNWaypointViewController.h */,
 				9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */,
+				9B69A97619D0961000313DE0 /* AVNWaypointMapViewController.h */,
+				9B69A97719D0961000313DE0 /* AVNWaypointMapViewController.m */,
 				9B992126190957CD009AC8EF /* AVNNewsTableViewController.h */,
 				9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */,
 				9BBBA612192D280C00BC372D /* AVNNewsItemDetailViewController.h */,
@@ -368,12 +367,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B2A215118F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVN" */;
 			buildPhases = (
-				19D0BBE7A2B54A9898A8E8B3 /* Check Pods Manifest.lock */,
+				2380292FC2244B59A776F635 /* Check Pods Manifest.lock */,
 				9B2A211818F5D3A20000B53B /* Sources */,
 				9B2A211918F5D3A20000B53B /* Frameworks */,
 				9B2A211A18F5D3A20000B53B /* Resources */,
-				E5784282435D4851B1A28DB8 /* Copy Pods Resources */,
 				9B0C8C081931376A0098FA4D /* ShellScript */,
+				7354DDEFCD44456DBB9DB5FD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -388,11 +387,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B2A215418F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVNTests" */;
 			buildPhases = (
-				198A174B87634A6E8D7BA8D0 /* Check Pods Manifest.lock */,
 				9B2A213C18F5D3A20000B53B /* Sources */,
 				9B2A213D18F5D3A20000B53B /* Frameworks */,
 				9B2A213E18F5D3A20000B53B /* Resources */,
-				C1530199E5184CCEA1B633F5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -411,6 +408,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AVN;
+				LastTestingUpgradeCheck = 0600;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = AVN;
 				TargetAttributes = {
@@ -457,7 +455,7 @@
 			files = (
 				9B39EAE4195470C600A2E497 /* Images.xcassets in Resources */,
 				9B14087519312A10007DA34A /* Settings.bundle in Resources */,
-				9B90060F1931364C009D8516 /* Main.storyboard in Resources */,
+				9B1D6F4219CDCE52000B65E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +469,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		198A174B87634A6E8D7BA8D0 /* Check Pods Manifest.lock */ = {
+		2380292FC2244B59A776F635 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -486,19 +484,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		19D0BBE7A2B54A9898A8E8B3 /* Check Pods Manifest.lock */ = {
+		7354DDEFCD44456DBB9DB5FD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9B0C8C081931376A0098FA4D /* ShellScript */ = {
@@ -514,36 +512,6 @@
 			shellPath = /bin/sh;
 			shellScript = "cp Pods/Pods-acknowledgements.plist AVN/Settings.bundle/Acknowledgements.plist\n\n# Put version+build number from AVN-Info.plist into the Root.plist of the settings bundle\nVERSION=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nBUILDNR=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleVersion\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\n\nsed -i -e s/__VERSION__/${VERSION}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\nsed -i -e s/__BUILDNR__/${BUILDNR}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n";
 		};
-		C1530199E5184CCEA1B633F5 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-AVNTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5784282435D4851B1A28DB8 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -553,7 +521,7 @@
 			files = (
 				9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */,
 				9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */,
-				9B5389251947EABB00D4D9C7 /* AVNRouteMapViewController.m in Sources */,
+				9B5389251947EABB00D4D9C7 /* AVNMapViewController.m in Sources */,
 				9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */,
 				9BF0F48E1948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m in Sources */,
 				9BF0F4951948F13200E6F7D5 /* MKOverlayView+KML.m in Sources */,
@@ -577,6 +545,7 @@
 				9B2A213918F5D3A20000B53B /* AVNRouteDetailViewController.m in Sources */,
 				9BF0F4971948F13200E6F7D5 /* MKPolylineView+KML.m in Sources */,
 				9BF0F4961948F13200E6F7D5 /* MKPolygonView+KML.m in Sources */,
+				9B69A97819D0961000313DE0 /* AVNWaypointMapViewController.m in Sources */,
 				9B7297CB18F9E3AB00D1A95E /* AVNWaypoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,7 +652,7 @@
 		};
 		9B2A215218F5D3A20000B53B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7CB16C174844B0ABBF19E5E /* Pods.xcconfig */;
+			baseConfigurationReference = 1F19EB99BC6D4BD280747A30 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -701,7 +670,7 @@
 		};
 		9B2A215318F5D3A20000B53B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7CB16C174844B0ABBF19E5E /* Pods.xcconfig */;
+			baseConfigurationReference = 1F19EB99BC6D4BD280747A30 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -719,7 +688,6 @@
 		};
 		9B2A215518F5D3A20000B53B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D9507E90D914A678940629E /* Pods-AVNTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AVN.app/AVN";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -742,7 +710,6 @@
 		};
 		9B2A215618F5D3A20000B53B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D9507E90D914A678940629E /* Pods-AVNTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AVN.app/AVN";
 				FRAMEWORK_SEARCH_PATHS = (

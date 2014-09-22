@@ -43,6 +43,8 @@
     // Populate news items list
     if ((!self.newsItemsList) || ([self.newsItemsList count]==0))
         [self requestNewsItemsList:nil];
+    
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

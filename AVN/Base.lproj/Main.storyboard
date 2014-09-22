@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ea7-88-rxv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ea7-88-rxv">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller - AVNTabBarController-->
+        <!--AVNTabBarController-->
         <scene sceneID="Qdy-WD-Ajg">
             <objects>
                 <tabBarController storyboardIdentifier="AVNRootVC" title="AVNTabBarController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ea7-88-rxv" customClass="AVNRootViewController" sceneMemberID="viewController">
@@ -25,9 +25,9 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D6K-bU-sGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-911" y="650"/>
+            <point key="canvasLocation" x="-823" y="834"/>
         </scene>
-        <!--News Table View Controller - Nieuws-->
+        <!--Nieuws-->
         <scene sceneID="7uh-i1-5UQ">
             <objects>
                 <tableViewController storyboardIdentifier="AVNNewsTableViewController" title="Nieuws" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QVv-Cj-bw1" customClass="AVNNewsTableViewController" sceneMemberID="viewController">
@@ -102,9 +102,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRj-Pc-krp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="650"/>
+            <point key="canvasLocation" x="446" y="1354"/>
         </scene>
-        <!--About View Controller - Over AVN-->
+        <!--Over AVN-->
         <scene sceneID="5pe-TD-AQi">
             <objects>
                 <viewController storyboardIdentifier="AVNAboutViewController" title="Over AVN" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IY8-MX-QS4" customClass="AVNAboutViewController" sceneMemberID="viewController">
@@ -141,9 +141,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhY-9y-8pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="1391"/>
+            <point key="canvasLocation" x="446" y="2311"/>
         </scene>
-        <!--Route List View Controller - AVN Wandelroutes-->
+        <!--AVN Wandelroutes-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController storyboardIdentifier="AVNRouteListTableViewController" title="AVN Wandelroutes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pGg-6v-bdr" customClass="AVNRouteListViewController" sceneMemberID="viewController">
@@ -198,9 +198,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="-134"/>
+            <point key="canvasLocation" x="486" y="442"/>
         </scene>
-        <!--Route Detail View Controller - Routebeschrijving-->
+        <!--Routebeschrijving-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
                 <viewController storyboardIdentifier="AVNRouteDetailVC" title="Routebeschrijving" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ah7-4n-0Wa" customClass="AVNRouteDetailViewController" sceneMemberID="viewController">
@@ -220,8 +220,9 @@
                                     <outlet property="delegate" destination="Ah7-4n-0Wa" id="fEd-ky-xRU"/>
                                 </connections>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaq-He-qLV">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaq-He-qLV">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="dU3-6E-KdC"/>
                                     <barButtonItem tag="1" image="tool_start" style="plain" id="0qJ-TQ-gEx">
@@ -267,18 +268,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="-134"/>
+            <point key="canvasLocation" x="1058" y="-158"/>
         </scene>
-        <!--Route Map View Controller - Route Map View Controller-->
+        <!--Route Map View Controller-->
         <scene sceneID="KCz-tl-z6f">
             <objects>
-                <viewController storyboardIdentifier="AVNRouteMapViewController" title="Route Map View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gGx-Dw-2Lg" customClass="AVNRouteMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AVNRouteMapViewController" title="Route Map View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gGx-Dw-2Lg" customClass="AVNMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1L3-PL-1O5"/>
                         <viewControllerLayoutGuide type="bottom" id="24K-Jj-qYG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="siM-A7-qPU">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQH-F9-fOO">
@@ -287,8 +288,9 @@
                                     <outlet property="delegate" destination="gGx-Dw-2Lg" id="544-qD-CtY"/>
                                 </connections>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-j3-fHN">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-j3-fHN">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="0Dr-gn-1UM"/>
                                     <barButtonItem image="tool_start" style="plain" id="PNG-GF-S2C">
@@ -342,9 +344,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rev-2q-Ka3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="197"/>
+            <point key="canvasLocation" x="1290" y="657"/>
         </scene>
-        <!--Waypoint View Controller - Locatie-->
+        <!--Locatie-->
         <scene sceneID="p6i-H2-I1v">
             <objects>
                 <viewController storyboardIdentifier="AVNWaypointDetailVC" title="Locatie" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4jn-5f-4vv" customClass="AVNWaypointViewController" sceneMemberID="viewController">
@@ -353,7 +355,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6Tb-Bo-hJm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="AVNWaypointDetailView" id="kjY-CH-bcZ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="AVNWaypointWebView" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" paginationMode="bottomToTop" translatesAutoresizingMaskIntoConstraints="NO" id="6qV-F6-l1w">
@@ -364,8 +366,9 @@
                                     <outlet property="delegate" destination="4jn-5f-4vv" id="flN-cv-1U3"/>
                                 </connections>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSS-8R-C5Z">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSS-8R-C5Z">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="W0b-6r-zmY"/>
                                     <barButtonItem image="tool_previous" style="plain" id="XXW-yq-xHL">
@@ -379,7 +382,12 @@
                                             <action selector="findNearestWaypointTapped:" destination="4jn-5f-4vv" id="9a0-Ef-gj8"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="82Y-sg-ELu"/>
+                                    <barButtonItem image="tool_map" id="i60-Fy-lN1">
+                                        <connections>
+                                            <segue destination="LIc-8l-6L9" kind="push" identifier="SpecificWaypointMapButtonTappedSegue" id="FUd-b8-kzZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jLj-hm-eKF"/>
                                     <barButtonItem image="tool_next" style="plain" id="Cdx-bM-YTe">
                                         <connections>
                                             <action selector="nextWaypointTapped:" destination="4jn-5f-4vv" id="bDE-l9-25M"/>
@@ -411,9 +419,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPu-eY-7B8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2416" y="-134"/>
+            <point key="canvasLocation" x="2015" y="174"/>
         </scene>
-        <!--News Item Detail View Controller - Nieuws-->
+        <!--Nieuws-->
         <scene sceneID="Oow-sF-mL1">
             <objects>
                 <viewController storyboardIdentifier="AVNNewsItemDetailView" title="Nieuws" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iie-E0-bpq" customClass="AVNNewsItemDetailViewController" sceneMemberID="viewController">
@@ -450,9 +458,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc1-CM-HSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="650"/>
+            <point key="canvasLocation" x="966" y="1354"/>
         </scene>
-        <!--Navigation Controller - Nieuws-->
+        <!--Nieuws-->
         <scene sceneID="3wl-7Y-ZUa">
             <objects>
                 <navigationController storyboardIdentifier="AVNNewsViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V8n-DG-UK2" sceneMemberID="viewController">
@@ -469,9 +477,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Nv-ST-M9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-72" y="650"/>
+            <point key="canvasLocation" x="-88" y="1354"/>
         </scene>
-        <!--Navigation Controller - Wandelroutes-->
+        <!--Wandelroutes-->
         <scene sceneID="nH4-7H-wzK">
             <objects>
                 <navigationController storyboardIdentifier="AVNRouteListNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LVz-bN-R4f" sceneMemberID="viewController">
@@ -489,9 +497,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fR-aL-arY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-72" y="-134"/>
+            <point key="canvasLocation" x="-72" y="442"/>
         </scene>
-        <!--Navigation Controller - Over AVN-->
+        <!--Over AVN-->
         <scene sceneID="IOl-uf-wg7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VJi-g6-l8q" sceneMemberID="viewController">
@@ -508,7 +516,72 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YvE-DZ-8TF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-72" y="1391"/>
+            <point key="canvasLocation" x="-72" y="2303"/>
+        </scene>
+        <!--Location Map View Controller-->
+        <scene sceneID="OTa-rr-eRA">
+            <objects>
+                <viewController storyboardIdentifier="AVNLocationMapViewController" title="Location Map View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LIc-8l-6L9" customClass="AVNMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IlT-3i-Zu8"/>
+                        <viewControllerLayoutGuide type="bottom" id="GsA-qE-e6S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BZC-gZ-q1M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mei-Wy-y7W">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LIc-8l-6L9" id="GpO-Qo-Sji"/>
+                                </connections>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCZ-IY-nPo">
+                                <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="9sL-3X-8TL"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KGU-ej-J5n"/>
+                                    <barButtonItem style="plain" id="MJl-Ju-JJT">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="0" id="bhk-7I-XDB">
+                                            <rect key="frame" x="55" y="6" width="210" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Standaard"/>
+                                                <segment title="Satelliet"/>
+                                                <segment title="Hybride"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="mapTypeChanged:" destination="LIc-8l-6L9" eventType="valueChanged" id="kaJ-V7-9HY"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wFG-Yo-yND"/>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="uqT-Bb-07A"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yCZ-IY-nPo" firstAttribute="top" secondItem="Mei-Wy-y7W" secondAttribute="bottom" id="1mJ-ry-r4H"/>
+                            <constraint firstItem="GsA-qE-e6S" firstAttribute="top" secondItem="yCZ-IY-nPo" secondAttribute="bottom" id="2pQ-Fq-hdZ"/>
+                            <constraint firstAttribute="trailing" secondItem="yCZ-IY-nPo" secondAttribute="trailing" id="5yN-af-3tj"/>
+                            <constraint firstItem="yCZ-IY-nPo" firstAttribute="leading" secondItem="BZC-gZ-q1M" secondAttribute="leading" id="Br1-WJ-L9w"/>
+                            <constraint firstAttribute="trailing" secondItem="Mei-Wy-y7W" secondAttribute="trailing" id="FVh-LI-IyD"/>
+                            <constraint firstItem="Mei-Wy-y7W" firstAttribute="leading" secondItem="BZC-gZ-q1M" secondAttribute="leading" id="NTL-1o-MCG"/>
+                            <constraint firstItem="Mei-Wy-y7W" firstAttribute="top" secondItem="IlT-3i-Zu8" secondAttribute="bottom" id="rDu-1g-n0g"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Locatie" id="d3H-BI-gTq"/>
+                    <connections>
+                        <outlet property="mapTypeControl" destination="bhk-7I-XDB" id="tPd-WA-VK1"/>
+                        <outlet property="mapView" destination="Mei-Wy-y7W" id="Nw2-Kn-MXj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGo-83-hDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2525" y="174"/>
         </scene>
     </scenes>
     <resources>
@@ -529,6 +602,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tjR-np-0lN"/>
+        <segue reference="pd3-I1-3cf"/>
     </inferredMetricsTieBreakers>
 </document>

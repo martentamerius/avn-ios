@@ -42,6 +42,8 @@
     // Populate route list
     if ((!self.routeList) || ([self.routeList count]==0))
         [self requestRouteList:nil];
+    
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
