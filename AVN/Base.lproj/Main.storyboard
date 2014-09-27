@@ -16,6 +16,7 @@
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.90588235289999997" green="0.70588235290000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="LVz-bN-R4f" kind="relationship" relationship="viewControllers" id="2ec-Pz-srj"/>
@@ -27,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="-823" y="834"/>
         </scene>
-        <!--Nieuws-->
+        <!--Nieuws Lijst-->
         <scene sceneID="7uh-i1-5UQ">
             <objects>
-                <tableViewController storyboardIdentifier="AVNNewsTableViewController" title="Nieuws" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QVv-Cj-bw1" customClass="AVNNewsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AVNNewsTableViewController" title="Nieuws Lijst" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QVv-Cj-bw1" customClass="AVNNewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="AVNNewsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Aoh-OE-FZH">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +99,16 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="AVN Nieuws" id="C3X-nh-x9a"/>
+                    <navigationItem key="navigationItem" title="AVN Nieuws" id="C3X-nh-x9a">
+                        <barButtonItem key="rightBarButtonItem" title="✓" id="cOq-58-cMq">
+                            <connections>
+                                <action selector="markAllAsRead:" destination="QVv-Cj-bw1" id="LpK-Xs-CiD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Iie-E0-bpq" kind="push" identifier="NewsItemListPushNotAnimatedSegue" id="7IV-mn-i5B"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRj-Pc-krp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -430,7 +440,7 @@
                         <viewControllerLayoutGuide type="bottom" id="yWm-Gk-Xdy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K3L-Rz-eTF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" restorationIdentifier="AVNAboutWebView" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQp-95-qYW">
@@ -602,6 +612,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="7IV-mn-i5B"/>
         <segue reference="pd3-I1-3cf"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.90588235294117647" green="0.70588235294117641" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

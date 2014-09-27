@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AVNNewsTableViewController : UITableViewController
+@property (nonatomic, strong) NSMutableArray *newsItemsList;
 
+- (void)pushNewsItemWithIdentifier:(NSString *)identifier;
 @end

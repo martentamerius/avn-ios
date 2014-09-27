@@ -20,8 +20,8 @@
 
 
 @interface AVNNewsTableViewController ()
-@property (nonatomic, strong) NSMutableArray *newsItemsList;
 @property (nonatomic, strong) ODRefreshControl *newsItemsListRefreshControl;
+@property (nonatomic, strong) AVNNewsItem *newsItemToPush;
 @end
 
 
@@ -58,85 +58,42 @@
 
 - (void)requestNewsItemsList:(NSNotification *)notification
 {
-    // Request header should have a field with content-type: "appliction/json"
-    NSString *contentType = [NSString stringWithFormat:@"application/json; charset=%@", (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding))];
-    
-    // Init request manager (with JSON serializeR) and URL request object
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.requestSerializer = [AFHTTPRequestSerializer new];
-    [manager.requestSerializer setTimeoutInterval:8];
-    manager.responseSerializer = [AFJSONResponseSerializer new];
-    [manager.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
-    
     // Give some visual feedback when the refreshing has been started programmatically
     if (!notification)
         [self.newsItemsListRefreshControl beginRefreshing];
     
-    // Init actual HTTP request operation
     __weak AVNNewsTableViewController *weakSelf = self;
-    [manager GET:[AVNHTTPRequestFactory urlForAVNNewsItemList] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        // Process the received response with Mantle
-        NSError *error = nil;
-        NSArray *jsonResponseArray = ([responseObject isKindOfClass:[NSArray class]])?(NSArray *)responseObject:[NSArray arrayWithObject:responseObject];
-        
-        NSArray *readNewsItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kAVNSetting_ReadNewsItems];
-        if (!readNewsItems)
-            readNewsItems = @[];
-        
-        NSMutableArray *newsItemsListFromServer = [NSMutableArray arrayWithCapacity:[jsonResponseArray count]];
-        for (id jsonObject in jsonResponseArray) {
-            AVNNewsItem *newsItem = [MTLJSONAdapter modelOfClass:[AVNNewsItem class] fromJSONDictionary:jsonObject error:&error];
-            if (!newsItem) {
-                DLog(@"Error converting AVN JSON news item info: %@, %@", [error localizedDescription], [error userInfo]);
-            } else {
-                
-                // Check in UserDefaults if the user has already seen this news item
-                newsItem.hasReadItem = [readNewsItems containsObject:newsItem.identifier];
-                
-                // Add the news item to the list
-                [newsItemsListFromServer addObject:newsItem];
-            }
-        }
-        
-        if (newsItemsListFromServer && weakSelf) {
-            // Save the converted AVN route list
-            weakSelf.newsItemsList = newsItemsListFromServer;
-            
-            // Refresh UI on main thread
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.tableView reloadData];
-                [weakSelf.newsItemsListRefreshControl endRefreshing];
-                
-                [weakSelf updateUnreadNewsItemsBadgeCount];
-            });
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        DLog(@"Error downloading AVN news items list info: %@, %@", [error localizedDescription], [error userInfo]);
-        
-        // Refresh UI on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.tableView reloadData];
-            [weakSelf.newsItemsListRefreshControl endRefreshing];
-            
-            [weakSelf updateUnreadNewsItemsBadgeCount];
-            
-            // Show error message to user
-            [TSMessage showNotificationInViewController:weakSelf title:@"Laden van pagina mislukt." subtitle:[error localizedDescription] type:TSMessageNotificationTypeError duration:5 canBeDismissedByUser:YES];
-        });
+    AVNAppDelegate *appDelegate = (AVNAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate refreshNewsItemListForController:self withCompletionHandler:^(){
+        [weakSelf.tableView reloadData];
+        [weakSelf.newsItemsListRefreshControl endRefreshing];
     }];
 }
 
-- (void)updateUnreadNewsItemsBadgeCount
+- (IBAction)markAllAsRead:(id)sender
 {
-    NSArray *readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:kAVNSetting_ReadNewsItems];
-    
-    if (readItems && self.newsItemsList) {
-        NSInteger unreadItemCount = MAX(0, [self.newsItemsList count] - [readItems count]);
+    if (self.newsItemsList) {
+        __block NSMutableArray *newReadItems = [NSMutableArray array];
+
+        [self.newsItemsList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            AVNNewsItem *currentItem = (AVNNewsItem *)obj;
+            currentItem.hasReadItem = YES;
+            
+            [newReadItems addObject:currentItem.identifier];
+        }];
         
-        AVNRootViewController *rootViewController = (AVNRootViewController *)self.tabBarController;
-        [rootViewController updateNewsItemBadge:unreadItemCount];
+        // Save the new array into the UserDefaults for next time
+        [[NSUserDefaults standardUserDefaults] setObject:newReadItems forKey:kAVNSetting_ReadNewsItems];
+        [[NSUserDefaults standardUserDefaults] setObject:newReadItems forKey:kAVNSetting_DownloadedNewsItems];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kAVNSetting_TimestampForLastNewsDownload];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        // Update table view UI
+        [self.tableView reloadData];
+
+        // Update badge counts
+        AVNRootViewController *rootVC = (AVNRootViewController *)self.tabBarController;
+        [rootVC updateNewsItemBadge:0];
     }
 }
 
@@ -204,11 +161,43 @@
     return NO;
 }
 
+
+#pragma mark - Navigation
+
+- (void)pushNewsItemWithIdentifier:(NSString *)identifier
+{
+    // Get a fresh copy of the news items list from the server...
+    __weak typeof(self) weakSelf = self;
+    AVNAppDelegate *appDelegate = (AVNAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate refreshNewsItemListForController:self withCompletionHandler:^{
+        __block AVNNewsItem *newsItem;
+        
+        if (weakSelf.newsItemsList) {
+            [weakSelf.newsItemsList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                AVNNewsItem *currentItem = (AVNNewsItem *)obj;
+                if ([currentItem.identifier isEqualToString:identifier]) {
+                    newsItem = currentItem;
+                    *stop = YES;
+                }
+            }];
+        }
+        
+        if (newsItem) {
+            weakSelf.newsItemToPush = newsItem;
+            [weakSelf performSegueWithIdentifier:kSegueNewsItemListPushNotAnimated sender:weakSelf];
+        }
+    }];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:kSegueNewsItemListToShowDetail] && self.newsItemsList) {
+    if (self.newsItemsList &&
+        ([[segue identifier] isEqualToString:kSegueNewsItemListToShowDetail] ||
+        [[segue identifier] isEqualToString:kSegueNewsItemListPushNotAnimated])) {
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            if (indexPath)
+                [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         if ([self.newsItemsList count]>indexPath.row) {
             AVNNewsItem *selectedNewsItem = self.newsItemsList[indexPath.row];
@@ -223,9 +212,18 @@
                 [[NSUserDefaults standardUserDefaults] setObject:newReadItems forKey:kAVNSetting_ReadNewsItems];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
-                // Update badge count + UITableView
-                [self.tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
-                [self updateUnreadNewsItemsBadgeCount];
+                // Refresh UITableView
+                if (indexPath)
+                    [self.tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+                
+                // Update badge count in tab bar and on application icon
+                __block NSInteger unreadItemsCount = 0;
+                [self.newsItemsList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    if (!((AVNNewsItem *)obj).hasReadItem)
+                        unreadItemsCount++;
+                }];
+                AVNRootViewController *rootVC = (AVNRootViewController *)self.tabBarController;
+                [rootVC updateNewsItemBadge:unreadItemsCount];
             }
             
             [[segue destinationViewController] setSelectedNewsItem:selectedNewsItem];

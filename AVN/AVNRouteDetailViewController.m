@@ -8,6 +8,7 @@
 
 #import "AVNRouteDetailViewController.h"
 #import "AVNWaypointViewController.h"
+#import "AVNAppDelegate.h"
 #import "AVNHTTPRequestFactory.h"
 #import "AVNWaypoint.h"
 #import <CoreLocation/CoreLocation.h>
@@ -145,12 +146,7 @@
         {
             NSString *hostname = request.URL.host;
             if (hostname) {
-                if ([hostname isEqualToString:kGoogleMapsHostname]) {
-                    
-                    // Allow requests directed at Google Maps
-                    shouldStart = YES;
-                    
-                } else if ([hostname isEqualToString:kAVNHostname]) {
+                if ([hostname isEqualToString:kAVNHostname]) {
                     
                     NSString *queryPart = [request.URL query];
                     if (queryPart && ([queryPart length]>7)) {
@@ -162,6 +158,12 @@
                             shouldStart = YES;
                         }
                     }
+                    
+                } else {
+                    
+                    // Redirect user to external app for external links
+                    AVNAppDelegate *appDelegate = (AVNAppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [appDelegate openExternalURL:request.URL];
                     
                 }
             }

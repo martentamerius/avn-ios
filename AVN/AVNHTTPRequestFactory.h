@@ -10,7 +10,6 @@
 
 // AVN URL stuff
 #define kAVNHostname            @"www.avn.nl"
-#define kGoogleMapsHostname     @"maps.google.nl"
 #define kAVNRelRouteInfoURL     @"app.routeinfo.aspx"
 #define kAVNRelWaypointURL      @"app.waypoint.aspx"
 #define kAVNRelPageURL          @"app.pagina.aspx"

@@ -23,35 +23,6 @@
     // this does not seem to work propertly from storyboard editor.
     [[UITabBar appearance] setSelectedImageTintColor:defaultAVNAppTintColor];
 
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-        // Load resources for iOS 6.1 or earlier
-        
-    } else {
-        // Load resources for iOS 7 or later
-        
-        // Set default tint color for some control types
-        [[UIToolbar appearance] setTintColor:defaultAVNAppTintColor];
-        [[UINavigationBar appearance] setTintColor:defaultAVNAppTintColor];
-    }
-    
-    // Check if the disk cache should be cleared before starting the app
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kAVNSetting_ResetCache]) {
-        DLog(@"Disk cache will be cleared.");
-        
-        [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        
-        // Also reset defaults in Settings bundle
-        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:kAVNSetting_ResetCache];
-        [[NSUserDefaults standardUserDefaults] setValue:@[] forKey:kAVNSetting_ReadNewsItems];
-        [[NSUserDefaults standardUserDefaults] setValue:@(0) forKeyPath:kAVNSetting_UnreadNewsItemsCount];
-        [[NSUserDefaults standardUserDefaults] setValue:@(0) forKeyPath:kAVNSetting_MapViewType];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-
-    // Update the unread news items badge count (look for it in the UserDefaults)
-    NSInteger unreadNewsItemCount = [[NSUserDefaults standardUserDefaults] integerForKey:kAVNSetting_UnreadNewsItemsCount];
-    [self updateNewsItemBadge:MAX(0, unreadNewsItemCount)];
-
     [super viewWillAppear:animated];
 }
 
@@ -74,14 +45,16 @@
 {
     UITabBarItem *newsTabBarItem;
     
+    // Save the new specified value into the UserDefaults
+    [[NSUserDefaults standardUserDefaults] setInteger:unreadItemCount forKey:kAVNSetting_UnreadNewsItemsCount];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Set the application's badge to include the unread news items count
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:unreadItemCount];
+    
     if ([self.tabBar.items count]>=kNewsItemTabBarIndex) {
         newsTabBarItem = self.tabBar.items[kNewsItemTabBarIndex];
         newsTabBarItem.badgeValue = (unreadItemCount<=0)?nil:[NSString stringWithFormat:@"%ld", (long)unreadItemCount];
-        
-        // Save the new specified value into the UserDefaults
-        [[NSUserDefaults standardUserDefaults] setInteger:unreadItemCount forKey:kAVNSetting_UnreadNewsItemsCount];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
     } else {
         DLog(@"Error: could not find the news tab bar index to update the badge count!");
     }

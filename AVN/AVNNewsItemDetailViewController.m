@@ -7,6 +7,7 @@
 //
 
 #import "AVNNewsItemDetailViewController.h"
+#import "AVNAppDelegate.h"
 #import "AVNHTTPRequestFactory.h"
 #import <MBProgressHUD.h>
 #import <TSMessage.h>
@@ -100,9 +101,16 @@
     BOOL shouldStart = NO;
     
     NSString *hostname = request.URL.host;
-    if (hostname && ([hostname isEqualToString:kAVNHostname] || [hostname isEqualToString:kGoogleMapsHostname])) {
+    if (hostname && [hostname isEqualToString:kAVNHostname]) {
+        
         // Only allow requests directed at the AVN webserver or Google Maps
         shouldStart = YES;
+        
+    } else {
+        
+        // Redirect user to external app for external links
+        AVNAppDelegate *appDelegate = (AVNAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate openExternalURL:request.URL];
     }
     
     return shouldStart;

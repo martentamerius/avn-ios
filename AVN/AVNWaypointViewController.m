@@ -7,6 +7,7 @@
 //
 
 #import "AVNWaypointViewController.h"
+#import "AVNAppDelegate.h"
 #import "AVNRouteDetailViewController.h"
 #import "AVNMapViewController.h"
 #import "AVNHTTPRequestFactory.h"
@@ -267,28 +268,17 @@
     // Determine if this action should be allowed, or if we should handle it with another view controller.
     BOOL shouldStart = NO;
     
-    switch (navigationType) {
-        case UIWebViewNavigationTypeLinkClicked:
-        case UIWebViewNavigationTypeReload:
-        case UIWebViewNavigationTypeOther:
-        {
-            NSString *hostname = request.URL.host;
-            if (hostname) {
-                if ([hostname isEqualToString:kGoogleMapsHostname]) {
-                    
-                    // Allow requests directed at Google Maps
-                    shouldStart = YES;
-                    
-                } else if ([hostname isEqualToString:kAVNHostname]) {
-                    
-                    shouldStart = YES;
-                    
-                }
-            }
-            break;
-        }
-        default:
-            break;
+    NSString *hostname = request.URL.host;
+    if (hostname && [hostname isEqualToString:kAVNHostname]) {
+        
+        // Only allow requests directed at the AVN webserver or Google Maps
+        shouldStart = YES;
+        
+    } else {
+        
+        // Redirect user to external app for external links
+        AVNAppDelegate *appDelegate = (AVNAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate openExternalURL:request.URL];
     }
     
     return shouldStart;

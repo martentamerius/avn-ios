@@ -31,6 +31,7 @@
 
 // News TableView
 #define kSegueNewsItemListToShowDetail                  @"NewsItemListToShowDetailSegue"
+#define kSegueNewsItemListPushNotAnimated               @"NewsItemListPushNotAnimatedSegue"
 
 
 

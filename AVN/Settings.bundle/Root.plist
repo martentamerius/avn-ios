@@ -8,9 +8,9 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Reset download cache</string>
+			<string>Reset app</string>
 			<key>Key</key>
-			<string>reset_cache</string>
+			<string>reset_app</string>
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
