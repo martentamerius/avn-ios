@@ -20,6 +20,7 @@
 
 @interface AVNAppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) NSError *backgroundFetchError;
 
 - (void)openExternalURL:(NSURL *)url;
 - (void)refreshNewsItemListForController:(AVNNewsTableViewController *)newsItemListController withCompletionHandler:(void (^)())completionHandler;

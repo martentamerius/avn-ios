@@ -22,7 +22,6 @@
 @interface AVNAppDelegate () <UIAlertViewDelegate>
 @property (nonatomic, strong) NSURL *externalURL;
 @property (nonatomic, copy) void (^backgroundFetchCompletionHandler)(UIBackgroundFetchResult result);
-@property (nonatomic, strong) NSError *backgroundFetchError;
 @property (nonatomic, strong) AFHTTPRequestOperation *backgroundFetchNewsItemRequest;
 @property (nonatomic) NSInteger numberOfNewPostedNewsItems;
 @property (nonatomic) NSInteger numberOfUnreadNewsItems;
@@ -195,6 +194,8 @@
     [manager.requestSerializer setTimeoutInterval:8];
     manager.responseSerializer = [AFJSONResponseSerializer new];
     [manager.requestSerializer setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    self.backgroundFetchError = nil;
     
     // Init actual HTTP request operation
     __weak AVNAppDelegate *weakSelf = self;

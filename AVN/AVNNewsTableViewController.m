@@ -22,6 +22,7 @@
 @interface AVNNewsTableViewController ()
 @property (nonatomic, strong) ODRefreshControl *newsItemsListRefreshControl;
 @property (nonatomic, strong) AVNNewsItem *newsItemToPush;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *allReadButton;
 @end
 
 
@@ -44,6 +45,10 @@
     if ((!self.newsItemsList) || ([self.newsItemsList count]==0))
         [self requestNewsItemsList:nil];
     
+    // Enable/disable all-read-button
+    if (self.allReadButton)
+        self.allReadButton.enabled = (self.newsItemsList && ([self.newsItemsList count]>0));
+    
     [super viewWillAppear:animated];
 }
 
@@ -56,6 +61,18 @@
 
 #pragma mark - Populate news items list
 
+- (void)setNewsItemsList:(NSMutableArray *)newsItemsList
+{
+    if (newsItemsList != _newsItemsList) {
+        [self willChangeValueForKey:@"newsItemList"];
+        _newsItemsList = newsItemsList;
+        [self didChangeValueForKey:@"newsItemList"];
+        
+        if (self.allReadButton)
+            self.allReadButton.enabled = (newsItemsList && ([newsItemsList count]>0));
+    }
+}
+
 - (void)requestNewsItemsList:(NSNotification *)notification
 {
     // Give some visual feedback when the refreshing has been started programmatically
@@ -67,6 +84,11 @@
     [appDelegate refreshNewsItemListForController:self withCompletionHandler:^(){
         [weakSelf.tableView reloadData];
         [weakSelf.newsItemsListRefreshControl endRefreshing];
+        
+        if (appDelegate.backgroundFetchError) {
+            // Show error message to user
+            [TSMessage showNotificationInViewController:weakSelf title:@"Laden van pagina mislukt." subtitle:[appDelegate.backgroundFetchError localizedDescription] type:TSMessageNotificationTypeError duration:5 canBeDismissedByUser:YES];
+        }
     }];
 }
 

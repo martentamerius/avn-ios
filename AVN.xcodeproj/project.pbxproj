@@ -34,6 +34,8 @@
 		9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */; };
 		9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA610192D207700BC372D /* AVNNewsItem.m */; };
 		9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */; };
+		9BC2868619D9E17F002D33B8 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868419D9E17F002D33B8 /* app.css */; };
+		9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868519D9E17F002D33B8 /* about_avn.html */; };
 		9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */; };
 		9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */; };
 		9BF0F48E1948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4771948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m */; };
@@ -111,6 +113,8 @@
 		9BBBA610192D207700BC372D /* AVNNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItem.m; sourceTree = "<group>"; };
 		9BBBA612192D280C00BC372D /* AVNNewsItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItemDetailViewController.h; sourceTree = "<group>"; };
 		9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItemDetailViewController.m; sourceTree = "<group>"; };
+		9BC2868419D9E17F002D33B8 /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = app.css; path = include/app.css; sourceTree = "<group>"; };
+		9BC2868519D9E17F002D33B8 /* about_avn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_avn.html; sourceTree = "<group>"; };
 		9BCBD971194C4E790038F6F3 /* AVNNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewCell.h; sourceTree = "<group>"; };
 		9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewCell.m; sourceTree = "<group>"; };
 		9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -307,6 +311,7 @@
 		9B3B519C18F6A0110066D315 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9BC2868219D9E148002D33B8 /* Local HTML content */,
 				9B39EAE3195470C600A2E497 /* Images.xcassets */,
 				9B14087419312A10007DA34A /* Settings.bundle */,
 			);
@@ -320,6 +325,15 @@
 				9B7297CE18F9E57C00D1A95E /* AVNHTTPRequestFactory.m */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		9BC2868219D9E148002D33B8 /* Local HTML content */ = {
+			isa = PBXGroup;
+			children = (
+				9BC2868419D9E17F002D33B8 /* app.css */,
+				9BC2868519D9E17F002D33B8 /* about_avn.html */,
+			);
+			name = "Local HTML content";
 			sourceTree = "<group>";
 		};
 		9BF0F4741948F13200E6F7D5 /* KML+MapKit */ = {
@@ -455,7 +469,9 @@
 			files = (
 				9B39EAE4195470C600A2E497 /* Images.xcassets in Resources */,
 				9B14087519312A10007DA34A /* Settings.bundle in Resources */,
+				9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */,
 				9B1D6F4219CDCE52000B65E7 /* Main.storyboard in Resources */,
+				9BC2868619D9E17F002D33B8 /* app.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

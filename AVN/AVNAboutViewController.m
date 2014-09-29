@@ -15,6 +15,7 @@
 @interface AVNAboutViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic) BOOL didLoadPage;
+@property (nonatomic) BOOL didLoadLocalContent;
 @end
 
 @implementation AVNAboutViewController
@@ -24,6 +25,8 @@
     [super viewDidLoad];
 
     self.didLoadPage = NO;
+    self.didLoadLocalContent = NO;
+    
     [self refreshContent];
 }
 
@@ -78,14 +81,17 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         // Log error
-        DLog(@"Error downloading AVN About page: %@, %@", [error localizedDescription], [error userInfo]);
+        DLog(@"Error downloading AVN About page: %@, %@. Trying to load local version.", [error localizedDescription], [error userInfo]);
         
-        // Show error message to user
-        [TSMessage showNotificationInViewController:self title:@"Laden van pagina mislukt."
-                                           subtitle:[error localizedDescription]
-                                               type:TSMessageNotificationTypeError
-                                           duration:5
-                               canBeDismissedByUser:YES];
+        if (!self.didLoadLocalContent) {
+            // Show static local (old) version of about AVN page if it hasn't already been loaded
+            NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"about_avn" ofType:@"html"];
+            NSURL *localURL = [NSURL fileURLWithPath:htmlPath isDirectory:NO];
+            NSURLRequest *request = [NSURLRequest requestWithURL:localURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5];
+            [webView loadRequest:request];
+            
+            self.didLoadLocalContent = YES;
+        }
     }
 }
 
@@ -98,6 +104,11 @@
     if (hostname && [hostname isEqualToString:kAVNHostname]) {
         
         // Only allow requests directed at the AVN webserver or Google Maps
+        shouldStart = YES;
+        
+    } else if ([request.URL.absoluteString rangeOfString:@"file:///"].location == 0) {
+    
+        // .. or if the request has a local URL (static HTML page on disk)
         shouldStart = YES;
         
     } else {

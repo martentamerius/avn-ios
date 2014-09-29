@@ -1,0 +1,27 @@
+HTML, BODY {
+}
+
+BODY {
+    font-size:1em;
+  	font-family: trebuchet ms, arial, helvetica, univers, verdana;
+	background-color: #f2bb10;
+}
+
+.appbody {
+	background-color:#fff;
+}
+.appage {
+    padding-left:10px;
+    padding-right:10px;
+}
+.appage IMG, .appage IFRAME, .appage DIV {
+    max-width:290px;
+}
+.appbg {
+    background-color:white;
+}.pageheader_dark {
+font-size:1.1em;
+}
+.pagetext_dark {
+    text-align:justify;
+}
