@@ -391,11 +391,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B2A215118F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVN" */;
 			buildPhases = (
+				9B0C8C081931376A0098FA4D /* ShellScript */,
 				2380292FC2244B59A776F635 /* Check Pods Manifest.lock */,
 				9B2A211818F5D3A20000B53B /* Sources */,
 				9B2A211918F5D3A20000B53B /* Frameworks */,
 				9B2A211A18F5D3A20000B53B /* Resources */,
-				9B0C8C081931376A0098FA4D /* ShellScript */,
 				7354DDEFCD44456DBB9DB5FD /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -536,7 +536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp Pods/Pods-acknowledgements.plist AVN/Settings.bundle/Acknowledgements.plist\n\n# Put version+build number from AVN-Info.plist into the Root.plist of the settings bundle\nVERSION=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nBUILDNR=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleVersion\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\n\nsed -i -e s/__VERSION__/${VERSION}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\nsed -i -e s/__BUILDNR__/${BUILDNR}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n";
+			shellScript = "echo Pods dir:\nls -al Pods/Target\\ Support\\ Files/Pods\n            \ncp Pods/Target\\ Support\\ Files/Pods/Pods-acknowledgements.plist AVN/Settings.bundle/Acknowledgements.plist\n\n# Put version+build number from AVN-Info.plist into the Root.plist of the settings bundle\nVERSION=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nBUILDNR=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleVersion\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\n\nsed -i -e s/__VERSION__/${VERSION}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\nsed -i -e s/__BUILDNR__/${BUILDNR}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
