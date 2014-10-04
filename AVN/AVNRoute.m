@@ -139,8 +139,10 @@
                                                           object:nil
                                                            queue:nil
                                                       usingBlock:^(NSNotification *note) {
+#ifdef DEBUG
                                                           NSString *description = [[note userInfo] valueForKey:kKMLDescriptionKey];
                                                           DLog(@"%@", description);
+#endif
                                                       }
          ];
         

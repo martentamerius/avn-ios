@@ -69,8 +69,10 @@
     // TODO: All pages should be downloaded here
     DLog(@"Download route button clicked for AVNRoute with id %@.", self.selectedRoute.identifier);
     
+#ifdef DEBUG
     NSString *html = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
     DLog(@"HTML content: %@", html);
+#endif
 }
 
 

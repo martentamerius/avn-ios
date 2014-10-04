@@ -391,11 +391,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B2A215118F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVN" */;
 			buildPhases = (
-				9B0C8C081931376A0098FA4D /* ShellScript */,
 				2380292FC2244B59A776F635 /* Check Pods Manifest.lock */,
 				9B2A211818F5D3A20000B53B /* Sources */,
 				9B2A211918F5D3A20000B53B /* Frameworks */,
 				9B2A211A18F5D3A20000B53B /* Resources */,
+				9B0C8C081931376A0098FA4D /* ShellScript */,
 				7354DDEFCD44456DBB9DB5FD /* Copy Pods Resources */,
 			);
 			buildRules = (
