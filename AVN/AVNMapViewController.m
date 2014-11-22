@@ -319,9 +319,16 @@
         CLLocation *annotationCoordinate = [[CLLocation alloc] initWithLatitude:pointAnnotation.coordinate.latitude
                                                                       longitude:pointAnnotation.coordinate.longitude];
         __block NSInteger waypointIndex = NSNotFound;
+        NSArray *routeWaypoints;
+    
+        if (self.selectedRoute && self.selectedRoute.waypoints) {
+            routeWaypoints = self.selectedRoute.waypoints;
+        } else if (self.selectedWaypoint && self.selectedWaypoint.parentRoute) {
+            routeWaypoints = self.selectedWaypoint.parentRoute.waypoints;
+        }
         
-        if ((self.selectedRoute) && (self.selectedRoute.waypoints)) {
-            [self.selectedRoute.waypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (routeWaypoints) {
+            [routeWaypoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 AVNWaypoint *waypoint = (AVNWaypoint *)obj;
                 CLLocationDistance distance = [waypoint.gpsCoordinate distanceFromLocation:annotationCoordinate];
                 if (distance<25.0 ) {
@@ -333,8 +340,12 @@
         
         if (waypointIndex != NSNotFound) {
             // Get the tapped waypoint
-            self.tappedWaypoint = self.selectedRoute.waypoints[waypointIndex];
-            [self performSegueWithIdentifier:kSegueRouteMapSpecificWaypointTapped sender:self];
+            self.tappedWaypoint = routeWaypoints[waypointIndex];
+            if (!self.selectedWaypoint) {
+                [self performSegueWithIdentifier:kSegueRouteMapSpecificWaypointTapped sender:self];
+            } else {
+                [self performSegueWithIdentifier:kSegueSpecificWaypointTappedOnWaypointMap sender:self];
+            }
         }
     }
 }
@@ -381,6 +392,13 @@
             [[segue destinationViewController] setSelectedWaypoint:self.tappedWaypoint];
             self.tappedWaypoint = nil;
         }        
+    } else if ([[segue identifier] isEqualToString:kSegueSpecificWaypointTappedOnWaypointMap]) {
+        
+        if (self.tappedWaypoint) {
+            // The link to a specific waypoint has been tapped
+            [[segue destinationViewController] setSelectedWaypoint:self.tappedWaypoint];
+            self.tappedWaypoint = nil;
+        }
     }
 }
 

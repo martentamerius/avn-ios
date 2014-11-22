@@ -22,10 +22,13 @@
 @interface AVNAppDelegate () <UIAlertViewDelegate>
 @property (nonatomic, strong) NSURL *externalURL;
 @property (nonatomic, copy) void (^backgroundFetchCompletionHandler)(UIBackgroundFetchResult result);
+@property (nonatomic, copy) void (^scheduleNotificationBlock)();
 @property (nonatomic, strong) AFHTTPRequestOperation *backgroundFetchNewsItemRequest;
 @property (nonatomic) NSInteger numberOfNewPostedNewsItems;
 @property (nonatomic) NSInteger numberOfUnreadNewsItems;
 @property (nonatomic, strong) AVNNewsItem *singleNewPostedNewsItem;
+@property (nonatomic) BOOL shouldShowAlertView;
+@property (nonatomic) BOOL alertViewActive;
 @end
 
 
@@ -39,7 +42,15 @@
                                                                kAVNSetting_UnreadNewsItemsCount:@(0),
                                                                kAVNSetting_MapViewType:@(0),
                                                                kAVNSetting_HideAlertForExternalURL:@NO,
-                                                               kAVNSetting_TimestampForLastNewsDownload:@"" }];
+                                                               kAVNSetting_TimestampForLastNewsDownload:@"",
+                                                               kAVNSetting_ShowNewsItemsAsNotifications:@(-1) }];
+    
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        // iOS 8: Register the notification types
+        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    }
     
     // Initialize disk cache for offline viewing of webpages
     SDURLCache *urlCache = [[SDURLCache alloc] initWithMemoryCapacity:(16*1024*1024)
@@ -61,6 +72,8 @@
 {
     // Turn off automatic network activity indicator
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:NO];
+    // We're backgrounded. Don't show any alert dialogs
+    self.shouldShowAlertView = NO;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -82,11 +95,15 @@
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAVNSetting_MapViewType];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAVNSetting_HideAlertForExternalURL];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAVNSetting_TimestampForLastNewsDownload];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAVNSetting_ShowNewsItemsAsNotifications];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
     // Update the unread news items badge count (look for it in the UserDefaults)
     NSInteger unreadNewsItemCount = [[NSUserDefaults standardUserDefaults] integerForKey:kAVNSetting_UnreadNewsItemsCount];
+    
+    // App has become active, so alert dialogs are permitted
+    self.shouldShowAlertView = YES;
     
     // Check for new AVN news items
     AVNNewsTableViewController *newsItemListController;
@@ -138,49 +155,57 @@
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
 {
-    // Check if we have already fetched the news items in the last 8 hours
-    NSDate *timestamp = [[NSUserDefaults standardUserDefaults] objectForKey:kAVNSetting_TimestampForLastNewsDownload];
-    if (timestamp && ([timestamp timeIntervalSinceNow]>=(-8*3600))) {
-        
-        // Skip the current roundtrip to the server
-        completionHandler(UIBackgroundFetchResultNoData);
-        
-    } else {
-        
-        // Save completion handler for later; it should ALWAYS be executed!
-        self.backgroundFetchCompletionHandler = completionHandler;
-        
-        __weak typeof(self) weakSelf = self;
-        [self refreshNewsItemListForController:nil withCompletionHandler:^{
-            UIBackgroundFetchResult backgroundFetchResult = (self.backgroundFetchError)?UIBackgroundFetchResultFailed:UIBackgroundFetchResultNoData;
+    // Background fetch: don't show any alert dialogs
+    self.shouldShowAlertView = NO;
+    __weak typeof(self) weakSelf = self;
+
+    // Check if we have permission to show notifications
+    [self checkPermissionsForLocalNotificationOfType:UIUserNotificationTypeAlert thenScheduleBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf) {
             
-            if (weakSelf.numberOfNewPostedNewsItems >= 1) {
-                backgroundFetchResult = UIBackgroundFetchResultNewData;
+            // Check if we have already fetched the news items in the last 8 hours
+            NSDate *timestamp = [[NSUserDefaults standardUserDefaults] objectForKey:kAVNSetting_TimestampForLastNewsDownload];
+            if (timestamp && ([timestamp timeIntervalSinceNow]>=(-8*3600))) {
+                // Skip the current roundtrip to the server
+                completionHandler(UIBackgroundFetchResultNoData);
                 
-                UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-                localNotification.fireDate = nil; // Show immediately
-                localNotification.applicationIconBadgeNumber = weakSelf.numberOfUnreadNewsItems;
+            } else {
+                // Save completion handler for later; it should ALWAYS be executed!
+                strongSelf.backgroundFetchCompletionHandler = completionHandler;
                 
-                if (weakSelf.singleNewPostedNewsItem) {
-                    localNotification.alertBody = weakSelf.singleNewPostedNewsItem.title;
-                    localNotification.userInfo = @{ kAVNNewsItemCodeKey : weakSelf.singleNewPostedNewsItem.identifier };
-                } else {
-                    localNotification.alertBody = [NSString stringWithFormat:@"Er zijn %ld nieuwsartikelen beschikbaar.", (long)weakSelf.numberOfNewPostedNewsItems];
-                }
-                
-                // Schedule the local notification
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                [strongSelf refreshNewsItemListForController:nil withCompletionHandler:^{
+                    UIBackgroundFetchResult backgroundFetchResult = (strongSelf.backgroundFetchError)?UIBackgroundFetchResultFailed:UIBackgroundFetchResultNoData;
+                    
+                    if (strongSelf.numberOfNewPostedNewsItems >= 1) {
+                        backgroundFetchResult = UIBackgroundFetchResultNewData;
+                        
+                        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                        localNotification.fireDate = nil; // Show immediately
+                        localNotification.applicationIconBadgeNumber = strongSelf.numberOfUnreadNewsItems;
+                        
+                        if (strongSelf.singleNewPostedNewsItem) {
+                            localNotification.alertBody = strongSelf.singleNewPostedNewsItem.title;
+                            localNotification.userInfo = @{ kAVNNewsItemCodeKey : strongSelf.singleNewPostedNewsItem.identifier };
+                        } else {
+                            localNotification.alertBody = [NSString stringWithFormat:@"Er zijn %@ nieuwsartikelen beschikbaar.", @(strongSelf.numberOfNewPostedNewsItems)];
+                        }
+                        
+                        // Schedule the local notification
+                        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                    }
+                    
+                    if (strongSelf.backgroundFetchCompletionHandler) {
+                        void (^bfCompletionHandler)(UIBackgroundFetchResult result) = strongSelf.backgroundFetchCompletionHandler;
+                        strongSelf.backgroundFetchCompletionHandler = nil;
+                        
+                        // Always execute the background fetch completion handler!
+                        bfCompletionHandler(backgroundFetchResult);
+                    }
+                }];
             }
-            
-            if (weakSelf.backgroundFetchCompletionHandler) {
-                void (^bfCompletionHandler)(UIBackgroundFetchResult result) = weakSelf.backgroundFetchCompletionHandler;
-                weakSelf.backgroundFetchCompletionHandler = nil;
-                
-                // Always execute the background fetch completion handler!
-                bfCompletionHandler(backgroundFetchResult);
-            }
-        }];
-    }
+        }
+    }];
 }
 
 - (void)refreshNewsItemListForController:(AVNNewsTableViewController *)newsItemListController withCompletionHandler:(void (^)())completionHandler
@@ -247,7 +272,11 @@
             }
         }
         
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:weakSelf.numberOfUnreadNewsItems];
+        // Check if we have permission to show app badge
+        NSInteger unreadNewsItemCount = weakSelf.numberOfUnreadNewsItems;
+        [weakSelf checkPermissionsForLocalNotificationOfType:UIUserNotificationTypeBadge thenScheduleBlock:^{
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:unreadNewsItemCount];
+        }];
         
         if (newsItemsListFromServer && newsItemListController) {
             // Save the converted AVN route list
@@ -289,6 +318,53 @@
 }
 
 
+#pragma mark - Local notification user permissions and scheduling
+
+- (void)checkPermissionsForLocalNotificationOfType:(UIUserNotificationType)type thenScheduleBlock:(void (^)())notificationBlock
+{
+    // Check user permissions for local notifications (badge/sound/alert) and if permission is granted, schedule the block.
+    BOOL permissionGranted = NO;
+    
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(currentUserNotificationSettings)]) {
+        
+        // iOS 8: Check if we have permission for the notification type with UIApplication
+        UIUserNotificationSettings *currentSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        if ((currentSettings.types & type) != 0) {
+            // We have permission!
+            permissionGranted = YES;
+        }
+        
+    } else {
+        
+        // iOS 6/7: Check user defaults for permission to show news item notifications
+        NSNumber *showNewsItemsAsNotifications = [[NSUserDefaults standardUserDefaults] valueForKey:kAVNSetting_ShowNewsItemsAsNotifications];
+        
+        if ([showNewsItemsAsNotifications integerValue] == 1) {
+            // We already have permission!
+            permissionGranted = YES;
+            
+        } else if ((!showNewsItemsAsNotifications) || ([showNewsItemsAsNotifications integerValue]<0)) {
+            
+            if (self.shouldShowAlertView && (!self.alertViewActive)) {
+                // Permission has not been asked yet; question user first.
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Meldingen" message:@"De AVN app wilt u graag op de hoogte houden van AVN nieuws.\nWilt u daarvoor meldingen inschakelen?" delegate:self cancelButtonTitle:@"Nee" otherButtonTitles:@"Ja", nil];
+                alert.tag = 2;
+                [alert show];
+                self.alertViewActive = YES;
+                
+                // Remember the block to schedule; we may run it after the user granted permission...
+                self.scheduleNotificationBlock = notificationBlock;
+            }
+        }
+    }
+    
+    if (permissionGranted && notificationBlock) {
+        // Run the specified notification block.
+        notificationBlock();
+    }
+}
+
+
 #pragma mark - External URLs
 
 - (void)openExternalURL:(NSURL *)url
@@ -296,14 +372,15 @@
     self.externalURL = url;
     
     BOOL showAlert = (![[NSUserDefaults standardUserDefaults] boolForKey:kAVNSetting_HideAlertForExternalURL]);
-    if (showAlert) {
+    if (showAlert && self.shouldShowAlertView) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Let op"
                                                         message:@"Openen van links naar externe sites wordt niet ondersteund in deze app.\n\nWilt u de link openen in een andere app?"
                                                        delegate:self
                                               cancelButtonTitle:@"Nee"
                                               otherButtonTitles:@"Ja", @"Altijd", nil];
-        alert.delegate = self;
+        alert.tag = 1;
         [alert show];
+        self.alertViewActive = YES;
         
     } else {
         
@@ -345,40 +422,72 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (self.externalURL && (buttonIndex != alertView.cancelButtonIndex)) {
-        
-        // Check if the "Always" button has been tapped... remember this setting!
-        if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Altijd"]) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAVNSetting_HideAlertForExternalURL];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        
-        // Open the external URL in Safari
-        if ([[UIApplication sharedApplication] canOpenURL:self.externalURL]) {
-            if (![[UIApplication sharedApplication] openURL:self.externalURL]) {
-                NSLog(@"Failed to open URL: %@",[self.externalURL description]);
+    self.alertViewActive = NO;
+    
+    switch (alertView.tag) {
+        case 1: {
+            // External links dialog
+            if (self.externalURL && (buttonIndex != alertView.cancelButtonIndex)) {
                 
-                // Show error message to user
-                [TSMessage showNotificationInViewController:self.window.rootViewController
-                                                      title:@"Laden van externe pagina is mislukt."
-                                                   subtitle:nil
-                                                       type:TSMessageNotificationTypeError
-                                                   duration:5
-                                       canBeDismissedByUser:YES];
+                // Check if the "Always" button has been tapped... remember this setting!
+                if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Altijd"]) {
+                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAVNSetting_HideAlertForExternalURL];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                }
+                
+                // Open the external URL in Safari
+                if ([[UIApplication sharedApplication] canOpenURL:self.externalURL]) {
+                    if (![[UIApplication sharedApplication] openURL:self.externalURL]) {
+                        NSLog(@"Failed to open URL: %@",[self.externalURL description]);
+                        
+                        // Show error message to user
+                        [TSMessage showNotificationInViewController:self.window.rootViewController
+                                                              title:@"Laden van externe pagina is mislukt."
+                                                           subtitle:nil
+                                                               type:TSMessageNotificationTypeError
+                                                           duration:5
+                                               canBeDismissedByUser:YES];
+                    }
+                } else {
+                    NSLog(@"Cannot open URL with apps currently installed on this device: %@",[self.externalURL description]);
+                    
+                    // Show error message to user
+                    [TSMessage showNotificationInViewController:self.window.rootViewController
+                                                          title:@"Laden van externe pagina is mislukt."
+                                                       subtitle:@"Er is geen app geinstalleerd die deze URL kan afhandelen."
+                                                           type:TSMessageNotificationTypeError
+                                                       duration:5
+                                           canBeDismissedByUser:YES];
+                }
+                
+                self.externalURL = nil;
             }
-        } else {
-            NSLog(@"Cannot open URL with apps currently installed on this device: %@",[self.externalURL description]);
-            
-            // Show error message to user
-            [TSMessage showNotificationInViewController:self.window.rootViewController
-                                                  title:@"Laden van externe pagina is mislukt."
-                                               subtitle:@"Er is geen app geinstalleerd die deze URL kan afhandelen."
-                                                   type:TSMessageNotificationTypeError
-                                               duration:5
-                                   canBeDismissedByUser:YES];
+            break;
         }
-        
-        self.externalURL = nil;
+            
+        case 2: {
+            // (Dis)allow local notifications in iOS 6/7
+            if (buttonIndex != alertView.cancelButtonIndex) {
+                // User granted permission
+                [[NSUserDefaults standardUserDefaults] setValue:@(1) forKey:kAVNSetting_ShowNewsItemsAsNotifications];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                // Run schedule notification block, if appropriate.
+                if (self.scheduleNotificationBlock)
+                    self.scheduleNotificationBlock();
+                
+            } else {
+                // Permission denied
+                [[NSUserDefaults standardUserDefaults] setValue:@(0) forKey:kAVNSetting_ShowNewsItemsAsNotifications];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                // Reset app badge
+                [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+            }
+            
+            self.scheduleNotificationBlock = nil;
+            break;
+        }
     }
 }
 

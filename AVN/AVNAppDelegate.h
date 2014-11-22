@@ -15,6 +15,8 @@
 #define kAVNSetting_MapViewType                     @"mapview_type"
 #define kAVNSetting_HideAlertForExternalURL         @"hide_alert_for_external_url"
 #define kAVNSetting_TimestampForLastNewsDownload    @"timestamp_for_last_news_download"
+#define kAVNSetting_ShowNewsItemsAsNotifications    @"show_news_items_as_notifications"
+
 
 @class AVNNewsTableViewController;
 
@@ -24,4 +26,7 @@
 
 - (void)openExternalURL:(NSURL *)url;
 - (void)refreshNewsItemListForController:(AVNNewsTableViewController *)newsItemListController withCompletionHandler:(void (^)())completionHandler;
+
+- (void)checkPermissionsForLocalNotificationOfType:(UIUserNotificationType)type thenScheduleBlock:(void (^)())notificationBlock;
+
 @end

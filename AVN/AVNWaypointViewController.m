@@ -127,6 +127,11 @@
     [self startLocationManager];
 }
 
+- (IBAction)rewindFromLocationMapWithTappedWaypoint:(UIStoryboardSegue *)segue
+{
+    [self configureView];
+}
+
 
 #pragma mark - CoreLocation
 

@@ -29,6 +29,9 @@
 #define kSegueRouteMapToFindNearestWaypoint             @"RouteMapToFindNearestWaypointSegue"
 #define kSegueRouteMapSpecificWaypointTapped            @"RouteMapSpecificWaypointTappedSegue"
 
+// Waypoint Map View
+#define kSegueSpecificWaypointTappedOnWaypointMap       @"SpecificWaypointTappedOnWaypointMapSegue"
+
 // News TableView
 #define kSegueNewsItemListToShowDetail                  @"NewsItemListToShowDetailSegue"
 #define kSegueNewsItemListPushNotAnimated               @"NewsItemListPushNotAnimatedSegue"

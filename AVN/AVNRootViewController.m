@@ -49,8 +49,12 @@
     [[NSUserDefaults standardUserDefaults] setInteger:unreadItemCount forKey:kAVNSetting_UnreadNewsItemsCount];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    // Set the application's badge to include the unread news items count
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:unreadItemCount];
+    NSInteger blockUnreadItemCount = unreadItemCount;
+    AVNAppDelegate *appDelegate = (AVNAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate checkPermissionsForLocalNotificationOfType:UIUserNotificationTypeBadge thenScheduleBlock:^{
+        // Set the application's badge to include the unread news items count
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:blockUnreadItemCount];
+    }];
     
     if ([self.tabBar.items count]>=kNewsItemTabBarIndex) {
         newsTabBarItem = self.tabBar.items[kNewsItemTabBarIndex];
