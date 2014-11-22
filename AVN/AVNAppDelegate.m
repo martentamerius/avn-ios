@@ -347,7 +347,7 @@
             
             if (self.shouldShowAlertView && (!self.alertViewActive)) {
                 // Permission has not been asked yet; question user first.
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Meldingen" message:@"De AVN app wilt u graag op de hoogte houden van AVN nieuws.\nWilt u daarvoor meldingen inschakelen?" delegate:self cancelButtonTitle:@"Nee" otherButtonTitles:@"Ja", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Meldingen" message:@"De AVN app wil u graag op de hoogte houden van AVN nieuws.\nWilt u daarvoor meldingen inschakelen?" delegate:self cancelButtonTitle:@"Nee" otherButtonTitles:@"Ja", nil];
                 alert.tag = 2;
                 [alert show];
                 self.alertViewActive = YES;
