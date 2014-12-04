@@ -40,10 +40,13 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ kAVNSetting_ResetApp:@NO,
                                                                kAVNSetting_ReadNewsItems:@[],
                                                                kAVNSetting_UnreadNewsItemsCount:@(0),
-                                                               kAVNSetting_MapViewType:@(0),
+                                                               kAVNSetting_MapViewType:@(1),
                                                                kAVNSetting_HideAlertForExternalURL:@NO,
                                                                kAVNSetting_TimestampForLastNewsDownload:@"",
                                                                kAVNSetting_ShowNewsItemsAsNotifications:@(-1) }];
+    
+    // Set background fetch interval to once a day for fetching news items
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:(3600*24)];
     
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         // iOS 8: Register the notification types

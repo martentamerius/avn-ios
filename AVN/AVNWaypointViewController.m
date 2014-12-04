@@ -187,7 +187,7 @@
     // Retrieve the last known location from the locations array
     CLLocation *currentLocation = [locations lastObject];
     
-    DLog(@"New location update: %@", currentLocation);
+    //DLog(@"New location update: %@", currentLocation);
     
     // Wait until the accuracy of the returned locations is within 100 meters
     if ((currentLocation.horizontalAccuracy>=0) && (currentLocation.horizontalAccuracy<100)) {

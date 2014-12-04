@@ -205,21 +205,21 @@
         [weakSelf.mapView.annotations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             id<MKAnnotation> annotation = (id<MKAnnotation>)obj;
             BOOL shouldAddPoint = (zoomToFullRoute && (annotation != weakSelf.mapView.userLocation));
-            double zoomInset = -600.0f;
+            double zoomInset = -800.0f;
             
             if (weakSelf.selectedWaypoint) {
                 CLLocationCoordinate2D annCoord = annotation.coordinate;
                 CLLocation *annLocation = [[CLLocation alloc] initWithLatitude:annCoord.latitude longitude:annCoord.longitude];
                 CLLocationDistance distanceFromSelection = [weakSelf.selectedWaypoint.gpsCoordinate distanceFromLocation:annLocation];
 
-                shouldAddPoint |= (annotation == weakSelf.mapView.userLocation) | (distanceFromSelection<25.0);
+                shouldAddPoint |= (distanceFromSelection<25.0);
                 if (shouldAddPoint)
-                    zoomInset = -2000.0f;
+                    zoomInset *= 2;
             }
             
             if (shouldAddPoint) {
                 MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-                MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
+                MKMapRect pointRect = MKMapRectMake(annotationPoint.x+zoomInset, annotationPoint.y+zoomInset, (-2*zoomInset), (-2*zoomInset));
                 if (MKMapRectIsNull(zoomRect)) {
                     zoomRect = pointRect;
                 } else {
