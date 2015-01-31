@@ -161,6 +161,9 @@
     // Background fetch: don't show any alert dialogs
     self.shouldShowAlertView = NO;
     __weak typeof(self) weakSelf = self;
+    
+    // Reinitialize automatic network activity indicator
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 
     // Check if we have permission to show notifications
     [self checkPermissionsForLocalNotificationOfType:UIUserNotificationTypeAlert thenScheduleBlock:^{
@@ -178,6 +181,11 @@
                 strongSelf.backgroundFetchCompletionHandler = completionHandler;
                 
                 [strongSelf refreshNewsItemListForController:nil withCompletionHandler:^{
+                    
+                    // Turn off automatic network activity indicator
+                    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:NO];
+
+                    // Check the fetch result
                     UIBackgroundFetchResult backgroundFetchResult = (strongSelf.backgroundFetchError)?UIBackgroundFetchResultFailed:UIBackgroundFetchResultNoData;
                     
                     if (strongSelf.numberOfNewPostedNewsItems >= 1) {

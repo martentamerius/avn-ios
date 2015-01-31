@@ -25,6 +25,7 @@
 		9B36F6E9195485B700D36CE6 /* AVNRouteListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36F6E8195485B700D36CE6 /* AVNRouteListTableViewCell.m */; };
 		9B3B519F18F6A0540066D315 /* AVNRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B519E18F6A0540066D315 /* AVNRoute.m */; };
 		9B5389251947EABB00D4D9C7 /* AVNMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */; };
+		9B65B8AC1A7D360800B8C27C /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B65B8AB1A7D360800B8C27C /* Launch Screen.xib */; };
 		9B7297C818F9DED900D1A95E /* AVNWaypointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */; };
 		9B7297CB18F9E3AB00D1A95E /* AVNWaypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297CA18F9E3AB00D1A95E /* AVNWaypoint.m */; };
 		9B7297CF18F9E57C00D1A95E /* AVNHTTPRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297CE18F9E57C00D1A95E /* AVNHTTPRequestFactory.m */; };
@@ -94,6 +95,7 @@
 		9B3B519E18F6A0540066D315 /* AVNRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRoute.m; sourceTree = "<group>"; };
 		9B5389231947EABB00D4D9C7 /* AVNMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNMapViewController.h; sourceTree = "<group>"; };
 		9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNMapViewController.m; sourceTree = "<group>"; };
+		9B65B8AB1A7D360800B8C27C /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		9B7297C618F9DED900D1A95E /* AVNWaypointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypointViewController.h; sourceTree = "<group>"; };
 		9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNWaypointViewController.m; sourceTree = "<group>"; };
 		9B7297C918F9E3AB00D1A95E /* AVNWaypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypoint.h; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		9B3B519A18F69FE10066D315 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B65B8AB1A7D360800B8C27C /* Launch Screen.xib */,
 				9B2A213118F5D3A20000B53B /* Main.storyboard */,
 				9BF0F4731948E2B000E6F7D5 /* Storyboard.h */,
 				9B36F6E7195485B700D36CE6 /* AVNRouteListTableViewCell.h */,
@@ -482,6 +485,7 @@
 				9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */,
 				9B1D6F4219CDCE52000B65E7 /* Main.storyboard in Resources */,
 				9BC2868619D9E17F002D33B8 /* app.css in Resources */,
+				9B65B8AC1A7D360800B8C27C /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
