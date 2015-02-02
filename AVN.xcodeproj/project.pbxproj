@@ -37,6 +37,8 @@
 		9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */; };
 		9BC2868619D9E17F002D33B8 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868419D9E17F002D33B8 /* app.css */; };
 		9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868519D9E17F002D33B8 /* about_avn.html */; };
+		9BC439EF1A7FA7B200D2F3D7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9BC439ED1A7FA7B200D2F3D7 /* LICENSE */; };
+		9BC439F01A7FA7B200D2F3D7 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9BC439EE1A7FA7B200D2F3D7 /* README.md */; };
 		9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */; };
 		9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */; };
 		9BF0F48E1948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4771948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m */; };
@@ -115,6 +117,8 @@
 		9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItemDetailViewController.m; sourceTree = "<group>"; };
 		9BC2868419D9E17F002D33B8 /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = app.css; path = include/app.css; sourceTree = "<group>"; };
 		9BC2868519D9E17F002D33B8 /* about_avn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_avn.html; sourceTree = "<group>"; };
+		9BC439ED1A7FA7B200D2F3D7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = "/Users/marten/Documents/Prive/•AVN/app/iOS/AVN/LICENSE"; sourceTree = "<absolute>"; };
+		9BC439EE1A7FA7B200D2F3D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "/Users/marten/Documents/Prive/•AVN/app/iOS/AVN/README.md"; sourceTree = "<absolute>"; };
 		9BCBD971194C4E790038F6F3 /* AVNNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewCell.h; sourceTree = "<group>"; };
 		9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewCell.m; sourceTree = "<group>"; };
 		9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -243,6 +247,8 @@
 		9B2A212618F5D3A20000B53B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9BC439ED1A7FA7B200D2F3D7 /* LICENSE */,
+				9BC439EE1A7FA7B200D2F3D7 /* README.md */,
 				9B3B519718F69D9D0066D315 /* Podfile */,
 				9B2A212718F5D3A20000B53B /* AVN-Info.plist */,
 				9B2A212B18F5D3A20000B53B /* main.m */,
@@ -483,6 +489,7 @@
 				9B14087519312A10007DA34A /* Settings.bundle in Resources */,
 				9BA2BA971A1BED7200744BDE /* Images.xcassets in Resources */,
 				9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */,
+				9BC439EF1A7FA7B200D2F3D7 /* LICENSE in Resources */,
 				9B1D6F4219CDCE52000B65E7 /* Main.storyboard in Resources */,
 				9BC2868619D9E17F002D33B8 /* app.css in Resources */,
 				9B65B8AC1A7D360800B8C27C /* Launch Screen.xib in Resources */,
@@ -589,6 +596,7 @@
 				9BF0F48F1948F13200E6F7D5 /* KMLLineString+MapKit.m in Sources */,
 				9B9921251909571E009AC8EF /* AVNAboutViewController.m in Sources */,
 				9BF0F4901948F13200E6F7D5 /* KMLPlacemark+MapKit.m in Sources */,
+				9BC439F01A7FA7B200D2F3D7 /* README.md in Sources */,
 				9B3B519F18F6A0540066D315 /* AVNRoute.m in Sources */,
 				9B7297C818F9DED900D1A95E /* AVNWaypointViewController.m in Sources */,
 				9BF0F4921948F13200E6F7D5 /* KMLPolygon+MapKit.m in Sources */,
