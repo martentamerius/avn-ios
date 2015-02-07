@@ -37,7 +37,6 @@
 		9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */; };
 		9BC2868619D9E17F002D33B8 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868419D9E17F002D33B8 /* app.css */; };
 		9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868519D9E17F002D33B8 /* about_avn.html */; };
-		9BC439EF1A7FA7B200D2F3D7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9BC439ED1A7FA7B200D2F3D7 /* LICENSE */; };
 		9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */; };
 		9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */; };
 		9BF0F48E1948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4771948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m */; };
@@ -488,7 +487,6 @@
 				9B14087519312A10007DA34A /* Settings.bundle in Resources */,
 				9BA2BA971A1BED7200744BDE /* Images.xcassets in Resources */,
 				9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */,
-				9BC439EF1A7FA7B200D2F3D7 /* LICENSE in Resources */,
 				9B1D6F4219CDCE52000B65E7 /* Main.storyboard in Resources */,
 				9BC2868619D9E17F002D33B8 /* app.css in Resources */,
 				9B65B8AC1A7D360800B8C27C /* Launch Screen.xib in Resources */,
