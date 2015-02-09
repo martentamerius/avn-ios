@@ -1,1 +1,0 @@
-PODS_AVNTESTS_MBPROGRESSHUD_OTHER_LDFLAGS = -framework "CoreGraphics"

@@ -1,1 +1,0 @@
-../../../iOS-KML-Framework/Classes/KMLMetadata.h

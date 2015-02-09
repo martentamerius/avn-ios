@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9B2A211B18F5D3A20000B53B"
+               BlueprintIdentifier = "9B45FB661A89472A001A08C3"
                BuildableName = "AVN.app"
                BlueprintName = "AVN"
                ReferencedContainer = "container:AVN.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9B2A213F18F5D3A20000B53B"
+               BlueprintIdentifier = "9B45FB821A89472B001A08C3"
                BuildableName = "AVNTests.xctest"
                BlueprintName = "AVNTests"
                ReferencedContainer = "container:AVN.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9B2A213F18F5D3A20000B53B"
+               BlueprintIdentifier = "9B45FB821A89472B001A08C3"
                BuildableName = "AVNTests.xctest"
                BlueprintName = "AVNTests"
                ReferencedContainer = "container:AVN.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9B2A211B18F5D3A20000B53B"
+            BlueprintIdentifier = "9B45FB661A89472A001A08C3"
             BuildableName = "AVN.app"
             BlueprintName = "AVN"
             ReferencedContainer = "container:AVN.xcodeproj">
@@ -75,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9B2A211B18F5D3A20000B53B"
+            BlueprintIdentifier = "9B45FB661A89472A001A08C3"
             BuildableName = "AVN.app"
             BlueprintName = "AVN"
             ReferencedContainer = "container:AVN.xcodeproj">
@@ -93,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9B2A211B18F5D3A20000B53B"
+            BlueprintIdentifier = "9B45FB661A89472A001A08C3"
             BuildableName = "AVN.app"
             BlueprintName = "AVN"
             ReferencedContainer = "container:AVN.xcodeproj">
