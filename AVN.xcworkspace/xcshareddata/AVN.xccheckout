@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>7062B5F1-19AF-4574-82F8-A2FF94622858</string>
+	<string>DD0C3F7F-009F-467C-B1B0-FD8A00235D6B</string>
 	<key>IDESourceControlProjectName</key>
 	<string>AVN</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>90F5AF9F589667136A5C50FF7EA1517A193A6FCE</key>
-		<string>https://github.com/martentamerius/avn-ios</string>
+		<string>https://github.com/martentamerius/avn-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AVN.xcworkspace</string>
@@ -21,7 +21,7 @@
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/martentamerius/avn-ios</string>
+	<string>https://github.com/martentamerius/avn-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
