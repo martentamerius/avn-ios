@@ -6,20 +6,18 @@
 	<dict>
 		<key>AVN.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9B2A211B18F5D3A20000B53B</key>
+		<key>9B45FB661A89472A001A08C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B2A213F18F5D3A20000B53B</key>
+		<key>9B45FB821A89472B001A08C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
