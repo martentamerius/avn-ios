@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB0CEDE867576C57D222CE57"
+               BlueprintIdentifier = "B3143AF781E3C36B3BF68B77"
                BuildableName = "libPods-AVNTests-ODRefreshControl.a"
                BlueprintName = "Pods-AVNTests-ODRefreshControl"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB0CEDE867576C57D222CE57"
+            BlueprintIdentifier = "B3143AF781E3C36B3BF68B77"
             BuildableName = "libPods-AVNTests-ODRefreshControl.a"
             BlueprintName = "Pods-AVNTests-ODRefreshControl"
             ReferencedContainer = "container:Pods.xcodeproj">

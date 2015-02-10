@@ -24,4 +24,3 @@ target 'AVNTests' do
     pod 'SDURLCache'
     pod 'iOS-KML-Framework', :git => 'https://github.com/FLCLjp/iOS-KML-Framework.git'    
 end
-

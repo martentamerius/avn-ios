@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F700700EB0B601DA85E93BE3"
+               BlueprintIdentifier = "2401B0FC225A62E0337B0D51"
                BuildableName = "libPods-AVN-HexColors.a"
                BlueprintName = "Pods-AVN-HexColors"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F700700EB0B601DA85E93BE3"
+            BlueprintIdentifier = "2401B0FC225A62E0337B0D51"
             BuildableName = "libPods-AVN-HexColors.a"
             BlueprintName = "Pods-AVN-HexColors"
             ReferencedContainer = "container:Pods.xcodeproj">

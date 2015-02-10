@@ -7,402 +7,368 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		404FF37C730E39DBD1D5A921 /* libPods-AVN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F63FB64A0CF3FC2668CFCD7 /* libPods-AVN.a */; };
-		69759E9633FA410C2560DD79 /* libPods-AVNTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB78FF70F6177DBED1B1F0F /* libPods-AVNTests.a */; };
-		9B14087519312A10007DA34A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B14087419312A10007DA34A /* Settings.bundle */; };
-		9B2901191A869B51000556C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B2901181A869B51000556C1 /* LaunchScreen.xib */; };
-		9B29011D1A869CB6000556C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B29011C1A869CB6000556C1 /* Main.storyboard */; };
-		9B2A212018F5D3A20000B53B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A211F18F5D3A20000B53B /* Foundation.framework */; };
-		9B2A212218F5D3A20000B53B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A212118F5D3A20000B53B /* CoreGraphics.framework */; };
-		9B2A212418F5D3A20000B53B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A212318F5D3A20000B53B /* UIKit.framework */; };
-		9B2A212C18F5D3A20000B53B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A212B18F5D3A20000B53B /* main.m */; };
-		9B2A213018F5D3A20000B53B /* AVNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A212F18F5D3A20000B53B /* AVNAppDelegate.m */; };
-		9B2A213618F5D3A20000B53B /* AVNRouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A213518F5D3A20000B53B /* AVNRouteListViewController.m */; };
-		9B2A213918F5D3A20000B53B /* AVNRouteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A213818F5D3A20000B53B /* AVNRouteDetailViewController.m */; };
-		9B2A214318F5D3A20000B53B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A211F18F5D3A20000B53B /* Foundation.framework */; };
-		9B2A214418F5D3A20000B53B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A212318F5D3A20000B53B /* UIKit.framework */; };
-		9B2A214E18F5D3A20000B53B /* AVNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A214D18F5D3A20000B53B /* AVNTests.m */; };
-		9B2A215E18F5EE470000B53B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2A215D18F5EE470000B53B /* CoreLocation.framework */; };
-		9B36F6E9195485B700D36CE6 /* AVNRouteListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36F6E8195485B700D36CE6 /* AVNRouteListTableViewCell.m */; };
-		9B3B519F18F6A0540066D315 /* AVNRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B519E18F6A0540066D315 /* AVNRoute.m */; };
-		9B5389251947EABB00D4D9C7 /* AVNMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */; };
-		9B7297C818F9DED900D1A95E /* AVNWaypointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */; };
-		9B7297CB18F9E3AB00D1A95E /* AVNWaypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297CA18F9E3AB00D1A95E /* AVNWaypoint.m */; };
-		9B7297CF18F9E57C00D1A95E /* AVNHTTPRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7297CE18F9E57C00D1A95E /* AVNHTTPRequestFactory.m */; };
-		9B7B5B7119070DCF000882E7 /* AVNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7B5B7019070DCF000882E7 /* AVNRootViewController.m */; };
-		9B9921251909571E009AC8EF /* AVNAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9921241909571E009AC8EF /* AVNAboutViewController.m */; };
-		9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */; };
-		9BA2BA971A1BED7200744BDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BA2BA961A1BED7200744BDE /* Images.xcassets */; };
-		9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA610192D207700BC372D /* AVNNewsItem.m */; };
-		9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */; };
-		9BC2868619D9E17F002D33B8 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868419D9E17F002D33B8 /* app.css */; };
-		9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2868519D9E17F002D33B8 /* about_avn.html */; };
-		9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */; };
-		9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */; };
-		9BF0F48E1948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4771948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m */; };
-		9BF0F48F1948F13200E6F7D5 /* KMLLineString+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4791948F13200E6F7D5 /* KMLLineString+MapKit.m */; };
-		9BF0F4901948F13200E6F7D5 /* KMLPlacemark+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F47B1948F13200E6F7D5 /* KMLPlacemark+MapKit.m */; };
-		9BF0F4911948F13200E6F7D5 /* KMLPoint+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F47D1948F13200E6F7D5 /* KMLPoint+MapKit.m */; };
-		9BF0F4921948F13200E6F7D5 /* KMLPolygon+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F47F1948F13200E6F7D5 /* KMLPolygon+MapKit.m */; };
-		9BF0F4931948F13200E6F7D5 /* KMLRoot+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4811948F13200E6F7D5 /* KMLRoot+MapKit.m */; };
-		9BF0F4941948F13200E6F7D5 /* MKAnnotationView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4841948F13200E6F7D5 /* MKAnnotationView+KML.m */; };
-		9BF0F4951948F13200E6F7D5 /* MKOverlayView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4871948F13200E6F7D5 /* MKOverlayView+KML.m */; };
-		9BF0F4961948F13200E6F7D5 /* MKPolygonView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F4891948F13200E6F7D5 /* MKPolygonView+KML.m */; };
-		9BF0F4971948F13200E6F7D5 /* MKPolylineView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F48B1948F13200E6F7D5 /* MKPolylineView+KML.m */; };
-		9BF0F4981948F13200E6F7D5 /* MKShape+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F48D1948F13200E6F7D5 /* MKShape+KML.m */; };
-		9BF9EE1F1933B93500E5E9D6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF9EE1E1933B93500E5E9D6 /* SystemConfiguration.framework */; };
-		9BF9EE211933B94400E5E9D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF9EE201933B94400E5E9D6 /* MobileCoreServices.framework */; };
+		0A6A14FFCAA8ED10EA4B4387 /* libPods-AVNTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D56354215700C037D9B2B61E /* libPods-AVNTests.a */; };
+		1C4384F657C5A54D1CDA3E22 /* libPods-AVN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B37B0A703AA7345AEA8DEAD /* libPods-AVN.a */; };
+		9B45FB6D1A89472A001A08C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FB6C1A89472A001A08C3 /* main.m */; };
+		9B45FB8A1A89472B001A08C3 /* AVNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FB891A89472B001A08C3 /* AVNTests.m */; };
+		9B45FBD61A8948D1001A08C3 /* about_avn.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FB931A8948D1001A08C3 /* about_avn.html */; };
+		9B45FBD71A8948D1001A08C3 /* AVNAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FB961A8948D1001A08C3 /* AVNAboutViewController.m */; };
+		9B45FBD81A8948D1001A08C3 /* AVNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FB981A8948D1001A08C3 /* AVNAppDelegate.m */; };
+		9B45FBD91A8948D1001A08C3 /* AVNHTTPRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FB9A1A8948D1001A08C3 /* AVNHTTPRequestFactory.m */; };
+		9B45FBDA1A8948D1001A08C3 /* AVNMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FB9C1A8948D1001A08C3 /* AVNMapViewController.m */; };
+		9B45FBDB1A8948D1001A08C3 /* AVNNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FB9E1A8948D1001A08C3 /* AVNNewsItem.m */; };
+		9B45FBDC1A8948D1001A08C3 /* AVNNewsItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBA01A8948D1001A08C3 /* AVNNewsItemDetailViewController.m */; };
+		9B45FBDD1A8948D1001A08C3 /* AVNNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBA21A8948D1001A08C3 /* AVNNewsTableViewCell.m */; };
+		9B45FBDE1A8948D1001A08C3 /* AVNNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBA41A8948D1001A08C3 /* AVNNewsTableViewController.m */; };
+		9B45FBDF1A8948D1001A08C3 /* AVNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBA61A8948D1001A08C3 /* AVNRootViewController.m */; };
+		9B45FBE01A8948D1001A08C3 /* AVNRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBA81A8948D1001A08C3 /* AVNRoute.m */; };
+		9B45FBE11A8948D1001A08C3 /* AVNRouteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBAA1A8948D1001A08C3 /* AVNRouteDetailViewController.m */; };
+		9B45FBE21A8948D1001A08C3 /* AVNRouteListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBAC1A8948D1001A08C3 /* AVNRouteListTableViewCell.m */; };
+		9B45FBE31A8948D1001A08C3 /* AVNRouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBAE1A8948D1001A08C3 /* AVNRouteListViewController.m */; };
+		9B45FBE41A8948D1001A08C3 /* AVNWaypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBB01A8948D1001A08C3 /* AVNWaypoint.m */; };
+		9B45FBE51A8948D1001A08C3 /* AVNWaypointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBB21A8948D1001A08C3 /* AVNWaypointViewController.m */; };
+		9B45FBE61A8948D1001A08C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FBB31A8948D1001A08C3 /* Images.xcassets */; };
+		9B45FBE71A8948D1001A08C3 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FBB51A8948D1001A08C3 /* app.css */; };
+		9B45FBE91A8948D1001A08C3 /* KMLAbstractGeometry+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBBA1A8948D1001A08C3 /* KMLAbstractGeometry+MapKit.m */; };
+		9B45FBEA1A8948D1001A08C3 /* KMLLineString+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBBC1A8948D1001A08C3 /* KMLLineString+MapKit.m */; };
+		9B45FBEB1A8948D1001A08C3 /* KMLPlacemark+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBBE1A8948D1001A08C3 /* KMLPlacemark+MapKit.m */; };
+		9B45FBEC1A8948D1001A08C3 /* KMLPoint+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBC01A8948D1001A08C3 /* KMLPoint+MapKit.m */; };
+		9B45FBED1A8948D1001A08C3 /* KMLPolygon+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBC21A8948D1001A08C3 /* KMLPolygon+MapKit.m */; };
+		9B45FBEE1A8948D1001A08C3 /* KMLRoot+MapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBC41A8948D1001A08C3 /* KMLRoot+MapKit.m */; };
+		9B45FBF21A8948D1001A08C3 /* MKAnnotationView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBCA1A8948D1001A08C3 /* MKAnnotationView+KML.m */; };
+		9B45FBF31A8948D1001A08C3 /* MKOverlayView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBCD1A8948D1001A08C3 /* MKOverlayView+KML.m */; };
+		9B45FBF41A8948D1001A08C3 /* MKPolygonView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBCF1A8948D1001A08C3 /* MKPolygonView+KML.m */; };
+		9B45FBF51A8948D1001A08C3 /* MKPolylineView+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBD11A8948D1001A08C3 /* MKPolylineView+KML.m */; };
+		9B45FBF61A8948D1001A08C3 /* MKShape+KML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B45FBD31A8948D1001A08C3 /* MKShape+KML.m */; };
+		9B45FBF71A8948D1001A08C3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FBD41A8948D1001A08C3 /* Settings.bundle */; };
+		9B45FC021A8952B2001A08C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FC041A8952B2001A08C3 /* LaunchScreen.xib */; };
+		9B45FC071A89547B001A08C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FC091A89547B001A08C3 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9B2A214518F5D3A20000B53B /* PBXContainerItemProxy */ = {
+		9B45FB841A89472B001A08C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9B2A211418F5D3A20000B53B /* Project object */;
+			containerPortal = 9B45FB5F1A89472A001A08C3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B2A211B18F5D3A20000B53B;
+			remoteGlobalIDString = 9B45FB661A89472A001A08C3;
 			remoteInfo = AVN;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0862C192C5E842BB1DCE596B /* Pods-AVNTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.release.xcconfig"; sourceTree = "<group>"; };
-		6AB78FF70F6177DBED1B1F0F /* libPods-AVNTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVNTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		70B761D98240DE217ACFC293 /* Pods-AVN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.debug.xcconfig"; sourceTree = "<group>"; };
-		7F63FB64A0CF3FC2668CFCD7 /* libPods-AVN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B14087419312A10007DA34A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		9B2901181A869B51000556C1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		9B29011C1A869CB6000556C1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		9B2A211C18F5D3A20000B53B /* AVN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVN.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B2A211F18F5D3A20000B53B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9B2A212118F5D3A20000B53B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9B2A212318F5D3A20000B53B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9B2A212718F5D3A20000B53B /* AVN-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AVN-Info.plist"; sourceTree = "<group>"; };
-		9B2A212B18F5D3A20000B53B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9B2A212D18F5D3A20000B53B /* AVN-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVN-Prefix.pch"; sourceTree = "<group>"; };
-		9B2A212E18F5D3A20000B53B /* AVNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVNAppDelegate.h; sourceTree = "<group>"; };
-		9B2A212F18F5D3A20000B53B /* AVNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVNAppDelegate.m; sourceTree = "<group>"; };
-		9B2A213418F5D3A20000B53B /* AVNRouteListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVNRouteListViewController.h; sourceTree = "<group>"; };
-		9B2A213518F5D3A20000B53B /* AVNRouteListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVNRouteListViewController.m; sourceTree = "<group>"; };
-		9B2A213718F5D3A20000B53B /* AVNRouteDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVNRouteDetailViewController.h; sourceTree = "<group>"; };
-		9B2A213818F5D3A20000B53B /* AVNRouteDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVNRouteDetailViewController.m; sourceTree = "<group>"; };
-		9B2A214018F5D3A20000B53B /* AVNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B2A214918F5D3A20000B53B /* AVNTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AVNTests-Info.plist"; sourceTree = "<group>"; };
-		9B2A214D18F5D3A20000B53B /* AVNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVNTests.m; sourceTree = "<group>"; };
-		9B2A215D18F5EE470000B53B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		9B36F6E7195485B700D36CE6 /* AVNRouteListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRouteListTableViewCell.h; sourceTree = "<group>"; };
-		9B36F6E8195485B700D36CE6 /* AVNRouteListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRouteListTableViewCell.m; sourceTree = "<group>"; };
-		9B3B519718F69D9D0066D315 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B3B519D18F6A0540066D315 /* AVNRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRoute.h; sourceTree = "<group>"; };
-		9B3B519E18F6A0540066D315 /* AVNRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRoute.m; sourceTree = "<group>"; };
-		9B5389231947EABB00D4D9C7 /* AVNMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNMapViewController.h; sourceTree = "<group>"; };
-		9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNMapViewController.m; sourceTree = "<group>"; };
-		9B7297C618F9DED900D1A95E /* AVNWaypointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypointViewController.h; sourceTree = "<group>"; };
-		9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNWaypointViewController.m; sourceTree = "<group>"; };
-		9B7297C918F9E3AB00D1A95E /* AVNWaypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypoint.h; sourceTree = "<group>"; };
-		9B7297CA18F9E3AB00D1A95E /* AVNWaypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNWaypoint.m; sourceTree = "<group>"; };
-		9B7297CD18F9E57C00D1A95E /* AVNHTTPRequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNHTTPRequestFactory.h; sourceTree = "<group>"; };
-		9B7297CE18F9E57C00D1A95E /* AVNHTTPRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNHTTPRequestFactory.m; sourceTree = "<group>"; };
-		9B7B5B6F19070DCE000882E7 /* AVNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRootViewController.h; sourceTree = "<group>"; };
-		9B7B5B7019070DCF000882E7 /* AVNRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRootViewController.m; sourceTree = "<group>"; };
-		9B9921231909571E009AC8EF /* AVNAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNAboutViewController.h; sourceTree = "<group>"; };
-		9B9921241909571E009AC8EF /* AVNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNAboutViewController.m; sourceTree = "<group>"; };
-		9B992126190957CD009AC8EF /* AVNNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewController.h; sourceTree = "<group>"; };
-		9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewController.m; sourceTree = "<group>"; };
-		9BA2BA961A1BED7200744BDE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9BBBA60F192D207700BC372D /* AVNNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItem.h; sourceTree = "<group>"; };
-		9BBBA610192D207700BC372D /* AVNNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItem.m; sourceTree = "<group>"; };
-		9BBBA612192D280C00BC372D /* AVNNewsItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItemDetailViewController.h; sourceTree = "<group>"; };
-		9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItemDetailViewController.m; sourceTree = "<group>"; };
-		9BC2868419D9E17F002D33B8 /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = app.css; path = include/app.css; sourceTree = "<group>"; };
-		9BC2868519D9E17F002D33B8 /* about_avn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_avn.html; sourceTree = "<group>"; };
-		9BC439ED1A7FA7B200D2F3D7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = "/Users/marten/Documents/Prive/•AVN/app/iOS/AVN/LICENSE"; sourceTree = "<absolute>"; };
-		9BC439EE1A7FA7B200D2F3D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "/Users/marten/Documents/Prive/•AVN/app/iOS/AVN/README.md"; sourceTree = "<absolute>"; };
-		9BCBD971194C4E790038F6F3 /* AVNNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewCell.h; sourceTree = "<group>"; };
-		9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewCell.m; sourceTree = "<group>"; };
-		9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		9BF0F4731948E2B000E6F7D5 /* Storyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Storyboard.h; sourceTree = "<group>"; };
-		9BF0F4751948F13200E6F7D5 /* KML+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KML+MapKit.h"; sourceTree = "<group>"; };
-		9BF0F4761948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLAbstractGeometry+MapKit.h"; sourceTree = "<group>"; };
-		9BF0F4771948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLAbstractGeometry+MapKit.m"; sourceTree = "<group>"; };
-		9BF0F4781948F13200E6F7D5 /* KMLLineString+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLLineString+MapKit.h"; sourceTree = "<group>"; };
-		9BF0F4791948F13200E6F7D5 /* KMLLineString+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLLineString+MapKit.m"; sourceTree = "<group>"; };
-		9BF0F47A1948F13200E6F7D5 /* KMLPlacemark+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLPlacemark+MapKit.h"; sourceTree = "<group>"; };
-		9BF0F47B1948F13200E6F7D5 /* KMLPlacemark+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLPlacemark+MapKit.m"; sourceTree = "<group>"; };
-		9BF0F47C1948F13200E6F7D5 /* KMLPoint+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLPoint+MapKit.h"; sourceTree = "<group>"; };
-		9BF0F47D1948F13200E6F7D5 /* KMLPoint+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLPoint+MapKit.m"; sourceTree = "<group>"; };
-		9BF0F47E1948F13200E6F7D5 /* KMLPolygon+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLPolygon+MapKit.h"; sourceTree = "<group>"; };
-		9BF0F47F1948F13200E6F7D5 /* KMLPolygon+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLPolygon+MapKit.m"; sourceTree = "<group>"; };
-		9BF0F4801948F13200E6F7D5 /* KMLRoot+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLRoot+MapKit.h"; sourceTree = "<group>"; };
-		9BF0F4811948F13200E6F7D5 /* KMLRoot+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLRoot+MapKit.m"; sourceTree = "<group>"; };
-		9BF0F4831948F13200E6F7D5 /* MKAnnotationView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+KML.h"; sourceTree = "<group>"; };
-		9BF0F4841948F13200E6F7D5 /* MKAnnotationView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+KML.m"; sourceTree = "<group>"; };
-		9BF0F4851948F13200E6F7D5 /* MKMap+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMap+KML.h"; sourceTree = "<group>"; };
-		9BF0F4861948F13200E6F7D5 /* MKOverlayView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKOverlayView+KML.h"; sourceTree = "<group>"; };
-		9BF0F4871948F13200E6F7D5 /* MKOverlayView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKOverlayView+KML.m"; sourceTree = "<group>"; };
-		9BF0F4881948F13200E6F7D5 /* MKPolygonView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolygonView+KML.h"; sourceTree = "<group>"; };
-		9BF0F4891948F13200E6F7D5 /* MKPolygonView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolygonView+KML.m"; sourceTree = "<group>"; };
-		9BF0F48A1948F13200E6F7D5 /* MKPolylineView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolylineView+KML.h"; sourceTree = "<group>"; };
-		9BF0F48B1948F13200E6F7D5 /* MKPolylineView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolylineView+KML.m"; sourceTree = "<group>"; };
-		9BF0F48C1948F13200E6F7D5 /* MKShape+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKShape+KML.h"; sourceTree = "<group>"; };
-		9BF0F48D1948F13200E6F7D5 /* MKShape+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKShape+KML.m"; sourceTree = "<group>"; };
-		9BF9EE1E1933B93500E5E9D6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9BF9EE201933B94400E5E9D6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		AC5612AD078670E677E04FD7 /* Pods-AVN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.release.xcconfig"; sourceTree = "<group>"; };
-		E37BBAEF675C30D6B92D20E4 /* Pods-AVNTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B37B0A703AA7345AEA8DEAD /* libPods-AVN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7653E7DA56D33254D6755E71 /* Pods-AVNTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9678BE51C965FA87C4942E7B /* Pods-AVNTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.release.xcconfig"; sourceTree = "<group>"; };
+		9B45FB671A89472A001A08C3 /* AVN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVN.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B45FB6B1A89472A001A08C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B45FB6C1A89472A001A08C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B45FB831A89472B001A08C3 /* AVNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B45FB881A89472B001A08C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B45FB891A89472B001A08C3 /* AVNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVNTests.m; sourceTree = "<group>"; };
+		9B45FB931A8948D1001A08C3 /* about_avn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_avn.html; sourceTree = "<group>"; };
+		9B45FB941A8948D1001A08C3 /* AVN-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVN-Prefix.pch"; sourceTree = "<group>"; };
+		9B45FB951A8948D1001A08C3 /* AVNAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNAboutViewController.h; sourceTree = "<group>"; };
+		9B45FB961A8948D1001A08C3 /* AVNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNAboutViewController.m; sourceTree = "<group>"; };
+		9B45FB971A8948D1001A08C3 /* AVNAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNAppDelegate.h; sourceTree = "<group>"; };
+		9B45FB981A8948D1001A08C3 /* AVNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNAppDelegate.m; sourceTree = "<group>"; };
+		9B45FB991A8948D1001A08C3 /* AVNHTTPRequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNHTTPRequestFactory.h; sourceTree = "<group>"; };
+		9B45FB9A1A8948D1001A08C3 /* AVNHTTPRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNHTTPRequestFactory.m; sourceTree = "<group>"; };
+		9B45FB9B1A8948D1001A08C3 /* AVNMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNMapViewController.h; sourceTree = "<group>"; };
+		9B45FB9C1A8948D1001A08C3 /* AVNMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNMapViewController.m; sourceTree = "<group>"; };
+		9B45FB9D1A8948D1001A08C3 /* AVNNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItem.h; sourceTree = "<group>"; };
+		9B45FB9E1A8948D1001A08C3 /* AVNNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItem.m; sourceTree = "<group>"; };
+		9B45FB9F1A8948D1001A08C3 /* AVNNewsItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsItemDetailViewController.h; sourceTree = "<group>"; };
+		9B45FBA01A8948D1001A08C3 /* AVNNewsItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsItemDetailViewController.m; sourceTree = "<group>"; };
+		9B45FBA11A8948D1001A08C3 /* AVNNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewCell.h; sourceTree = "<group>"; };
+		9B45FBA21A8948D1001A08C3 /* AVNNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewCell.m; sourceTree = "<group>"; };
+		9B45FBA31A8948D1001A08C3 /* AVNNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNNewsTableViewController.h; sourceTree = "<group>"; };
+		9B45FBA41A8948D1001A08C3 /* AVNNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNNewsTableViewController.m; sourceTree = "<group>"; };
+		9B45FBA51A8948D1001A08C3 /* AVNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRootViewController.h; sourceTree = "<group>"; };
+		9B45FBA61A8948D1001A08C3 /* AVNRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRootViewController.m; sourceTree = "<group>"; };
+		9B45FBA71A8948D1001A08C3 /* AVNRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRoute.h; sourceTree = "<group>"; };
+		9B45FBA81A8948D1001A08C3 /* AVNRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRoute.m; sourceTree = "<group>"; };
+		9B45FBA91A8948D1001A08C3 /* AVNRouteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRouteDetailViewController.h; sourceTree = "<group>"; };
+		9B45FBAA1A8948D1001A08C3 /* AVNRouteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRouteDetailViewController.m; sourceTree = "<group>"; };
+		9B45FBAB1A8948D1001A08C3 /* AVNRouteListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRouteListTableViewCell.h; sourceTree = "<group>"; };
+		9B45FBAC1A8948D1001A08C3 /* AVNRouteListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRouteListTableViewCell.m; sourceTree = "<group>"; };
+		9B45FBAD1A8948D1001A08C3 /* AVNRouteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNRouteListViewController.h; sourceTree = "<group>"; };
+		9B45FBAE1A8948D1001A08C3 /* AVNRouteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNRouteListViewController.m; sourceTree = "<group>"; };
+		9B45FBAF1A8948D1001A08C3 /* AVNWaypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypoint.h; sourceTree = "<group>"; };
+		9B45FBB01A8948D1001A08C3 /* AVNWaypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNWaypoint.m; sourceTree = "<group>"; };
+		9B45FBB11A8948D1001A08C3 /* AVNWaypointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVNWaypointViewController.h; sourceTree = "<group>"; };
+		9B45FBB21A8948D1001A08C3 /* AVNWaypointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVNWaypointViewController.m; sourceTree = "<group>"; };
+		9B45FBB31A8948D1001A08C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9B45FBB51A8948D1001A08C3 /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
+		9B45FBB81A8948D1001A08C3 /* KML+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KML+MapKit.h"; sourceTree = "<group>"; };
+		9B45FBB91A8948D1001A08C3 /* KMLAbstractGeometry+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLAbstractGeometry+MapKit.h"; sourceTree = "<group>"; };
+		9B45FBBA1A8948D1001A08C3 /* KMLAbstractGeometry+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLAbstractGeometry+MapKit.m"; sourceTree = "<group>"; };
+		9B45FBBB1A8948D1001A08C3 /* KMLLineString+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLLineString+MapKit.h"; sourceTree = "<group>"; };
+		9B45FBBC1A8948D1001A08C3 /* KMLLineString+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLLineString+MapKit.m"; sourceTree = "<group>"; };
+		9B45FBBD1A8948D1001A08C3 /* KMLPlacemark+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLPlacemark+MapKit.h"; sourceTree = "<group>"; };
+		9B45FBBE1A8948D1001A08C3 /* KMLPlacemark+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLPlacemark+MapKit.m"; sourceTree = "<group>"; };
+		9B45FBBF1A8948D1001A08C3 /* KMLPoint+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLPoint+MapKit.h"; sourceTree = "<group>"; };
+		9B45FBC01A8948D1001A08C3 /* KMLPoint+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLPoint+MapKit.m"; sourceTree = "<group>"; };
+		9B45FBC11A8948D1001A08C3 /* KMLPolygon+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLPolygon+MapKit.h"; sourceTree = "<group>"; };
+		9B45FBC21A8948D1001A08C3 /* KMLPolygon+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLPolygon+MapKit.m"; sourceTree = "<group>"; };
+		9B45FBC31A8948D1001A08C3 /* KMLRoot+MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KMLRoot+MapKit.h"; sourceTree = "<group>"; };
+		9B45FBC41A8948D1001A08C3 /* KMLRoot+MapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KMLRoot+MapKit.m"; sourceTree = "<group>"; };
+		9B45FBC91A8948D1001A08C3 /* MKAnnotationView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+KML.h"; sourceTree = "<group>"; };
+		9B45FBCA1A8948D1001A08C3 /* MKAnnotationView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+KML.m"; sourceTree = "<group>"; };
+		9B45FBCB1A8948D1001A08C3 /* MKMap+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMap+KML.h"; sourceTree = "<group>"; };
+		9B45FBCC1A8948D1001A08C3 /* MKOverlayView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKOverlayView+KML.h"; sourceTree = "<group>"; };
+		9B45FBCD1A8948D1001A08C3 /* MKOverlayView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKOverlayView+KML.m"; sourceTree = "<group>"; };
+		9B45FBCE1A8948D1001A08C3 /* MKPolygonView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolygonView+KML.h"; sourceTree = "<group>"; };
+		9B45FBCF1A8948D1001A08C3 /* MKPolygonView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolygonView+KML.m"; sourceTree = "<group>"; };
+		9B45FBD01A8948D1001A08C3 /* MKPolylineView+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolylineView+KML.h"; sourceTree = "<group>"; };
+		9B45FBD11A8948D1001A08C3 /* MKPolylineView+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolylineView+KML.m"; sourceTree = "<group>"; };
+		9B45FBD21A8948D1001A08C3 /* MKShape+KML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKShape+KML.h"; sourceTree = "<group>"; };
+		9B45FBD31A8948D1001A08C3 /* MKShape+KML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKShape+KML.m"; sourceTree = "<group>"; };
+		9B45FBD41A8948D1001A08C3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		9B45FBD51A8948D1001A08C3 /* Storyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storyboard.h; sourceTree = "<group>"; };
+		9B45FC061A8952C5001A08C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		9B45FC081A89547B001A08C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9B45FC0A1A8955B2001A08C3 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		9B45FC0B1A8955B2001A08C3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		CE2E891DFD6AC2F213215C7F /* Pods-AVN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.debug.xcconfig"; sourceTree = "<group>"; };
+		D56354215700C037D9B2B61E /* libPods-AVNTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVNTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6C6D765AE9E1642BF786CFC /* Pods-AVN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9B2A211918F5D3A20000B53B /* Frameworks */ = {
+		9B45FB641A89472A001A08C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BF9EE211933B94400E5E9D6 /* MobileCoreServices.framework in Frameworks */,
-				9BF9EE1F1933B93500E5E9D6 /* SystemConfiguration.framework in Frameworks */,
-				9B2A215E18F5EE470000B53B /* CoreLocation.framework in Frameworks */,
-				9B2A212218F5D3A20000B53B /* CoreGraphics.framework in Frameworks */,
-				9B2A212418F5D3A20000B53B /* UIKit.framework in Frameworks */,
-				9B2A212018F5D3A20000B53B /* Foundation.framework in Frameworks */,
-				9BE4E48B1927EFEC0021CEE4 /* MapKit.framework in Frameworks */,
-				404FF37C730E39DBD1D5A921 /* libPods-AVN.a in Frameworks */,
+				1C4384F657C5A54D1CDA3E22 /* libPods-AVN.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B2A213D18F5D3A20000B53B /* Frameworks */ = {
+		9B45FB801A89472B001A08C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B2A214418F5D3A20000B53B /* UIKit.framework in Frameworks */,
-				9B2A214318F5D3A20000B53B /* Foundation.framework in Frameworks */,
-				69759E9633FA410C2560DD79 /* libPods-AVNTests.a in Frameworks */,
+				0A6A14FFCAA8ED10EA4B4387 /* libPods-AVNTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		865746A0D792C0D44CCBFCFE /* Pods */ = {
+		718AE714808F11FEACBF2CEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				70B761D98240DE217ACFC293 /* Pods-AVN.debug.xcconfig */,
-				AC5612AD078670E677E04FD7 /* Pods-AVN.release.xcconfig */,
-				E37BBAEF675C30D6B92D20E4 /* Pods-AVNTests.debug.xcconfig */,
-				0862C192C5E842BB1DCE596B /* Pods-AVNTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		9B2A211318F5D3A20000B53B = {
-			isa = PBXGroup;
-			children = (
-				9B2A212518F5D3A20000B53B /* AVN */,
-				9B2A214718F5D3A20000B53B /* AVNTests */,
-				9B2A211E18F5D3A20000B53B /* Frameworks */,
-				9B2A211D18F5D3A20000B53B /* Products */,
-				865746A0D792C0D44CCBFCFE /* Pods */,
-			);
-			sourceTree = "<group>";
-		};
-		9B2A211D18F5D3A20000B53B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9B2A211C18F5D3A20000B53B /* AVN.app */,
-				9B2A214018F5D3A20000B53B /* AVNTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9B2A211E18F5D3A20000B53B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9BF9EE201933B94400E5E9D6 /* MobileCoreServices.framework */,
-				9BF9EE1E1933B93500E5E9D6 /* SystemConfiguration.framework */,
-				9BE4E48A1927EFEC0021CEE4 /* MapKit.framework */,
-				9B2A215D18F5EE470000B53B /* CoreLocation.framework */,
-				9B2A211F18F5D3A20000B53B /* Foundation.framework */,
-				9B2A212118F5D3A20000B53B /* CoreGraphics.framework */,
-				9B2A212318F5D3A20000B53B /* UIKit.framework */,
-				7F63FB64A0CF3FC2668CFCD7 /* libPods-AVN.a */,
-				6AB78FF70F6177DBED1B1F0F /* libPods-AVNTests.a */,
+				5B37B0A703AA7345AEA8DEAD /* libPods-AVN.a */,
+				D56354215700C037D9B2B61E /* libPods-AVNTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9B2A212518F5D3A20000B53B /* AVN */ = {
+		9B45FB5E1A89472A001A08C3 = {
 			isa = PBXGroup;
 			children = (
-				9B2A212E18F5D3A20000B53B /* AVNAppDelegate.h */,
-				9B2A212F18F5D3A20000B53B /* AVNAppDelegate.m */,
-				9B3B519B18F69FF50066D315 /* Controller */,
-				9B3B519A18F69FE10066D315 /* View */,
-				9B3B519918F69FD40066D315 /* Model */,
-				9B7297CC18F9E54D00D1A95E /* Services */,
-				9B3B519C18F6A0110066D315 /* Resources */,
-				9B2A212618F5D3A20000B53B /* Supporting Files */,
+				9B45FB691A89472A001A08C3 /* AVN */,
+				9B45FB861A89472B001A08C3 /* AVNTests */,
+				9B45FB681A89472A001A08C3 /* Products */,
+				D7F626A7D66507099F427053 /* Pods */,
+				718AE714808F11FEACBF2CEF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9B45FB681A89472A001A08C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B45FB671A89472A001A08C3 /* AVN.app */,
+				9B45FB831A89472B001A08C3 /* AVNTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B45FB691A89472A001A08C3 /* AVN */ = {
+			isa = PBXGroup;
+			children = (
+				9B45FB971A8948D1001A08C3 /* AVNAppDelegate.h */,
+				9B45FB981A8948D1001A08C3 /* AVNAppDelegate.m */,
+				9B45FBF81A8948EB001A08C3 /* Controller */,
+				9B45FBFA1A8948FF001A08C3 /* View */,
+				9B45FBF91A8948F3001A08C3 /* Model */,
+				9BC499851A895B7700208882 /* Services */,
+				9B45FBFB1A89492E001A08C3 /* Resources */,
+				9B45FB6A1A89472A001A08C3 /* Supporting Files */,
 			);
 			path = AVN;
 			sourceTree = "<group>";
 		};
-		9B2A212618F5D3A20000B53B /* Supporting Files */ = {
+		9B45FB6A1A89472A001A08C3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9BC439ED1A7FA7B200D2F3D7 /* LICENSE */,
-				9BC439EE1A7FA7B200D2F3D7 /* README.md */,
-				9B3B519718F69D9D0066D315 /* Podfile */,
-				9B2A212718F5D3A20000B53B /* AVN-Info.plist */,
-				9B2A212B18F5D3A20000B53B /* main.m */,
-				9B2A212D18F5D3A20000B53B /* AVN-Prefix.pch */,
-				9BF0F4741948F13200E6F7D5 /* KML+MapKit */,
-				9BF0F4821948F13200E6F7D5 /* MKMap+KML */,
+				9B45FB6B1A89472A001A08C3 /* Info.plist */,
+				9B45FB941A8948D1001A08C3 /* AVN-Prefix.pch */,
+				9B45FB6C1A89472A001A08C3 /* main.m */,
+				9B45FBB71A8948D1001A08C3 /* KML+MapKit */,
+				9B45FBC81A8948D1001A08C3 /* MKMap+KML */,
+				9B45FBB41A8948D1001A08C3 /* include */,
+				9B45FB931A8948D1001A08C3 /* about_avn.html */,
+				9B45FBD41A8948D1001A08C3 /* Settings.bundle */,
+				9B45FC0A1A8955B2001A08C3 /* LICENSE */,
+				9B45FC0B1A8955B2001A08C3 /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9B2A214718F5D3A20000B53B /* AVNTests */ = {
+		9B45FB861A89472B001A08C3 /* AVNTests */ = {
 			isa = PBXGroup;
 			children = (
-				9B2A214D18F5D3A20000B53B /* AVNTests.m */,
-				9B2A214818F5D3A20000B53B /* Supporting Files */,
+				9B45FB891A89472B001A08C3 /* AVNTests.m */,
+				9B45FB871A89472B001A08C3 /* Supporting Files */,
 			);
 			path = AVNTests;
 			sourceTree = "<group>";
 		};
-		9B2A214818F5D3A20000B53B /* Supporting Files */ = {
+		9B45FB871A89472B001A08C3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9B2A214918F5D3A20000B53B /* AVNTests-Info.plist */,
+				9B45FB881A89472B001A08C3 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9B3B519918F69FD40066D315 /* Model */ = {
+		9B45FBB41A8948D1001A08C3 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				9B3B519D18F6A0540066D315 /* AVNRoute.h */,
-				9B3B519E18F6A0540066D315 /* AVNRoute.m */,
-				9B7297C918F9E3AB00D1A95E /* AVNWaypoint.h */,
-				9B7297CA18F9E3AB00D1A95E /* AVNWaypoint.m */,
-				9BBBA60F192D207700BC372D /* AVNNewsItem.h */,
-				9BBBA610192D207700BC372D /* AVNNewsItem.m */,
+				9B45FBB51A8948D1001A08C3 /* app.css */,
 			);
-			name = Model;
+			path = include;
 			sourceTree = "<group>";
 		};
-		9B3B519A18F69FE10066D315 /* View */ = {
+		9B45FBB71A8948D1001A08C3 /* KML+MapKit */ = {
 			isa = PBXGroup;
 			children = (
-				9B29011C1A869CB6000556C1 /* Main.storyboard */,
-				9B2901181A869B51000556C1 /* LaunchScreen.xib */,
-				9BF0F4731948E2B000E6F7D5 /* Storyboard.h */,
-				9B36F6E7195485B700D36CE6 /* AVNRouteListTableViewCell.h */,
-				9B36F6E8195485B700D36CE6 /* AVNRouteListTableViewCell.m */,
-				9BCBD971194C4E790038F6F3 /* AVNNewsTableViewCell.h */,
-				9BCBD972194C4E790038F6F3 /* AVNNewsTableViewCell.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		9B3B519B18F69FF50066D315 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9B7B5B6F19070DCE000882E7 /* AVNRootViewController.h */,
-				9B7B5B7019070DCF000882E7 /* AVNRootViewController.m */,
-				9B2A213418F5D3A20000B53B /* AVNRouteListViewController.h */,
-				9B2A213518F5D3A20000B53B /* AVNRouteListViewController.m */,
-				9B2A213718F5D3A20000B53B /* AVNRouteDetailViewController.h */,
-				9B2A213818F5D3A20000B53B /* AVNRouteDetailViewController.m */,
-				9B5389231947EABB00D4D9C7 /* AVNMapViewController.h */,
-				9B5389241947EABB00D4D9C7 /* AVNMapViewController.m */,
-				9B7297C618F9DED900D1A95E /* AVNWaypointViewController.h */,
-				9B7297C718F9DED900D1A95E /* AVNWaypointViewController.m */,
-				9B992126190957CD009AC8EF /* AVNNewsTableViewController.h */,
-				9B992127190957CD009AC8EF /* AVNNewsTableViewController.m */,
-				9BBBA612192D280C00BC372D /* AVNNewsItemDetailViewController.h */,
-				9BBBA613192D280C00BC372D /* AVNNewsItemDetailViewController.m */,
-				9B9921231909571E009AC8EF /* AVNAboutViewController.h */,
-				9B9921241909571E009AC8EF /* AVNAboutViewController.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		9B3B519C18F6A0110066D315 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9BA2BA961A1BED7200744BDE /* Images.xcassets */,
-				9BC2868219D9E148002D33B8 /* Local HTML content */,
-				9B14087419312A10007DA34A /* Settings.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		9B7297CC18F9E54D00D1A95E /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				9B7297CD18F9E57C00D1A95E /* AVNHTTPRequestFactory.h */,
-				9B7297CE18F9E57C00D1A95E /* AVNHTTPRequestFactory.m */,
-			);
-			name = Services;
-			sourceTree = "<group>";
-		};
-		9BC2868219D9E148002D33B8 /* Local HTML content */ = {
-			isa = PBXGroup;
-			children = (
-				9BC2868419D9E17F002D33B8 /* app.css */,
-				9BC2868519D9E17F002D33B8 /* about_avn.html */,
-			);
-			name = "Local HTML content";
-			sourceTree = "<group>";
-		};
-		9BF0F4741948F13200E6F7D5 /* KML+MapKit */ = {
-			isa = PBXGroup;
-			children = (
-				9BF0F4751948F13200E6F7D5 /* KML+MapKit.h */,
-				9BF0F4761948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.h */,
-				9BF0F4771948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m */,
-				9BF0F4781948F13200E6F7D5 /* KMLLineString+MapKit.h */,
-				9BF0F4791948F13200E6F7D5 /* KMLLineString+MapKit.m */,
-				9BF0F47A1948F13200E6F7D5 /* KMLPlacemark+MapKit.h */,
-				9BF0F47B1948F13200E6F7D5 /* KMLPlacemark+MapKit.m */,
-				9BF0F47C1948F13200E6F7D5 /* KMLPoint+MapKit.h */,
-				9BF0F47D1948F13200E6F7D5 /* KMLPoint+MapKit.m */,
-				9BF0F47E1948F13200E6F7D5 /* KMLPolygon+MapKit.h */,
-				9BF0F47F1948F13200E6F7D5 /* KMLPolygon+MapKit.m */,
-				9BF0F4801948F13200E6F7D5 /* KMLRoot+MapKit.h */,
-				9BF0F4811948F13200E6F7D5 /* KMLRoot+MapKit.m */,
+				9B45FBB81A8948D1001A08C3 /* KML+MapKit.h */,
+				9B45FBB91A8948D1001A08C3 /* KMLAbstractGeometry+MapKit.h */,
+				9B45FBBA1A8948D1001A08C3 /* KMLAbstractGeometry+MapKit.m */,
+				9B45FBBB1A8948D1001A08C3 /* KMLLineString+MapKit.h */,
+				9B45FBBC1A8948D1001A08C3 /* KMLLineString+MapKit.m */,
+				9B45FBBD1A8948D1001A08C3 /* KMLPlacemark+MapKit.h */,
+				9B45FBBE1A8948D1001A08C3 /* KMLPlacemark+MapKit.m */,
+				9B45FBBF1A8948D1001A08C3 /* KMLPoint+MapKit.h */,
+				9B45FBC01A8948D1001A08C3 /* KMLPoint+MapKit.m */,
+				9B45FBC11A8948D1001A08C3 /* KMLPolygon+MapKit.h */,
+				9B45FBC21A8948D1001A08C3 /* KMLPolygon+MapKit.m */,
+				9B45FBC31A8948D1001A08C3 /* KMLRoot+MapKit.h */,
+				9B45FBC41A8948D1001A08C3 /* KMLRoot+MapKit.m */,
 			);
 			path = "KML+MapKit";
 			sourceTree = "<group>";
 		};
-		9BF0F4821948F13200E6F7D5 /* MKMap+KML */ = {
+		9B45FBC81A8948D1001A08C3 /* MKMap+KML */ = {
 			isa = PBXGroup;
 			children = (
-				9BF0F4831948F13200E6F7D5 /* MKAnnotationView+KML.h */,
-				9BF0F4841948F13200E6F7D5 /* MKAnnotationView+KML.m */,
-				9BF0F4851948F13200E6F7D5 /* MKMap+KML.h */,
-				9BF0F4861948F13200E6F7D5 /* MKOverlayView+KML.h */,
-				9BF0F4871948F13200E6F7D5 /* MKOverlayView+KML.m */,
-				9BF0F4881948F13200E6F7D5 /* MKPolygonView+KML.h */,
-				9BF0F4891948F13200E6F7D5 /* MKPolygonView+KML.m */,
-				9BF0F48A1948F13200E6F7D5 /* MKPolylineView+KML.h */,
-				9BF0F48B1948F13200E6F7D5 /* MKPolylineView+KML.m */,
-				9BF0F48C1948F13200E6F7D5 /* MKShape+KML.h */,
-				9BF0F48D1948F13200E6F7D5 /* MKShape+KML.m */,
+				9B45FBC91A8948D1001A08C3 /* MKAnnotationView+KML.h */,
+				9B45FBCA1A8948D1001A08C3 /* MKAnnotationView+KML.m */,
+				9B45FBCB1A8948D1001A08C3 /* MKMap+KML.h */,
+				9B45FBCC1A8948D1001A08C3 /* MKOverlayView+KML.h */,
+				9B45FBCD1A8948D1001A08C3 /* MKOverlayView+KML.m */,
+				9B45FBCE1A8948D1001A08C3 /* MKPolygonView+KML.h */,
+				9B45FBCF1A8948D1001A08C3 /* MKPolygonView+KML.m */,
+				9B45FBD01A8948D1001A08C3 /* MKPolylineView+KML.h */,
+				9B45FBD11A8948D1001A08C3 /* MKPolylineView+KML.m */,
+				9B45FBD21A8948D1001A08C3 /* MKShape+KML.h */,
+				9B45FBD31A8948D1001A08C3 /* MKShape+KML.m */,
 			);
 			path = "MKMap+KML";
+			sourceTree = "<group>";
+		};
+		9B45FBF81A8948EB001A08C3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B45FBA51A8948D1001A08C3 /* AVNRootViewController.h */,
+				9B45FBA61A8948D1001A08C3 /* AVNRootViewController.m */,
+				9B45FBAD1A8948D1001A08C3 /* AVNRouteListViewController.h */,
+				9B45FBAE1A8948D1001A08C3 /* AVNRouteListViewController.m */,
+				9B45FBAB1A8948D1001A08C3 /* AVNRouteListTableViewCell.h */,
+				9B45FBAC1A8948D1001A08C3 /* AVNRouteListTableViewCell.m */,
+				9B45FBA91A8948D1001A08C3 /* AVNRouteDetailViewController.h */,
+				9B45FBAA1A8948D1001A08C3 /* AVNRouteDetailViewController.m */,
+				9B45FB9B1A8948D1001A08C3 /* AVNMapViewController.h */,
+				9B45FB9C1A8948D1001A08C3 /* AVNMapViewController.m */,
+				9B45FBB11A8948D1001A08C3 /* AVNWaypointViewController.h */,
+				9B45FBB21A8948D1001A08C3 /* AVNWaypointViewController.m */,
+				9B45FBA31A8948D1001A08C3 /* AVNNewsTableViewController.h */,
+				9B45FBA41A8948D1001A08C3 /* AVNNewsTableViewController.m */,
+				9B45FBA11A8948D1001A08C3 /* AVNNewsTableViewCell.h */,
+				9B45FBA21A8948D1001A08C3 /* AVNNewsTableViewCell.m */,
+				9B45FB9F1A8948D1001A08C3 /* AVNNewsItemDetailViewController.h */,
+				9B45FBA01A8948D1001A08C3 /* AVNNewsItemDetailViewController.m */,
+				9B45FB951A8948D1001A08C3 /* AVNAboutViewController.h */,
+				9B45FB961A8948D1001A08C3 /* AVNAboutViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9B45FBF91A8948F3001A08C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B45FB9D1A8948D1001A08C3 /* AVNNewsItem.h */,
+				9B45FB9E1A8948D1001A08C3 /* AVNNewsItem.m */,
+				9B45FBA71A8948D1001A08C3 /* AVNRoute.h */,
+				9B45FBA81A8948D1001A08C3 /* AVNRoute.m */,
+				9B45FBAF1A8948D1001A08C3 /* AVNWaypoint.h */,
+				9B45FBB01A8948D1001A08C3 /* AVNWaypoint.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9B45FBFA1A8948FF001A08C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B45FC041A8952B2001A08C3 /* LaunchScreen.xib */,
+				9B45FC091A89547B001A08C3 /* Main.storyboard */,
+				9B45FBD51A8948D1001A08C3 /* Storyboard.h */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9B45FBFB1A89492E001A08C3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9B45FBB31A8948D1001A08C3 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9BC499851A895B7700208882 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9B45FB991A8948D1001A08C3 /* AVNHTTPRequestFactory.h */,
+				9B45FB9A1A8948D1001A08C3 /* AVNHTTPRequestFactory.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		D7F626A7D66507099F427053 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE2E891DFD6AC2F213215C7F /* Pods-AVN.debug.xcconfig */,
+				D6C6D765AE9E1642BF786CFC /* Pods-AVN.release.xcconfig */,
+				7653E7DA56D33254D6755E71 /* Pods-AVNTests.debug.xcconfig */,
+				9678BE51C965FA87C4942E7B /* Pods-AVNTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B2A211B18F5D3A20000B53B /* AVN */ = {
+		9B45FB661A89472A001A08C3 /* AVN */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B2A215118F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVN" */;
+			buildConfigurationList = 9B45FB8D1A89472B001A08C3 /* Build configuration list for PBXNativeTarget "AVN" */;
 			buildPhases = (
-				CDDB549FC008D108F7E50898 /* Check Pods Manifest.lock */,
-				9B2A211818F5D3A20000B53B /* Sources */,
-				9B2A211918F5D3A20000B53B /* Frameworks */,
-				9B2A211A18F5D3A20000B53B /* Resources */,
-				9B0C8C081931376A0098FA4D /* ShellScript */,
-				AB55C4CBD6938AD7B8452A92 /* Copy Pods Resources */,
+				63F41A1ECB0E60EBF3330473 /* Check Pods Manifest.lock */,
+				9B45FB631A89472A001A08C3 /* Sources */,
+				9B45FB641A89472A001A08C3 /* Frameworks */,
+				9B45FB651A89472A001A08C3 /* Resources */,
+				9B45FC011A8951AE001A08C3 /* ShellScript */,
+				20B05559999E31323F6A4EAE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,90 +376,88 @@
 			);
 			name = AVN;
 			productName = AVN;
-			productReference = 9B2A211C18F5D3A20000B53B /* AVN.app */;
+			productReference = 9B45FB671A89472A001A08C3 /* AVN.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9B2A213F18F5D3A20000B53B /* AVNTests */ = {
+		9B45FB821A89472B001A08C3 /* AVNTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B2A215418F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVNTests" */;
+			buildConfigurationList = 9B45FB901A89472B001A08C3 /* Build configuration list for PBXNativeTarget "AVNTests" */;
 			buildPhases = (
-				8BAF7C0CEDC66581DEF97CE7 /* Check Pods Manifest.lock */,
-				9B2A213C18F5D3A20000B53B /* Sources */,
-				9B2A213D18F5D3A20000B53B /* Frameworks */,
-				9B2A213E18F5D3A20000B53B /* Resources */,
-				6D0B64EA686A1F355DD0BA15 /* Copy Pods Resources */,
+				179F8E21E70AFFE6DDA74AF9 /* Check Pods Manifest.lock */,
+				9B45FB7F1A89472B001A08C3 /* Sources */,
+				9B45FB801A89472B001A08C3 /* Frameworks */,
+				9B45FB811A89472B001A08C3 /* Resources */,
+				1D8EF2F5319B22A1DC5ED173 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9B2A214618F5D3A20000B53B /* PBXTargetDependency */,
+				9B45FB851A89472B001A08C3 /* PBXTargetDependency */,
 			);
 			name = AVNTests;
 			productName = AVNTests;
-			productReference = 9B2A214018F5D3A20000B53B /* AVNTests.xctest */;
+			productReference = 9B45FB831A89472B001A08C3 /* AVNTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9B2A211418F5D3A20000B53B /* Project object */ = {
+		9B45FB5F1A89472A001A08C3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AVN;
-				LastTestingUpgradeCheck = 0600;
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = AVN;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Cerium;
 				TargetAttributes = {
-					9B2A211B18F5D3A20000B53B = {
+					9B45FB661A89472A001A08C3 = {
+						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5D9U5UZG39;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
-							com.apple.iOS = {
-								enabled = 1;
-							};
 						};
 					};
-					9B2A213F18F5D3A20000B53B = {
-						TestTargetID = 9B2A211B18F5D3A20000B53B;
+					9B45FB821A89472B001A08C3 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 9B45FB661A89472A001A08C3;
 					};
 				};
 			};
-			buildConfigurationList = 9B2A211718F5D3A20000B53B /* Build configuration list for PBXProject "AVN" */;
+			buildConfigurationList = 9B45FB621A89472A001A08C3 /* Build configuration list for PBXProject "AVN" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				Base,
 				nl,
+				Base,
 			);
-			mainGroup = 9B2A211318F5D3A20000B53B;
-			productRefGroup = 9B2A211D18F5D3A20000B53B /* Products */;
+			mainGroup = 9B45FB5E1A89472A001A08C3;
+			productRefGroup = 9B45FB681A89472A001A08C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B2A211B18F5D3A20000B53B /* AVN */,
-				9B2A213F18F5D3A20000B53B /* AVNTests */,
+				9B45FB661A89472A001A08C3 /* AVN */,
+				9B45FB821A89472B001A08C3 /* AVNTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9B2A211A18F5D3A20000B53B /* Resources */ = {
+		9B45FB651A89472A001A08C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B2901191A869B51000556C1 /* LaunchScreen.xib in Resources */,
-				9B14087519312A10007DA34A /* Settings.bundle in Resources */,
-				9BA2BA971A1BED7200744BDE /* Images.xcassets in Resources */,
-				9B29011D1A869CB6000556C1 /* Main.storyboard in Resources */,
-				9BC2868719D9E17F002D33B8 /* about_avn.html in Resources */,
-				9BC2868619D9E17F002D33B8 /* app.css in Resources */,
+				9B45FC021A8952B2001A08C3 /* LaunchScreen.xib in Resources */,
+				9B45FBE71A8948D1001A08C3 /* app.css in Resources */,
+				9B45FC071A89547B001A08C3 /* Main.storyboard in Resources */,
+				9B45FBD61A8948D1001A08C3 /* about_avn.html in Resources */,
+				9B45FBE61A8948D1001A08C3 /* Images.xcassets in Resources */,
+				9B45FBF71A8948D1001A08C3 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B2A213E18F5D3A20000B53B /* Resources */ = {
+		9B45FB811A89472B001A08C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -503,7 +467,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6D0B64EA686A1F355DD0BA15 /* Copy Pods Resources */ = {
+		179F8E21E70AFFE6DDA74AF9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1D8EF2F5319B22A1DC5ED173 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -518,35 +497,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8BAF7C0CEDC66581DEF97CE7 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9B0C8C081931376A0098FA4D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo Pods dir:\nls -al Pods/Target\\ Support\\ Files/Pods-AVN\n            \ncp Pods/Target\\ Support\\ Files/Pods-AVN/Pods-AVN-acknowledgements.plist AVN/Settings.bundle/Acknowledgements.plist\n\n# Put version+build number from AVN-Info.plist into the Root.plist of the settings bundle\nVERSION=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nBUILDNR=`cat \"$PRODUCT_SETTINGS_PATH\" | grep -A 1 \"CFBundleVersion\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\n\nsed -i -e s/__VERSION__/${VERSION}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\nsed -i -e s/__BUILDNR__/${BUILDNR}/ \"$BUILT_PRODUCTS_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n";
-		};
-		AB55C4CBD6938AD7B8452A92 /* Copy Pods Resources */ = {
+		20B05559999E31323F6A4EAE /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -561,7 +512,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AVN/Pods-AVN-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CDDB549FC008D108F7E50898 /* Check Pods Manifest.lock */ = {
+		63F41A1ECB0E60EBF3330473 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,63 +527,95 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		9B45FC011A8951AE001A08C3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script copies Settings.bundle/Root.plist to TARGET_DIR and sets the version number retrieved from apps Info.plist\n\nVERSION=`cat \"$INFOPLIST_FILE\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nBUILDNR=`cat \"$INFOPLIST_FILE\" | grep -A 1 \"CFBundleVersion\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\n\necho Copying version and build string from Info.plist CFBundleShortVersionString: $VERSION and CFBundleVersion: $BUILDNR to Settings.bundle\n\ncp \"$SRCROOT\"/AVN/Settings.bundle/Root.plist \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/\nsed -i -e s/__VERSION__/$VERSION/ \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\nsed -i -e s/__BUILDNR__/$BUILDNR/ \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n\n# copies CocoaPod libraries acknowledgements to Settings bundle\n\necho Copying CocoaPod libraries acknowledgements to Settings bundle\n\ncp \"$SRCROOT\"/Pods/\"Target Support Files\"/Pods-AVN/Pods-AVN-acknowledgements.plist \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Acknowledgements.plist\n\nexit 0";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9B2A211818F5D3A20000B53B /* Sources */ = {
+		9B45FB631A89472A001A08C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BCBD973194C4E790038F6F3 /* AVNNewsTableViewCell.m in Sources */,
-				9B992128190957CD009AC8EF /* AVNNewsTableViewController.m in Sources */,
-				9B5389251947EABB00D4D9C7 /* AVNMapViewController.m in Sources */,
-				9BBBA611192D207700BC372D /* AVNNewsItem.m in Sources */,
-				9BF0F48E1948F13200E6F7D5 /* KMLAbstractGeometry+MapKit.m in Sources */,
-				9BF0F4951948F13200E6F7D5 /* MKOverlayView+KML.m in Sources */,
-				9B7297CF18F9E57C00D1A95E /* AVNHTTPRequestFactory.m in Sources */,
-				9BF0F48F1948F13200E6F7D5 /* KMLLineString+MapKit.m in Sources */,
-				9B9921251909571E009AC8EF /* AVNAboutViewController.m in Sources */,
-				9BF0F4901948F13200E6F7D5 /* KMLPlacemark+MapKit.m in Sources */,
-				9B3B519F18F6A0540066D315 /* AVNRoute.m in Sources */,
-				9B7297C818F9DED900D1A95E /* AVNWaypointViewController.m in Sources */,
-				9BF0F4921948F13200E6F7D5 /* KMLPolygon+MapKit.m in Sources */,
-				9B2A213618F5D3A20000B53B /* AVNRouteListViewController.m in Sources */,
-				9BBBA614192D280C00BC372D /* AVNNewsItemDetailViewController.m in Sources */,
-				9B7B5B7119070DCF000882E7 /* AVNRootViewController.m in Sources */,
-				9B2A213018F5D3A20000B53B /* AVNAppDelegate.m in Sources */,
-				9B2A212C18F5D3A20000B53B /* main.m in Sources */,
-				9BF0F4931948F13200E6F7D5 /* KMLRoot+MapKit.m in Sources */,
-				9B36F6E9195485B700D36CE6 /* AVNRouteListTableViewCell.m in Sources */,
-				9BF0F4941948F13200E6F7D5 /* MKAnnotationView+KML.m in Sources */,
-				9BF0F4981948F13200E6F7D5 /* MKShape+KML.m in Sources */,
-				9BF0F4911948F13200E6F7D5 /* KMLPoint+MapKit.m in Sources */,
-				9B2A213918F5D3A20000B53B /* AVNRouteDetailViewController.m in Sources */,
-				9BF0F4971948F13200E6F7D5 /* MKPolylineView+KML.m in Sources */,
-				9BF0F4961948F13200E6F7D5 /* MKPolygonView+KML.m in Sources */,
-				9B7297CB18F9E3AB00D1A95E /* AVNWaypoint.m in Sources */,
+				9B45FBDC1A8948D1001A08C3 /* AVNNewsItemDetailViewController.m in Sources */,
+				9B45FBD91A8948D1001A08C3 /* AVNHTTPRequestFactory.m in Sources */,
+				9B45FBD81A8948D1001A08C3 /* AVNAppDelegate.m in Sources */,
+				9B45FBEC1A8948D1001A08C3 /* KMLPoint+MapKit.m in Sources */,
+				9B45FBF61A8948D1001A08C3 /* MKShape+KML.m in Sources */,
+				9B45FBD71A8948D1001A08C3 /* AVNAboutViewController.m in Sources */,
+				9B45FBE91A8948D1001A08C3 /* KMLAbstractGeometry+MapKit.m in Sources */,
+				9B45FBF51A8948D1001A08C3 /* MKPolylineView+KML.m in Sources */,
+				9B45FBDF1A8948D1001A08C3 /* AVNRootViewController.m in Sources */,
+				9B45FBE51A8948D1001A08C3 /* AVNWaypointViewController.m in Sources */,
+				9B45FB6D1A89472A001A08C3 /* main.m in Sources */,
+				9B45FBDA1A8948D1001A08C3 /* AVNMapViewController.m in Sources */,
+				9B45FBED1A8948D1001A08C3 /* KMLPolygon+MapKit.m in Sources */,
+				9B45FBEA1A8948D1001A08C3 /* KMLLineString+MapKit.m in Sources */,
+				9B45FBE11A8948D1001A08C3 /* AVNRouteDetailViewController.m in Sources */,
+				9B45FBF31A8948D1001A08C3 /* MKOverlayView+KML.m in Sources */,
+				9B45FBF21A8948D1001A08C3 /* MKAnnotationView+KML.m in Sources */,
+				9B45FBE31A8948D1001A08C3 /* AVNRouteListViewController.m in Sources */,
+				9B45FBDE1A8948D1001A08C3 /* AVNNewsTableViewController.m in Sources */,
+				9B45FBDD1A8948D1001A08C3 /* AVNNewsTableViewCell.m in Sources */,
+				9B45FBEE1A8948D1001A08C3 /* KMLRoot+MapKit.m in Sources */,
+				9B45FBE21A8948D1001A08C3 /* AVNRouteListTableViewCell.m in Sources */,
+				9B45FBEB1A8948D1001A08C3 /* KMLPlacemark+MapKit.m in Sources */,
+				9B45FBE01A8948D1001A08C3 /* AVNRoute.m in Sources */,
+				9B45FBDB1A8948D1001A08C3 /* AVNNewsItem.m in Sources */,
+				9B45FBF41A8948D1001A08C3 /* MKPolygonView+KML.m in Sources */,
+				9B45FBE41A8948D1001A08C3 /* AVNWaypoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B2A213C18F5D3A20000B53B /* Sources */ = {
+		9B45FB7F1A89472B001A08C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B2A214E18F5D3A20000B53B /* AVNTests.m in Sources */,
+				9B45FB8A1A89472B001A08C3 /* AVNTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9B2A214618F5D3A20000B53B /* PBXTargetDependency */ = {
+		9B45FB851A89472B001A08C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B2A211B18F5D3A20000B53B /* AVN */;
-			targetProxy = 9B2A214518F5D3A20000B53B /* PBXContainerItemProxy */;
+			target = 9B45FB661A89472A001A08C3 /* AVN */;
+			targetProxy = 9B45FB841A89472B001A08C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		9B45FC041A8952B2001A08C3 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B45FC061A8952C5001A08C3 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		9B45FC091A89547B001A08C3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B45FC081A89547B001A08C3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		9B2A214F18F5D3A20000B53B /* Debug */ = {
+		9B45FB8B1A89472B001A08C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -647,12 +630,16 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AVN/AVN-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -664,13 +651,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		9B2A215018F5D3A20000B53B /* Release */ = {
+		9B45FB8C1A89472B001A08C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -685,134 +674,126 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AVN/AVN-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		9B2A215218F5D3A20000B53B /* Debug */ = {
+		9B45FB8E1A89472B001A08C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70B761D98240DE217ACFC293 /* Pods-AVN.debug.xcconfig */;
+			baseConfigurationReference = CE2E891DFD6AC2F213215C7F /* Pods-AVN.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AVN/AVN-Prefix.pch";
-				INFOPLIST_FILE = "AVN/AVN-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AVN/AVN-Prefix.pch";
+				INFOPLIST_FILE = AVN/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b45c9f03-b2e4-47c4-82d5-6d6e725901ba";
 				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		9B2A215318F5D3A20000B53B /* Release */ = {
+		9B45FB8F1A89472B001A08C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC5612AD078670E677E04FD7 /* Pods-AVN.release.xcconfig */;
+			baseConfigurationReference = D6C6D765AE9E1642BF786CFC /* Pods-AVN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AVN/AVN-Prefix.pch";
-				INFOPLIST_FILE = "AVN/AVN-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AVN/AVN-Prefix.pch";
+				INFOPLIST_FILE = AVN/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "84f63f88-b89e-4079-8967-f41e8da98b06";
 				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		9B2A215518F5D3A20000B53B /* Debug */ = {
+		9B45FB911A89472B001A08C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E37BBAEF675C30D6B92D20E4 /* Pods-AVNTests.debug.xcconfig */;
+			baseConfigurationReference = 7653E7DA56D33254D6755E71 /* Pods-AVNTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AVN.app/AVN";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AVN/AVN-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "AVNTests/AVNTests-Info.plist";
+				INFOPLIST_FILE = AVNTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AVN.app/AVN";
 			};
 			name = Debug;
 		};
-		9B2A215618F5D3A20000B53B /* Release */ = {
+		9B45FB921A89472B001A08C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0862C192C5E842BB1DCE596B /* Pods-AVNTests.release.xcconfig */;
+			baseConfigurationReference = 9678BE51C965FA87C4942E7B /* Pods-AVNTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AVN.app/AVN";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AVN/AVN-Prefix.pch";
-				INFOPLIST_FILE = "AVNTests/AVNTests-Info.plist";
+				INFOPLIST_FILE = AVNTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AVN.app/AVN";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B2A211718F5D3A20000B53B /* Build configuration list for PBXProject "AVN" */ = {
+		9B45FB621A89472A001A08C3 /* Build configuration list for PBXProject "AVN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B2A214F18F5D3A20000B53B /* Debug */,
-				9B2A215018F5D3A20000B53B /* Release */,
+				9B45FB8B1A89472B001A08C3 /* Debug */,
+				9B45FB8C1A89472B001A08C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B2A215118F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVN" */ = {
+		9B45FB8D1A89472B001A08C3 /* Build configuration list for PBXNativeTarget "AVN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B2A215218F5D3A20000B53B /* Debug */,
-				9B2A215318F5D3A20000B53B /* Release */,
+				9B45FB8E1A89472B001A08C3 /* Debug */,
+				9B45FB8F1A89472B001A08C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B2A215418F5D3A20000B53B /* Build configuration list for PBXNativeTarget "AVNTests" */ = {
+		9B45FB901A89472B001A08C3 /* Build configuration list for PBXNativeTarget "AVNTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B2A215518F5D3A20000B53B /* Debug */,
-				9B2A215618F5D3A20000B53B /* Release */,
+				9B45FB911A89472B001A08C3 /* Debug */,
+				9B45FB921A89472B001A08C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9B2A211418F5D3A20000B53B /* Project object */;
+	rootObject = 9B45FB5F1A89472A001A08C3 /* Project object */;
 }

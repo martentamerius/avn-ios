@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6650EAB0DC166995441781A"
+               BlueprintIdentifier = "CF63499042D33779971C84BE"
                BuildableName = "libPods-AVNTests-iOS-KML-Framework.a"
                BlueprintName = "Pods-AVNTests-iOS-KML-Framework"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C6650EAB0DC166995441781A"
+            BlueprintIdentifier = "CF63499042D33779971C84BE"
             BuildableName = "libPods-AVNTests-iOS-KML-Framework.a"
             BlueprintName = "Pods-AVNTests-iOS-KML-Framework"
             ReferencedContainer = "container:Pods.xcodeproj">
