@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12156F4C3D446D68959E9201"
+               BlueprintIdentifier = "415F4203FB3329F9F667F900"
                BuildableName = "libPods-AVN-SDURLCache.a"
                BlueprintName = "Pods-AVN-SDURLCache"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "12156F4C3D446D68959E9201"
+            BlueprintIdentifier = "415F4203FB3329F9F667F900"
             BuildableName = "libPods-AVN-SDURLCache.a"
             BlueprintName = "Pods-AVN-SDURLCache"
             ReferencedContainer = "container:Pods.xcodeproj">
