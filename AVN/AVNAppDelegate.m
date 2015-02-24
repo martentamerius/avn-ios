@@ -407,7 +407,7 @@
     // Open the external URL in Safari
     if ([[UIApplication sharedApplication] canOpenURL:self.externalURL]) {
         if (![[UIApplication sharedApplication] openURL:self.externalURL]) {
-            NSLog(@"Failed to open URL: %@",[self.externalURL description]);
+            NSLog(@"Failed to open URL: %@", [self.externalURL description]);
             
             // Show error message to user
             [TSMessage showNotificationInViewController:self.window.rootViewController
