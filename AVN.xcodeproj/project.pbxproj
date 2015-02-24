@@ -556,7 +556,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "export LANG=UTF-8\n\ncd \"$SRCROOT\"\nif [ ! -e \"Pods\" ]; then\n  echo \"Installing third-party CocoaPod libraries from scratch. After this build has finished (with errors and warnings), just retry building and running.\"\n  pod install\nfi";
+			shellScript = "export LANG=UTF-8\n\ncd \"$SRCROOT\"\nif [ ! -e \"Pods\" ]; then\n  pod install\n\n  echo \"Installing third-party CocoaPod libraries from scratch. After this build has finished (with error), just retry building and running.\"\n  exit 1\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
