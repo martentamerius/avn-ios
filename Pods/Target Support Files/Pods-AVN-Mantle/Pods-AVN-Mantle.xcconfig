@@ -1,1 +1,0 @@
-PODS_AVN_MANTLE_OTHER_LDFLAGS = -framework "Foundation"

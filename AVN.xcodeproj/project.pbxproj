@@ -43,6 +43,7 @@
 		9B45FBF71A8948D1001A08C3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FBD41A8948D1001A08C3 /* Settings.bundle */; };
 		9B45FC021A8952B2001A08C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FC041A8952B2001A08C3 /* LaunchScreen.xib */; };
 		9B45FC071A89547B001A08C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45FC091A89547B001A08C3 /* Main.storyboard */; };
+		9B50C90B1A9D13670099B708 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9B50C90A1A9D13670099B708 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2165B6114FBC9769098ECB32 /* Pods-AVN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.debug.xcconfig"; sourceTree = "<group>"; };
+		2B02A5197E63B3B16224EFDC /* Pods-AVNTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B37B0A703AA7345AEA8DEAD /* libPods-AVN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7653E7DA56D33254D6755E71 /* Pods-AVNTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9678BE51C965FA87C4942E7B /* Pods-AVNTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.release.xcconfig"; sourceTree = "<group>"; };
+		8538CD80F5D61B37CDD67669 /* Pods-AVN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.release.xcconfig"; sourceTree = "<group>"; };
 		9B45FB671A89472A001A08C3 /* AVN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B45FB6B1A89472A001A08C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B45FB6C1A89472A001A08C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -129,9 +131,9 @@
 		9B45FC081A89547B001A08C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B45FC0A1A8955B2001A08C3 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		9B45FC0B1A8955B2001A08C3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		CE2E891DFD6AC2F213215C7F /* Pods-AVN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.debug.xcconfig"; sourceTree = "<group>"; };
+		9B50C90A1A9D13670099B708 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		D56354215700C037D9B2B61E /* libPods-AVNTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVNTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6C6D765AE9E1642BF786CFC /* Pods-AVN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVN.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVN/Pods-AVN.release.xcconfig"; sourceTree = "<group>"; };
+		FF40977E918984FF4C0955C6 /* Pods-AVNTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVNTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVNTests/Pods-AVNTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22BBBDC521CEA8B6B15F641A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2165B6114FBC9769098ECB32 /* Pods-AVN.debug.xcconfig */,
+				8538CD80F5D61B37CDD67669 /* Pods-AVN.release.xcconfig */,
+				FF40977E918984FF4C0955C6 /* Pods-AVNTests.debug.xcconfig */,
+				2B02A5197E63B3B16224EFDC /* Pods-AVNTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		718AE714808F11FEACBF2CEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,8 +182,8 @@
 				9B45FB691A89472A001A08C3 /* AVN */,
 				9B45FB861A89472B001A08C3 /* AVNTests */,
 				9B45FB681A89472A001A08C3 /* Products */,
-				D7F626A7D66507099F427053 /* Pods */,
 				718AE714808F11FEACBF2CEF /* Frameworks */,
+				22BBBDC521CEA8B6B15F641A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -202,6 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				9B45FB6B1A89472A001A08C3 /* Info.plist */,
+				9B50C90A1A9D13670099B708 /* Podfile */,
+				9B45FC0A1A8955B2001A08C3 /* LICENSE */,
+				9B45FC0B1A8955B2001A08C3 /* README.md */,
 				9B45FB941A8948D1001A08C3 /* AVN-Prefix.pch */,
 				9B45FB6C1A89472A001A08C3 /* main.m */,
 				9B45FBB71A8948D1001A08C3 /* KML+MapKit */,
@@ -209,8 +225,6 @@
 				9B45FBB41A8948D1001A08C3 /* include */,
 				9B45FB931A8948D1001A08C3 /* about_avn.html */,
 				9B45FBD41A8948D1001A08C3 /* Settings.bundle */,
-				9B45FC0A1A8955B2001A08C3 /* LICENSE */,
-				9B45FC0B1A8955B2001A08C3 /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -345,17 +359,6 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
-		D7F626A7D66507099F427053 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CE2E891DFD6AC2F213215C7F /* Pods-AVN.debug.xcconfig */,
-				D6C6D765AE9E1642BF786CFC /* Pods-AVN.release.xcconfig */,
-				7653E7DA56D33254D6755E71 /* Pods-AVNTests.debug.xcconfig */,
-				9678BE51C965FA87C4942E7B /* Pods-AVNTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -453,6 +456,7 @@
 				9B45FC071A89547B001A08C3 /* Main.storyboard in Resources */,
 				9B45FBD61A8948D1001A08C3 /* about_avn.html in Resources */,
 				9B45FBE61A8948D1001A08C3 /* Images.xcassets in Resources */,
+				9B50C90B1A9D13670099B708 /* Podfile in Resources */,
 				9B45FBF71A8948D1001A08C3 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,7 +703,6 @@
 		};
 		9B45FB8E1A89472B001A08C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE2E891DFD6AC2F213215C7F /* Pods-AVN.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -714,7 +717,6 @@
 		};
 		9B45FB8F1A89472B001A08C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6C6D765AE9E1642BF786CFC /* Pods-AVN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -729,15 +731,10 @@
 		};
 		9B45FB911A89472B001A08C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7653E7DA56D33254D6755E71 /* Pods-AVNTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = AVNTests/Info.plist;
@@ -749,7 +746,6 @@
 		};
 		9B45FB921A89472B001A08C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9678BE51C965FA87C4942E7B /* Pods-AVNTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

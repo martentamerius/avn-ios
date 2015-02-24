@@ -45,8 +45,10 @@
                                                                kAVNSetting_TimestampForLastNewsDownload:@"",
                                                                kAVNSetting_ShowNewsItemsAsNotifications:@(-1) }];
     
-    // Set background fetch interval to once a day for fetching news items
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:(3600*24)];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(setMinimumBackgroundFetchInterval:)]) {
+        // iOS 7+: Set background fetch interval to once a day for fetching news items
+        [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:(3600*24)];
+    }
     
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         // iOS 8: Register the notification types
