@@ -366,6 +366,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B45FB8D1A89472B001A08C3 /* Build configuration list for PBXNativeTarget "AVN" */;
 			buildPhases = (
+				9B689A151A9D177700E3202B /* ShellScript */,
 				63F41A1ECB0E60EBF3330473 /* Check Pods Manifest.lock */,
 				9B45FB631A89472A001A08C3 /* Sources */,
 				9B45FB641A89472A001A08C3 /* Frameworks */,
@@ -544,6 +545,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# shell script copies Settings.bundle/Root.plist to TARGET_DIR and sets the version number retrieved from apps Info.plist\n\nVERSION=`cat \"$INFOPLIST_FILE\" | grep -A 1 \"CFBundleShortVersionString\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\nBUILDNR=`cat \"$INFOPLIST_FILE\" | grep -A 1 \"CFBundleVersion\" | grep \"string\" | sed -E 's/[a-z\\<\\>\\/[:blank:]]//g'`\n\necho Copying version and build string from Info.plist CFBundleShortVersionString: $VERSION and CFBundleVersion: $BUILDNR to Settings.bundle\n\ncp \"$SRCROOT\"/AVN/Settings.bundle/Root.plist \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/\nsed -i -e s/__VERSION__/$VERSION/ \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\nsed -i -e s/__BUILDNR__/$BUILDNR/ \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Root.plist\n\n# copies CocoaPod libraries acknowledgements to Settings bundle\n\necho Copying CocoaPod libraries acknowledgements to Settings bundle\n\ncp \"$SRCROOT\"/Pods/\"Target Support Files\"/Pods-AVN/Pods-AVN-acknowledgements.plist \"$TARGET_BUILD_DIR\"/\"$PRODUCT_NAME\".app/Settings.bundle/Acknowledgements.plist\n\nexit 0";
 		};
+		9B689A151A9D177700E3202B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "export LANG=UTF-8\n\ncd \"$SRCROOT\"\nif [ ! -e \"Pods\" ]; then\n  echo \"Installing third-party CocoaPod libraries from scratch. After this build has finished (with errors and warnings), just retry building and running.\"\n  pod install\nfi";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -703,6 +718,7 @@
 		};
 		9B45FB8E1A89472B001A08C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2165B6114FBC9769098ECB32 /* Pods-AVN.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -717,6 +733,7 @@
 		};
 		9B45FB8F1A89472B001A08C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8538CD80F5D61B37CDD67669 /* Pods-AVN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -731,6 +748,7 @@
 		};
 		9B45FB911A89472B001A08C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF40977E918984FF4C0955C6 /* Pods-AVNTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -746,6 +764,7 @@
 		};
 		9B45FB921A89472B001A08C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B02A5197E63B3B16224EFDC /* Pods-AVNTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
